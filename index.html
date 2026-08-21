@@ -430,20 +430,6 @@
     .h-purple { color: var(--purple); font-weight: 600; }
     .h-green { color: var(--green); font-weight: 600; }
 
-    .duration-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--bg3);
-      border: 1px solid var(--rule);
-      padding: 0.4rem 0.9rem;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 1.5rem;
-    }
-    .duration-badge svg { width: 14px; height: 14px; }
-
     .copy-btn {
       display: inline-flex;
       align-items: center;
@@ -875,191 +861,7 @@
       .modal-card { padding: 1.6rem 1.3rem; }
     }
 
-    /* ====== 口播生成器 ====== */
-    .gen-box {
-      background: var(--bg2);
-      border: 1px solid var(--rule);
-      border-radius: 14px;
-      padding: 1.4rem 1.3rem;
-      margin-bottom: 1.6rem;
-      position: relative;
-    }
-    .gen-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
-    .gen-title .gen-badge {
-      font-size: 0.62rem; background: var(--bg3); color: var(--muted);
-      border-radius: 100px; padding: 0.1rem 0.5rem;
-    }
-    .gen-title .gen-badge.paid { background: var(--gold); color: #0a0a0a; }
-    .gen-input-line {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.85rem 0;
-      border-top: 1.5px solid var(--rule);
-      border-bottom: 1.5px solid var(--rule);
-      margin-bottom: 0.9rem;
-    }
-    .gen-input-line .gen-icon { color: var(--accent2); font-size: 1.1rem; flex-shrink: 0; }
-    .gen-input-line input {
-      flex: 1; background: transparent; border: none;
-      color: var(--ink); font-size: 0.95rem; font-family: var(--font);
-      outline: none; min-width: 0;
-    }
-    .gen-input-line input::placeholder { color: var(--dim-text); }
-    /* 话题选择器 */
-    .hot-search-selector {
-      flex: 1; display: flex; align-items: center; gap: 0.4rem;
-      cursor: pointer; padding: 0.2rem 0; position: relative;
-      user-select: none;
-    }
-    .hot-search-selector .hss-placeholder { color: var(--dim-text); font-size: 0.95rem; }
-    .hot-search-selector .hss-selected { color: var(--ink); font-size: 0.95rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
-    .hot-search-selector .hss-rank { background: rgba(255,107,107,0.2); color: #ff6b6b; font-size: 0.7rem; font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 100px; border: 1px solid rgba(255,107,107,0.3); white-space: nowrap; }
-    .hot-search-selector .hss-heat { color: #ffd93d; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
-    .hot-search-selector .hss-arrow { color: var(--dim-text); font-size: 0.7rem; margin-left: auto; transition: transform 0.2s; }
-    .hot-search-selector .hss-arrow.open { transform: rotate(180deg); }
-    /* LIVE 实时标识 */
-    .live-badge {
-      font-size: 0.6rem; font-weight: 800; color: #ff4757;
-      background: rgba(255,71,87,0.12); border: 1px solid rgba(255,71,87,0.3);
-      padding: 0.05rem 0.35rem; border-radius: 4px; letter-spacing: 0.5px;
-      animation: livePulse 2s ease-in-out infinite; white-space: nowrap;
-    }
-    .live-badge.updated { color: #2ed573; background: rgba(46,213,115,0.12); border-color: rgba(46,213,115,0.3); animation: none; }
-    @keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
-    /* 刷新按钮 */
-    .hot-refresh-btn {
-      flex-shrink: 0; background: var(--bg3); border: 1px solid var(--rule);
-      border-radius: 8px; padding: 0.35rem; cursor: pointer; color: var(--muted);
-      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-    }
-    .hot-refresh-btn:hover { color: var(--accent); border-color: var(--accent); }
-    .hot-refresh-btn:active { transform: scale(0.9); }
-    .hot-refresh-btn.loading svg { animation: spin 0.8s linear infinite; }
-    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .hot-dropdown {
-      position: absolute; left: 0; right: 0; top: 100%; z-index: 100;
-      background: var(--bg3); border: 1px solid var(--rule);
-      border-radius: 10px; overflow: hidden; margin-top: 2px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-      max-height: 380px; overflow-y: auto;
-    }
-    .hot-dropdown-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.7rem 0.8rem; cursor: pointer;
-      border-bottom: 1px solid var(--rule); transition: background 0.15s;
-    }
-    .hot-dropdown-item:last-child { border-bottom: none; }
-    .hot-dropdown-item:hover { background: var(--bg2); }
-    .hot-dropdown-item .hdi-rank { font-size: 0.7rem; color: var(--accent); font-weight: 700; width: 2.2rem; flex-shrink: 0; }
-    .hot-dropdown-item .hdi-title { font-size: 0.85rem; color: var(--ink); font-weight: 500; }
-    .hot-dropdown-item .hdi-sub { font-size: 0.72rem; color: var(--dim-text); margin-top: 0.1rem; }
-    .hot-dropdown-item .hdi-heat { font-size: 0.7rem; color: var(--muted); margin-left: auto; flex-shrink: 0; }
-    .gen-input-line { position: relative; }
-    /* 自定义主题输入框 */
-    .gen-settings-row .gs-input {
-      flex: 1; min-width: 6rem; background: var(--bg3); border: 1px solid var(--rule);
-      color: var(--ink); font-size: 0.82rem; font-family: var(--font);
-      border-radius: 6px; padding: 0.35rem 0.6rem; outline: none;
-    }
-    .gen-settings-row .gs-input:focus { border-color: var(--accent2); }
-    .gen-settings-row .gs-input::placeholder { color: var(--dim-text); }
-    /* 文案要求 textarea */
-    .gen-req-row { align-items: flex-start; }
-    .gen-req-row .gs-label { margin-top: 0.4rem; }
-    .gen-audience-row { align-items: center; }
-    .gs-textarea {
-      flex: 1; min-width: 6rem; background: var(--bg3); border: 1px solid var(--rule);
-      color: var(--ink); font-size: 0.82rem; font-family: var(--font);
-      border-radius: 6px; padding: 0.45rem 0.6rem; outline: none;
-      resize: vertical; line-height: 1.6;
-    }
-    .gs-textarea:focus { border-color: var(--accent2); }
-    .gs-textarea::placeholder { color: var(--dim-text); }
-    /* 重新生成 / 精细处理 按钮 */
-    .refine-btns { display: flex; gap: 0.5rem; margin-top: 0.6rem; flex-wrap: wrap; }
-    .refine-btn {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      border: 1px solid var(--rule); background: var(--bg3);
-      color: var(--ink); padding: 0.4rem 0.9rem; border-radius: 100px;
-      font-size: 0.76rem; cursor: pointer; transition: all 0.2s; font-family: var(--font);
-    }
-    .refine-btn:hover { border-color: var(--accent2); color: var(--accent2); }
-    .refine-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-    .refine-btn.refine-locked { border-color: var(--dim-border); color: var(--dim-text); }
-    .refine-count { font-size: 0.68rem; color: var(--gold); margin-left: 0.2rem; }
-    .refine-section { margin-top: 0.6rem; border-top: 1px solid var(--rule); padding-top: 0.6rem; }
-    .refine-input-row { margin-bottom: 0.5rem; }
-    .refine-req-input {
-      width: 100%; box-sizing: border-box; background: var(--bg3); border: 1px solid var(--rule);
-      color: var(--ink); font-size: 0.78rem; font-family: var(--font);
-      border-radius: 6px; padding: 0.45rem 0.6rem; outline: none; resize: vertical; min-height: 2rem;
-    }
-    .refine-req-input:focus { border-color: var(--accent2); }
-    .refine-req-input::placeholder { color: var(--dim-text); }
-    .refine-label-row { display: flex; gap: 0.5rem; margin-bottom: 0.3rem; }
-    .refine-label-row .rl-label { font-size: 0.7rem; color: var(--muted); flex: 1; }
-    .gen-settings-row {
-      display: flex; align-items: center; gap: 0.6rem;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid var(--rule);
-      flex-wrap: wrap;
-    }
-    .gen-settings-row:last-of-type { border-bottom: none; margin-bottom: 0.6rem; }
-    .gen-settings-row .gs-label {
-      font-size: 0.74rem; color: var(--muted); flex-shrink: 0;
-      min-width: 3.5rem;
-    }
-    .gen-settings-row input[type="number"] {
-      width: 4.5rem; background: var(--bg3); border: 1px solid var(--rule);
-      color: var(--ink); font-size: 0.82rem; font-family: var(--font);
-      border-radius: 6px; padding: 0.35rem 0.5rem; outline: none;
-      text-align: center;
-    }
-    .gen-settings-row input[type="number"]:focus { border-color: var(--accent2); }
-    .gen-settings-row select {
-      background: var(--bg3); border: 1px solid var(--rule);
-      color: var(--ink); font-size: 0.82rem; font-family: var(--font);
-      border-radius: 6px; padding: 0.35rem 0.6rem; outline: none;
-      cursor: pointer;
-    }
-    .gen-settings-row select:focus { border-color: var(--accent2); }
-    .gen-settings-row .gs-unit { font-size: 0.72rem; color: var(--dim-text); }
-    .gen-actions { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
-    .gen-quota-text { font-size: 0.74rem; color: var(--muted); }
-    .gen-quota-text .gq-num { color: var(--accent2); font-weight: 600; }
-    .gen-quota-text .gq-num.paid { color: var(--gold); }
-    .gen-btn {
-      background: linear-gradient(135deg, var(--accent), var(--purple));
-      color: #fff; border: none; border-radius: 10px;
-      padding: 0.65rem 1.6rem; font-size: 0.88rem; font-weight: 600;
-      cursor: pointer; font-family: var(--font);
-      display: flex; align-items: center; gap: 0.4rem;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .gen-btn:hover { opacity: 0.9; }
-    .gen-btn:active { transform: scale(0.97); }
-    .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .gen-loading { display: none; text-align: center; padding: 1rem; color: var(--muted); font-size: 0.82rem; }
-    .gen-loading.show { display: block; }
-    .gen-loading .dots::after {
-      content: '...'; animation: dots 1.2s steps(4) infinite;
-    }
-    @keyframes dots {
-      0% { content: '.'; } 33% { content: '..'; } 66% { content: '...'; } 100% { content: '.'; }
-    }
-    .gen-result-area { margin-top: 0.6rem; }
-    .gen-topic-list { list-style: none; }
-    .gen-topic-list .topic-item { margin-bottom: 0.8rem; }
-    .gen-collapse-toggle {
-      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
-      padding: 0.7rem; margin-top: 0.5rem; cursor: pointer;
-      border: 1px dashed var(--rule); border-radius: 10px;
-      font-size: 0.8rem; color: var(--muted); transition: all 0.2s;
-      background: var(--bg2);
-    }
-    .gen-collapse-toggle:hover { border-color: var(--accent2); color: var(--accent2); }
-    .gen-collapse-toggle .chevron { font-size: 0.75rem; transition: transform 0.2s; }
-    .gen-result-area.collapsed .gen-topic-list { display: none; }
-  </style>
+    </style>
 </head>
 <body>
   <article class="page">
@@ -1070,10 +872,10 @@
         <span>安迪的口播台</span>
       </h1>
       <p class="daily-quote" style="font-size:0.85rem;color:var(--accent2);text-align:center;margin-top:0.4rem;font-style:italic;">"不是所有花都开在春天，但你种下的每一颗种子，都值得用耐心去等。" · 今日寄语</p>
-      <p class="subtitle">5个话题 · 5个维度 · 面向全部受众群体</p>
+      <p class="subtitle">10个话题 · 10个维度 · 面向全部受众群体</p>
       <p class="date" id="updateDateText">更新日期：2026-08-14 · 每日早8点准时更新</p>
       <div class="account-positioning">
-        账号定位：每日热点榜50条 · 口播文案生成工具 · 面向所有想做口播的创作者<br>
+        账号定位：每日热点榜10条 · 口播文案生成工具 · 面向所有想做口播的创作者<br>
         文案标准：热点话题深度解读 · 自定义字数与时长 · 核心观点提炼 · 结尾给可执行动作
       </div>
     </header>
@@ -1118,10 +920,6 @@
               <p>从这场灾难里，普通人能学到什么？第一，台风不只是"风"的事，更是"水"的事。美莎克的最大杀手不是风，是暴雨——持续强降水导致水库超汛限、河流决堤、山洪暴发。关注台风不能只看"几级风"，要看"降雨预报"——中央气象台的降水量预报图比风力等级更救命。第二，水库溃坝是最被忽视的致命风险。很多人住在水库下游却不知道自己头顶有一座水库。如果你住在河流沿岸或水库下游，台风季一定要关注水利部门的水情通报——一旦发布泄洪通知或溃坝预警，转移速度就是生命线。第三，"转移"这件事不能犹豫。很多人收到转移通知后觉得"我家地势高没事""东西还没收完"，结果耽误了黄金逃生时间。记住一条铁律——政府让你转移，说明情况已经严重到必须走。你的房子可以再买，你的命只有一条。第四，灾后比灾中更危险。洪水退去后才是真正的考验——水源污染、传染病扩散、房屋结构隐患、道路塌陷。灾后返回家园，不要急着住进去，先检查电路是否进水、墙体是否有裂缝、饮用水是否被污染。第五，理解"气候适应"是长期工程。今年台风密集——第18号沙德尔、第19号紫檀接踵而来——这不是偶然，是全球变暖背景下的新常态。与其每次都被动应对，不如主动适应——买房考虑地势和排洪能力、买保险看清楚自然灾害条款、规划逃生路线和应急物资。第六，如果你身边有亲友在受灾地区，能帮一把就帮一把——不一定捐钱，帮转发求助信息、帮对接物资、帮忙照顾转移出来的老人小孩，每一份力量都有用。<span class="h-red">159个生命再也回不来了。记住他们，不是为了悲伤，而是为了下一个台风来的时候，少一些遗憾。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'t-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: AI补全长辈记忆刷屏 -->
@@ -1158,10 +956,6 @@
               <p>从这场刷屏里，普通人能悟到什么？第一，别等AI来帮你"补全"记忆——趁人还在，自己去问。AI再强大，也只是用碎片拼出来的"推测"——它不知道你姥爷讲那个故事时眼角有没有湿，不知道你奶奶做那道菜时放没放糖。真实的记忆只有活人能保存。今天回家就做一件事——打开手机录音，问长辈三个问题：你年轻时候最开心的事是什么？你最遗憾的事是什么？你最想跟后辈说的话是什么？录下来。这份录音，比任何AI生成都珍贵。第二，理解"记忆焦虑"是现代人的通病。我们信息量越来越大，但真正"记住"的越来越少——每天刷几百条短视频，但一条都记不住。我们的记忆正在被碎片化信息稀释。AI帮你"补全"长辈的记忆，但也提醒你——你自己的记忆正在被丢失。定期整理自己的生活——写日记、拍照片、录视频——不是为了发朋友圈，是为了给未来的自己留一份"家史"。第三，AI技术的伦理边界值得思考。用AI模拟逝者的声音和影像，是治愈还是伤害？有人看完哭了一场释然了，有人看完更加走不出来——因为屏幕里的"人"再逼真也不是真的。AI可以辅助 grieving，但不能替代 grieving。把它当工具用——帮你记住，而不是帮你"假装人还在"。第四，"代际对话"是最被忽视的亲情。年轻人和长辈之间的"未知"，不是因为没有感情，而是因为缺少对话——你不知道怎么问，他们不知道怎么说。AI提供了一个"话题入口"——用AI整理家史，老人有了一个契机去讲，年轻人有了一个理由去听。但真正的对话不需要AI，只需要你坐下来，问一句"你年轻时候是什么样的"。第五，如果你失去了至亲，允许自己悲伤，也允许自己用新的方式纪念——AI视频也好、手写信也好、种一棵树也好。形式不重要，重要的是你心里那个人没有被遗忘。<span class="h-purple">科技能做到的事越来越多，但有一件事它永远做不到——替你开口问那一句来不及问的话。趁人还在，去问吧。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'t-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: 上海楼市沪八条 -->
@@ -1198,10 +992,6 @@
               <p>沪八条对普通人有什么实际影响？第一，如果你在上海有"以旧换新"的需求，现在是一个窗口期。外环内70平米以下的老房子（2000年前竣工），卖掉去买外环外新房，最高补贴8万。8万不算多，但配合公积金付首付和15%首付比例，整体资金门槛确实降了一截。算一笔账：假设外环外新房300万，首付15%就是45万；如果公积金账户有20万，可以直接抵扣，实际需要现金25万；加上以旧换新补贴8万，实际首付支出可能不到20万。这个数字对很多上海工薪家庭来说，是从"够不着"变成"够得着"的差别。第二，如果你有外环内老破小，现在可能是出手的时机。政府收购二手房做保租房，意味着你多了一个"官方买家"——不一定价格最优，但流程稳、不拖沓。同时以旧换新补贴也在鼓励买家接手你的老房子。供需两端都有政策推力，成交概率比之前高。第三，理解"房票安置"对市场的影响。房票让拆迁户从"等安置房"变成"自己去买新房"——这批人拿着房票进入新房市场，等于增加了一批定向需求。如果你在外环外有新房在卖，这批房票持有者就是你的潜在客户。第四，如果你不在上海——这个政策的信号意义比实际意义更大。上海是全国楼市的"风向标"，沪八条如果效果好，其他城市大概率跟进。你可以关注自己所在城市有没有类似的"以旧换新"补贴、公积金付首付、降低首付比例的政策。第五，理性看待政策效果。政策降低了门槛，但没改变根本矛盾——收入预期和房价预期的矛盾。首付降了，月供没降；补贴给了，但房价走势不确定。所以别因为政策来了就冲动入场——先算清楚自己的月供承受能力，再看房子的实际价值。政策是"东风"，但你自己得有"船"。<span class="h-gold">沪八条给市场开了一扇门，但进门之前请先算好三笔账——首付够不够、月供扛不扛得住、这套房五年后还值不值这个价。算清了再进门，你才是政策的主人，不是政策的韭菜。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'t-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 神舟二十一号航天功勋奖章 -->
@@ -1238,10 +1028,6 @@
               <p>从航天英雄授勋这件事，普通人能看到什么？第一，理解"国家荣誉体系"背后的价值观。航天功勋奖章分三级——一级最高，授予做出历史性贡献的人；二级给张陆，说明神舟二十一号的任务成果被认为极其重要；三级给武飞和张洪章，代表对整个乘组的集体肯定。国家用最高规格的荣誉奖励"上太空"这件事——说明航天是国家层面的战略优先级。你看一个国家重视什么，就看它给什么人发最高荣誉。第二，"载荷专家"上太空是一个巨大信号。以前航天员全是军人飞行员，现在是科学家——这意味着太空正在从"军事/工程领域"变成"科研/产业领域"。未来会有越来越多的科学家、工程师甚至企业研究员上太空。如果你是理工科学生，"太空科研"不是遥不可及的梦，而是一条正在打开的职业路径。第三，英雄精神的核心是"明知危险仍然出发"。航天员不是不怕死——训练中他们反复面对模拟的危险场景——而是把使命放在恐惧前面。普通人不一定面对生死抉择，但生活中有大量"明知困难仍然出发"的时刻——创业、转行、照顾重病家人、扛起一个团队。真正的勇气不是没有恐惧，是带着恐惧往前走。第四，关注"航天经济"这条产业链。航天员在天上做的实验、培育的种子、测试的材料——这些成果最终会落地变成产业。太空育种已经产生了太空番茄、太空水稻；微重力材料研究正在催生新型合金和半导体材料。这条链很长，从卫星制造到太空旅游，每个环节都有商业机会。第五，如果你是家长，给孩子讲讲这些名字——张陆、武飞、张洪章。不是为了让孩子当航天员，而是让他知道——这个世界上有人愿意为了一个比自己更大的目标，冒最大的险、吃最大的苦。这种精神在任何行业都需要。<span class="h-cyan">勋章挂在三个人胸前，但它照见的是所有人心里的那个问题——你有没有一件值得拼命的事？如果有，别等了，出发吧。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'t-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: 诺兰奥德赛后遗症 -->
@@ -1278,10 +1064,6 @@
               <p>从"奥德赛后遗症"里，普通人能学到什么？第一，理解"期待值"如何影响体验。同样一部电影，你带着"随便看看"的心态去，可能觉得"还不错"；你带着"这将是影史巅峰"的心态去，可能觉得"不过如此"。期待值越高，满足感越低——这是心理学上的"期望 disconfirmation"理论。不只是电影——你期待很高的餐厅、约会、工作机会，往往让你失望，不是它们不好，是你的期待太高。学会主动降低期待值——不是消极，而是给自己留出"被惊喜"的空间。第二，理解"专业评价"和"大众感受"的分歧。烂番茄98%是专业影评人打的，豆瓣8.2是普通观众打的——这个差距说明什么？专业评价看重"技术完成度"——视听语言、场面调度、胶片质感，这些诺兰做到了顶级。但普通观众更看重"情感共鸣"——你能不能让我哭、让我笑、让我觉得值回票价。技术和情感是两套评价体系——一个人可以技术满分但情感不及格。这也适用于任何创意工作——你的产品功能再完备，如果用户用了没有"感觉"，那就是没有真正成功。第三，"改编经典"是一个永恒的困境。诺兰改编了荷马史诗——将近3000年的文本，全球几十亿人的文化记忆。任何改编都会有人说"不忠于原著"，但完全忠于原著又没有创新空间。这和你在职场上"接手一个成熟项目"是一回事——改多了有人说你不尊重前人，不改有人说你没有贡献。正确的做法是——找到自己独特的视角，接受不可能让所有人满意。第四，"说不清的不舒服"往往是最真实的反馈。很多人看完奥德赛说不清哪里不好，但就是"不舒服"——这种模糊的感受不是"不懂电影"，而是一种真实的审美反应。生活中也是如此——你对一个人、一份工作、一段关系"说不清哪里不对"，不要因为说不清就否定自己的感受。直觉往往比理性分析更早发现问题。第五，争论本身是好事。一部电影能让这么多人讨论、争论、写长评——说明它触动了人。最怕的不是"有人不喜欢"，而是"没人关心"。无论你喜欢还是讨厌奥德赛，它至少让你思考了——这比90%看完就忘的电影强。<span class="h-green">下次你走进影院之前——无论是看诺兰还是看任何导演——试着对自己说一句"我没抱什么期待"。你可能会发现，放下期待后的你，反而更容易被打动。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'t-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
 
@@ -1289,100 +1071,190 @@
 
 
 
-        <!-- ========== 口播生成器 ========== -->
-    <div class="gen-box">
-      <div class="gen-title">
-        口播生成器
-        <span class="gen-badge" id="genBadge">免费 · 无限</span>
-      </div>
-      <div class="gen-input-line">
-        <span class="gen-icon">▎</span>
-        <div class="hot-search-selector" id="hotSearchSelector" onclick="toggleHotDropdown()">
-          <span class="live-badge" id="liveBadge" title="数据来自抖音实时热榜">● LIVE</span>
-          <span class="hss-placeholder" id="hssPlaceholder">选择话题</span>
-          <span class="hss-selected" id="hssSelected" style="display:none;"></span>
-          <span class="hss-arrow">▼</span>
-        </div>
-        <button class="hot-refresh-btn" id="hotRefreshBtn" onclick="event.stopPropagation(); fetchLiveHotList(true);" title="刷新抖音实时热榜">
-          <svg id="refreshIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-        </button>
-        <!-- 话题下拉面板 -->
-        <div class="hot-dropdown" id="hotDropdown" style="display:none;"></div>
-      </div>
-      <div class="gen-settings-row">
-        <span class="gs-label">粘贴话题</span>
-        <input type="text" id="genPasteHot" class="gs-input" placeholder="没找到想要的话题？直接粘贴任何话题标题…" value="">
-        <span class="gs-unit">粘贴后优先使用</span>
-      </div>
-      <div class="gen-settings-row">
-        <span class="gs-label">字数设置</span>
-        <input type="number" id="genWordCount" value="1000" min="1000" max="5000" step="100">
-        <span class="gs-unit">字（1000~5000）</span>
-      </div>
-      <div class="gen-settings-row">
-        <span class="gs-label">口播时长</span>
-        <input type="number" id="genDuration" value="3" min="1" max="15" step="1">
-        <span class="gs-unit">分钟（1~15）</span>
-      </div>
-      <div class="gen-settings-row">
-        <span class="gs-label">主题选择</span>
-        <input type="text" id="genTheme" class="gs-input" placeholder="自定义主题，如「心态、搞钱、成长…」" value="">
-        <span class="gs-unit">随便写，AI会按此风格生成</span>
-      </div>
-      <div class="gen-settings-row gen-req-row">
-        <span class="gs-label">文案要求</span>
-        <textarea id="genReq" class="gs-textarea" placeholder="写下你对文案的要求，如：开头要有金句、结尾要加行动号召、多用数据对比、口语化一点…" rows="2"></textarea>
-      </div>
-      <div class="gen-settings-row gen-audience-row">
-        <span class="gs-label">面向受众</span>
-        <input type="text" id="genAudience" class="gs-input" placeholder="如：00后大学生、职场新人、宝妈群体、创业者…" value="">
-        <span class="gs-unit">写清楚受众，文案会更精准</span>
-      </div>
-      <div class="gen-settings-row" style="flex-direction:column;align-items:flex-start;gap:0.4rem;">
-        <div style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;width:100%;" onclick="var d=document.getElementById('aiSettings');d.style.display=d.style.display==='none'?'block':'none';">
-          <span class="gs-label" style="cursor:pointer;">🤖 AI增强生成</span>
-          <span style="font-size:0.7rem;color:var(--muted);" id="aiStatus">未配置 · 模板模式</span>
-          <span style="margin-left:auto;font-size:0.7rem;color:var(--accent2);">展开/收起 ▾</span>
-        </div>
-        <div id="aiSettings" style="display:none;width:100%;background:var(--bg3);border-radius:0.5rem;padding:0.7rem;margin-top:0.3rem;">
-          <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.5rem;line-height:1.5;">
-            选择一个 AI 平台并填入 API Key，文案将由 AI 实时生成，更精准地遵循你的文案要求、主题和字数。<br>
-            <span style="color:var(--green);">★ 智谱GLM-4-Flash 永久免费，推荐首选！</span>
-          </p>
-          <div style="margin-bottom:0.4rem;">
-            <label style="font-size:0.75rem;color:var(--ink);margin-bottom:0.2rem;display:block;">选择 AI 平台：</label>
-            <select id="aiProvider" onchange="onProviderChange()" style="width:100%;background:var(--bg2);color:var(--ink);border:1px solid var(--rule);border-radius:0.4rem;padding:0.35rem 0.5rem;font-size:0.78rem;">
-              <option value="glm">智谱 GLM-4-Flash（永久免费 · 推荐）</option>
-              <option value="siliconflow">硅基流动 SiliconFlow（送2000万Token）</option>
-              <option value="deepseek">DeepSeek（需付费额度）</option>
-              <option value="doubao">豆包/火山引擎（每月免费额度）</option>
-            </select>
-          </div>
-          <p id="aiProviderHint" style="font-size:0.7rem;color:var(--accent2);margin-bottom:0.4rem;line-height:1.5;"></p>
-          <input type="password" id="aiApiKey" class="gs-input" placeholder="粘贴你的 API Key…" value="" style="width:100%;margin-bottom:0.4rem;">
-          <div style="display:flex;gap:0.5rem;">
-            <button onclick="saveAiKey()" style="background:var(--accent2);color:#000;border:none;padding:0.35rem 0.8rem;border-radius:0.4rem;font-size:0.75rem;cursor:pointer;font-weight:600;">保存 Key</button>
-            <button onclick="clearAiKey()" style="background:var(--bg2);color:var(--muted);border:1px solid var(--rule);padding:0.35rem 0.8rem;border-radius:0.4rem;font-size:0.75rem;cursor:pointer;">清除</button>
-            <button onclick="testAiKey()" style="background:var(--bg2);color:var(--accent2);border:1px solid var(--accent2);padding:0.35rem 0.8rem;border-radius:0.4rem;font-size:0.75rem;cursor:pointer;">测试连接</button>
-          </div>
-          <p id="aiTestResult" style="font-size:0.72rem;margin-top:0.4rem;display:none;"></p>
-        </div>
-      </div>
-      <div class="gen-actions">
-        <span class="gen-quota-text" id="genQuotaText">今日剩余 <span class="gq-num" id="genQuotaNum">1</span> 次免费生成</span>
-        <button class="gen-btn" onclick="generateTopic()">✨ 生成文案</button>
-      </div>
-      <div class="gen-loading" id="genLoading">正在生成口播文案<span class="dots"></span></div>
-      <div class="gen-result-area">
-        <ul class="gen-topic-list" id="genTopicList"></ul>
-        <div class="gen-collapse-toggle" id="genCollapseToggle" style="display:none;" onclick="toggleGenCollapse()">
-          <span id="genCollapseText">收起全部文案</span>
-          <span class="chevron" id="genCollapseChevron">▴</span>
-        </div>
-      </div>
-    </div>
+        
 
-    <!-- ========== HISTORY ARCHIVE (inline) ========== -->
+        <!-- T6: 美这件事我只取悦自己 -->
+        <li class="topic-item topic-mindset collapsed" id="t-6">
+          <div class="topic-header" onclick="toggleTopic(this)">
+            <span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,'t-6')">✓</span>
+            <span class="toc-num c1">06</span>
+            <div class="topic-header-text">
+              <div class="topic-title-row">
+                <span class="toc-item-title">美只取悦己</span>
+                <span class="toc-tag tag-mindset">心态</span>
+                <span class="hot-rank-badge"><span class="rank-num">抖音第1</span><span class="rank-heat">1210.8万</span></span>
+              </div>
+              <div class="topic-meta">
+                <span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">悦己审美 · 容貌焦虑 · 自我认同</span></span>
+                <span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">"美这件事我只取悦自己"全网刷屏</span></span>
+              </div>
+            </div>
+            <span class="topic-chevron">▾</span>
+          </div>
+          <div class="topic-body">
+            <div class="meta-row">
+              <div class="meta-item"><span class="meta-dot" style="background:var(--accent)"></span>来源：抖音热榜 / 社交媒体 / 情感话题</div>
+              <div class="meta-item"><span class="meta-dot"></span>2026年8月21日</div>
+            </div>
+            <div class="short-title">美只取悦己</div>
+            <div class="takeaway-box">
+              <div class="label">核心观点</div>
+              <div class="takeaway-text">"美这件事我只取悦自己"之所以刷屏，是因为它戳破了一个长期存在的谎言——你的美，是给别人看的。<span class="h-red">真正的美不是"被欣赏"，而是"我自在"。</span></div>
+              <button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>
+            </div>
+            <div class="script-body">
+              <p>一句话刷屏了各大社交平台——"美这件事，我只取悦自己"。据Soul App与复旦大学联合发布的报告，"悦己"相关话题播放量已突破10亿次，"敬自己一杯"短视频累计播放量超76亿次。这句话为什么能戳中这么多人？因为它反击的是一个长期压在所有人身上的东西——"容貌评价体系"。从小到大，你听到的是什么？"女孩子要白瘦幼""男孩子要高大帅""你这样穿不好看""你该减肥了"。这些声音的潜台词全是同一句——你的美不美，由别人说了算。但"我只取悦自己"这句话，把定义权一把抢回来了。我不为你的目光而打扮，我为自己的心情而打扮。我化妆不是给你看的，是因为我自己照镜子开心。我穿什么不是因为"流行"，是因为"我喜欢"。<span class="h-red">"美这件事我只取悦自己"之所以刷屏，是因为它戳破了一个长期存在的谎言——你的美，是给别人看的。真正的美不是"被欣赏"，而是"我自在"。</span></p>
+              <p>从这场"悦己审美"觉醒里，普通人能看到什么？第一，理解"容貌焦虑"是怎么被制造出来的。你以为是你自己觉得自己不够好看？不是。是广告、美妆博主、医美机构、社交平台的滤镜文化——它们合力制造了一个"标准脸"模板，然后告诉你"你不够格"，最后卖给你解决方案。焦虑是生意，生意需要你焦虑。你一旦不信那个"标准"了，整条焦虑产业链就断了。第二，"悦己经济"是一条真实的赛道。2026年中国情绪消费市场规模预计达2.72万亿——这不是小打小闹，是一批人用"取悦自己"替代了"取悦别人"。从悦己穿搭、悦己旅行、悦己独居到悦己消费——品牌如果还停留在"买了这个你就更美/更受欢迎"的话术上，会越来越不灵。新的话术应该是"买了这个你更开心"。第三，别把"悦己"理解成"摆烂"。悦己不是"不打扮了""不修边幅了"——那只是从"迎合别人"跳到"放弃自己"。真正的悦己是：我打扮，但标准是我自己定的；我运动，但不是为了让谁觉得我身材好；我学新东西，但不是为了给简历镀金。悦己的核心是"主动选择"——我做什么，是因为我想做，不是因为"不做就不行"。第四，男性也需要这场觉醒。"悦己"不是女性专属话题。男生也被"男性气质模板"困着——要有钱、要高、要壮、不能哭、不能弱。"美这件事我只取悦自己"对男生同样适用——你可以温柔、可以敏感、可以不追风口、可以做自己喜欢但"不够man"的事。定义你的从来不该是性别刻板印象。第五，对家长说一句——别把"审美评价"当玩笑。"你看你胖的""你穿这个像什么样子"——这些话可能是你随口说的，但孩子会记一辈子。教孩子"你的美你做主"，比教他"你要符合标准"有用一万倍。<span class="h-red">当所有人都在告诉你"你不够美"的时候，最难也最重要的一件事就是——抬起头说"我觉得我挺好"。</span></p>
+            </div>
+            <button class="copy-btn" onclick="copyScript(this,'t-6')">📋 复制文案</button>
+          </div>
+        </li>
+        <!-- T7: 俄军大规模导弹夜袭基辅 -->
+        <li class="topic-item topic-wisdom collapsed" id="t-7">
+          <div class="topic-header" onclick="toggleTopic(this)">
+            <span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,'t-7')">✓</span>
+            <span class="toc-num c2">07</span>
+            <div class="topic-header-text">
+              <div class="topic-title-row">
+                <span class="toc-item-title">基辅遭夜袭</span>
+                <span class="toc-tag tag-wisdom">智慧</span>
+                <span class="hot-rank-badge"><span class="rank-num">抖音第4</span><span class="rank-heat">1116.0万</span></span>
+              </div>
+              <div class="topic-meta">
+                <span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">地缘冲突 · 战争升级 · 全球影响</span></span>
+                <span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">俄军大规模导弹和无人机夜袭基辅致14死</span></span>
+              </div>
+            </div>
+            <span class="topic-chevron">▾</span>
+          </div>
+          <div class="topic-body">
+            <div class="meta-row">
+              <div class="meta-item"><span class="meta-dot" style="background:var(--purple)"></span>来源：抖音热榜 / 国际新闻 / 路透社</div>
+              <div class="meta-item"><span class="meta-dot"></span>2026年8月21日</div>
+            </div>
+            <div class="short-title">基辅遭夜袭</div>
+            <div class="takeaway-box">
+              <div class="label">核心观点</div>
+              <div class="takeaway-text">基辅的夜不只是基辅的夜——当高超音速导弹撕裂天空，全世界都在为下一次升级买单。<span class="h-purple">战争从来不是"别人的事"，它通过能源、粮食、供应链，把代价分摊到了每个人头上。</span></div>
+              <button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>
+            </div>
+            <div class="script-body">
+              <p>8月20日凌晨，乌克兰首都基辅经历了一场"不眠之夜"。俄军发动了近期规模最大的联合空中打击——弹道导弹、巡航导弹加上数百架无人机，15分钟内基辅市区接连传出近20次剧烈爆炸。14人死亡，40余人受伤。住宅楼被炸毁、医院和学校被波及、铁路基础设施受损、部分地区断电。这次袭击的三个特点值得注意：第一，打击模式升级了——不再是单一弹药，而是"锆石"高超音速导弹配合低成本自杀式无人机的"饱和协同"。锆石导弹速度可达8马赫，留给防空系统的拦截时间只有几分钟；无人机则消耗对方防空弹药。第二，打击目标从"军事设施"向"民用基础设施"延伸——住宅、医院、学校、铁路——这不是"误伤"，这是"施压"。第三，时机微妙——选择在深夜，选择在西方注意力分散的时候，这是一种"温水煮青蛙"式的升级。<span class="h-purple">基辅的夜不只是基辅的夜——当高超音速导弹撕裂天空，全世界都在为下一次升级买单。战争从来不是"别人的事"，它通过能源、粮食、供应链，把代价分摊到了每个人头上。</span></p>
+              <p>这场夜袭对普通人有什么影响？第一，能源价格的传导效应。每次冲突升级，全球油价和天然气期货都会跳一下——不是因为供应立刻断了，而是因为"预期"。你在加油站付的每升油钱里，都有一小部分是"地缘风险溢价"。如果冲突进一步升级或波及能源设施，这个溢价会更大。第二，粮食安全的隐忧。乌克兰是全球重要粮食出口国，每次战争升级都意味着粮食运输受阻、春耕秋收被打乱。全球小麦、玉米、葵花籽油的价格波动最终会传导到你超市的购物车里。如果你做餐饮、食品加工或农业，关注这条线。第三，理解"代理人战争"的逻辑。这场冲突不只是俄乌之间的事——背后是北约、美国、欧盟的武器供应、情报支持和经济制裁。每方都在"加码"但都不想直接"摊牌"——这种"有限升级"的状态可能持续很久，意味着你需要习惯"长期不确定性"成为新常态。第四，对在海外的人——关注领事安全。如果你或家人在东欧、中东等地区，关注外交部领事提醒。战争的外溢效应——难民流动、恐怖袭击风险、供应链中断——不一定只发生在战场附近。第五，思考"和平的红利"有多脆弱。你今天能安稳地刷手机、吃饭、上班——不是因为世界天然和平，而是因为很多地方的"火"还没烧到你这里。和平不是理所当然的，它是地缘博弈、军事平衡、外交斡旋共同维持的脆弱状态。珍惜和平不是一句空话，而是一种对现实的基本认知。<span class="h-purple">14个生命在基辅的夜空下消失了。他们不是数字，是和我们一样有名字、有家人、有日常的人。记住他们，不是为悲伤，是为了不把和平当理所当然。</span></p>
+            </div>
+            <button class="copy-btn" onclick="copyScript(this,'t-7')">📋 复制文案</button>
+          </div>
+        </li>
+        <!-- T8: 总有人在付出为什么不能是我 -->
+        <li class="topic-item topic-mindset collapsed" id="t-8">
+          <div class="topic-header" onclick="toggleTopic(this)">
+            <span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,'t-8')">✓</span>
+            <span class="toc-num c3">08</span>
+            <div class="topic-header-text">
+              <div class="topic-title-row">
+                <span class="toc-item-title">总有人在付</span>
+                <span class="toc-tag tag-mindset">心态</span>
+                <span class="hot-rank-badge"><span class="rank-num">抖音第3</span><span class="rank-heat">1139.0万</span></span>
+              </div>
+              <div class="topic-meta">
+                <span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">利他精神 · 价值观反思 · 行动勇气</span></span>
+                <span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">"总有人在付出为什么不能是我"抖音刷屏</span></span>
+              </div>
+            </div>
+            <span class="topic-chevron">▾</span>
+          </div>
+          <div class="topic-body">
+            <div class="meta-row">
+              <div class="meta-item"><span class="meta-dot" style="background:var(--green)"></span>来源：抖音热榜 / 社交媒体 / 情感话题</div>
+              <div class="meta-item"><span class="meta-dot"></span>2026年8月21日</div>
+            </div>
+            <div class="short-title">总有人在付</div>
+            <div class="takeaway-box">
+              <div class="label">核心观点</div>
+              <div class="takeaway-text">这句话的力量不在于"付出"，而在于"为什么不能是我"——它把一个人从"等待者"变成了"行动者"。<span class="h-green">改变世界的从来不是大多数人，而是少数决定"那个人就是我"的人。</span></div>
+              <button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>
+            </div>
+            <div class="script-body">
+              <p>一条没有华丽特效、没有跌宕剧情的短视频，只说了一句话——"这个世界总有人在付出，为什么不能是我呢"——就在抖音上引发了大规模共鸣。评论区里，有人想起了疫情期间送菜的邻居，有人想起了暴雨中救人志愿者，有人想起了默默撑起一个家的母亲。这句话为什么能戳中这么多人？因为它揭示了一个我们平时不愿承认的事实——我们习惯了"等别人去做"。遇到问题，等政府解决；看到不公，等别人发声；团队缺人扛事，等同事主动。我们不是不想帮忙，而是觉得"总有人会做的""我一个人做了也没什么用""不差我一个"。但"为什么不能是我"这句话，把这个心态翻转了——不是"总有人会做"，而是"为什么那个人不能是我"。这个翻转的力量在于：它把一个人从"旁观者"变成了"参与者"，从"等待者"变成了"行动者"。你不再问"为什么没人做"，而是问"我为什么不做"。<span class="h-green">这句话的力量不在于"付出"，而在于"为什么不能是我"——它把一个人从"等待者"变成了"行动者"。改变世界的从来不是大多数人，而是少数决定"那个人就是我"的人。</span></p>
+              <p>从这句话里，普通人能悟到什么？第一，理解"旁观者效应"的陷阱。心理学有个概念叫"旁观者效应"——在场的人越多，每个人越觉得"别人会做的"，结果没人做。紧急情况下有人倒地，围观的人越多反而越没人救——因为每个人都觉得"总有人比我更合适"。打破旁观者效应只有一个方法——成为第一个行动的人。"为什么不能是我"就是打破旁观者效应的内心扳机。第二，"付出"不一定是大事。不是让你去当英雄、去牺牲、去扛大旗。付出可以是——下雨天给同事带把伞、看到老人提重物帮一把、团队里没人愿意做的事你主动接了、社区有活动你报名了。小事做多了，你就成了"总有人在付出"里的那个"有人"。第三，理解"主动者红利"。在任何组织里——公司、社区、家庭——"主动做事"的人总是少数。但正是这少数人，获得了最多的信任、机会和影响力。不是因为做得最多就最多回报，而是因为"主动"本身就是一种稀缺品质——领导看到、同事看到、客户看到。不是功利地"为了回报而付出"，而是理解"主动"本身就让你站在了不同的位置。第四，警惕"付出变成消耗"。也有一种人，把"为什么不能是我"理解成"什么都该我来"——结果累垮了、怨了、burnout了。健康的付出是"量力而行"的——你做你能做的，不扛你扛不动的。真正的"有人"不是一个人扛所有，而是每个人都做一点点。第五，如果你是家长——教孩子这句话。不是教他"吃亏是福"，而是教他"看到需要帮助的人时，你可以是那个帮助者"。这个世界上最有安全感的孩子，不是"被保护得最好"的，而是"知道我可以帮别人"的——因为后者有力量感，前者只有依赖感。<span class="h-green">这句话之所以能刷屏，是因为每个人心里都知道——这个世界确实"总有人在付出"。问题是，下一次，你愿不愿意成为那个"有人"。</span></p>
+            </div>
+            <button class="copy-btn" onclick="copyScript(this,'t-8')">📋 复制文案</button>
+          </div>
+        </li>
+        <!-- T9: 中国服务业持续扩能提质 -->
+        <li class="topic-item topic-growth collapsed" id="t-9">
+          <div class="topic-header" onclick="toggleTopic(this)">
+            <span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,'t-9')">✓</span>
+            <span class="toc-num c4">09</span>
+            <div class="topic-header-text">
+              <div class="topic-title-row">
+                <span class="toc-item-title">服务也出海</span>
+                <span class="toc-tag tag-growth">成长</span>
+                <span class="hot-rank-badge"><span class="rank-num">抖音第3</span><span class="rank-heat">1136.3万</span></span>
+              </div>
+              <div class="topic-meta">
+                <span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">产业升级 · 服务出海 · 经济转型</span></span>
+                <span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">我国服务业增加值41.4万亿，对经济增长贡献率66.1%</span></span>
+              </div>
+            </div>
+            <span class="topic-chevron">▾</span>
+          </div>
+          <div class="topic-body">
+            <div class="meta-row">
+              <div class="meta-item"><span class="meta-dot" style="background:var(--accent2)"></span>来源：抖音热榜 / 央视新闻 / 国家统计局</div>
+              <div class="meta-item"><span class="meta-dot"></span>2026年8月21日</div>
+            </div>
+            <div class="short-title">服务也出海</div>
+            <div class="takeaway-box">
+              <div class="label">核心观点</div>
+              <div class="takeaway-text">中国正在经历从"卖产品"到"卖服务"的转型——每创造100元经济增量，有66元来自服务业。<span class="h-cyan">服务出海是下一个十年的大机会，而大多数普通人还没看到这条线。</span></div>
+              <button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>
+            </div>
+            <div class="script-body">
+              <p>一组数字：上半年我国服务业增加值达到41.4万亿元，同比增长5.2%，快于经济增速0.5个百分点。占GDP比重59.5%，是国民经济第一大产业。更震撼的是——服务业对经济增长的贡献率达到66.1%，比上年同期提高近6个百分点。意思是：每创造100元的经济增量，就有66元来自服务业。这背后是一个正在发生的巨变——中国正在从"制造大国"走向"服务大国"。以前我们靠卖产品——衣服、电子产品、机械设备——赚全球的钱。现在我们开始"卖服务"——数字化运维、技术培训、售后全生命周期管理、软件和平台。举个央视报道的例子：江苏徐州一家重卡企业，以前卖完车就结束了，现在卖车只是开始——车交给客户后同步接入企业的数字化服务体系，提供远程监控、预测性维护、智能调度。从"卖一台车赚一次钱"变成"服务一台车持续赚钱"。这就是"服务赋能制造"。<span class="h-cyan">中国正在经历从"卖产品"到"卖服务"的转型——每创造100元经济增量，有66元来自服务业。服务出海是下一个十年的大机会，而大多数普通人还没看到这条线。</span></p>
+              <p>从"服务出海"里，普通人能看到什么机会？第一，理解"产品+服务"的商业模式变革。纯卖产品的利润越来越薄——因为产品会被模仿、被低价竞争。但服务是粘性的——一旦客户用了你的运维系统、你的数据平台、你的培训体系，切换成本极高。所以"卖产品+送服务"正在变成"卖服务+带产品"——服务成为利润主引擎，产品变成服务载体。不管你做什么行业，思考一下：你的产品能不能"服务化"？第二，关注"生产性服务业"这条赛道。什么是生产性服务业？就是帮制造业提效的服务——工业设计、供应链管理、质检认证、数字化运维、技术培训、知识产权服务。这些领域正在爆发，因为制造业要升级就必须买这些服务。如果你是工程师、设计师、咨询师——你的技能正在从"成本"变成"资产"。第三，"服务出海"是中国企业全球化的下一站。以前出海是"把货卖到国外"，现在是"把服务带到国外"——华为在海外做通信网络运维，比亚迪在海外做售后+充电桩运营，中国软件公司在东南亚做企业SaaS。服务出海比产品出海壁垒更高——因为服务需要本地化团队、语言能力、文化理解。如果你有外语能力+专业技能，"服务出海"是一个巨大的蓝海。第四，关注服务业数据背后的信号——消费在变。服务业占GDP近60%，意味着中国人的钱越来越花在"体验"上——旅游、教育、医疗、娱乐、餐饮——而不是"东西"上。如果你做零售，思考"体验化"——怎么把买东西变成"享受服务"。如果你做餐饮，思考"服务差异化"——菜不难做，难做的是让顾客觉得"被照顾了"。第五，理解"服务"不只是"伺候人"。"服务"在很多人脑子里等于"低人一等"——端盘子、跑腿、做客服。但现代服务业的核心是"专业能力"——技术服务、数据服务、知识服务。一个懂工业数字化的工程师，提供的"服务"比一个卖机器的人价值更高。打破"服务=低端"的偏见，是抓住这条线的前提。<span class="h-cyan">从"中国制造"到"中国服务"，一个字的改变，背后是万亿级的市场重构。看懂这条线的人，已经在路上了。</span></p>
+            </div>
+            <button class="copy-btn" onclick="copyScript(this,'t-9')">📋 复制文案</button>
+          </div>
+        </li>
+        <!-- T10: 第19号台风生成广东广西防汛 -->
+        <li class="topic-item topic-mindset collapsed" id="t-10">
+          <div class="topic-header" onclick="toggleTopic(this)">
+            <span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,'t-10')">✓</span>
+            <span class="toc-num c5">10</span>
+            <div class="topic-header-text">
+              <div class="topic-title-row">
+                <span class="toc-item-title">十九号台风</span>
+                <span class="toc-tag tag-mindset">心态</span>
+                <span class="hot-rank-badge"><span class="rank-num">抖音第10</span><span class="rank-heat">880.0万</span></span>
+              </div>
+              <div class="topic-meta">
+                <span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">台风密集 · 防灾准备 · 气候适应</span></span>
+                <span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">第19号台风生成，广东广西启动防汛应急响应</span></span>
+              </div>
+            </div>
+            <span class="topic-chevron">▾</span>
+          </div>
+          <div class="topic-body">
+            <div class="meta-row">
+              <div class="meta-item"><span class="meta-dot" style="background:var(--accent)"></span>来源：抖音热榜 / 中国天气网 / 央视新闻</div>
+              <div class="meta-item"><span class="meta-dot"></span>2026年8月21日</div>
+            </div>
+            <div class="short-title">十九号台风</div>
+            <div class="takeaway-box">
+              <div class="label">核心观点</div>
+              <div class="takeaway-text">今年第19号台风——这个数字本身就是最大的警示：台风频率在加快，而大多数人的防灾意识还停留在"去年水平"。<span class="h-red">气候适应不是等到灾难来了再学，而是提前把"防灾"变成日常习惯。</span></div>
+              <button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>
+            </div>
+            <div class="script-body">
+              <p>第19号台风生成了。8月21日下午，北部湾热带低压加强为今年第19号台风（热带风暴级），中心位于广西北海市西南方向约120公里的北部湾海面上，中心最大风力8级。广东湛江启动防风防汛IV级应急响应，广西海事局保持防台二级响应。这个台风的特点是"回旋少动"——它不走，在北部湾海面打转，这意味着海南、广西南部、广东沿海将持续被风雨影响三天。更让人警觉的是——第19号了。今年到8月才过完2/3，已经19个台风了。加上美莎克刚致广西159人遇难——台风不再是"偶尔来一次"的事，而是高频常态化的事件。<span class="h-red">今年第19号台风——这个数字本身就是最大的警示：台风频率在加快，而大多数人的防灾意识还停留在"去年水平"。气候适应不是等到灾难来了再学，而是提前把"防灾"变成日常习惯。</span></p>
+              <p>第19号台风和密集台风季对普通人意味着什么？第一，理解"回旋台风"的特殊危险。大多数台风是"路过型"——登陆后快速移动、风雨影响几个小时就过去了。但回旋台风在同一个区域长时间停留——持续暴雨的累积效应才是致命的。三天暴雨比一天暴雨的危险指数高一个量级，因为土壤饱和后山体滑坡、泥石流、城市内涝的概率急剧上升。你在不在登陆点不重要，你在不在三天暴雨覆盖范围里才重要。第二，华南沿海居民现在就做准备。检查窗户密封、阳台物品固定、清理排水口、备好3天量的饮用水和食物、手电筒和充电宝满电、慢性病常用药备足。这些准备工作半小时就能做完，但台风来了再做就来不及了。第三，理解"次生灾害"比台风本身更致命。台风过后——水库泄洪、山体滑坡、道路塌陷、电线杆倒塌、积水触电——这些"次生灾害"的伤亡往往超过台风直接造成的伤亡。台风过后返回家园，不要急着住进去——先检查电路是否进水、墙体是否有裂缝、饮用水是否被污染。第四，关注"气候韧性"的长期投资。如果你住在华南沿海——买房考虑地势高度和小区排水系统、买车险加上涉水险、买家财险看清楚是否含洪水条款。这不是"杞人忧天"，而是"精算思维"——在概率事件上做好对冲。第五，做小生意的人注意——台风过境=客流骤减+货物受损+物流中断。提前给易损货物做好防水防护、跟供应商确认物流安排、如果卖生鲜要做好变质预案。第六，如果你不在华南——美莎克致159人遇难刚发生，19号又来了。每一场台风都是一次提醒：极端天气是新常态，气候适应需要成为每个普通人的"底层能力"。<span class="h-red">19这个数字不会停。与其每次都心存侥幸，不如花30分钟做一次真正的准备——准备用不上最好，用上了就是命。</span></p>
+            </div>
+            <button class="copy-btn" onclick="copyScript(this,'t-10')">📋 复制文案</button>
+          </div>
+        </li>
+
+        <!-- ========== HISTORY ARCHIVE (inline) ========== -->
     <section class="history-section collapsed" id="history-section">
       <div class="history-toggle" onclick="toggleHistory()">
         <h3>📂 历史存档 🗄️</h3>
@@ -1439,10 +1311,6 @@
               <p>从机器人大会看普通人怎么应对？第一，关注"具身智能"这个概念。以前的人工智能是"脑子好使"——能聊天、能写文章、能画画，但没有身体。具身智能是"脑子+身体"——不仅能思考，还能动手干活。这是AI从虚拟世界走向物理世界的关键一步。谁能把"大脑"和"身体"结合好，谁就赢。第二，思考"人机协作"而不是"机器替代"。很多机器人不是来替代人的，而是来帮人的——护理机器人帮护工抬老人（护工腰都坏了），物流机器人帮分拣员跑腿（人不用一天走20公里了），手术机器人帮医生做更精准的操作。找到"人和机器怎么配合"的方案，是未来十年最大的机会。第三，关注核心零部件这条供应链。整机再酷，也离不开减速器、伺服电机、力矩传感器、线性执行器。这些零部件厂商是"卖铲子的人"——不管哪家机器人公司赢了，它们都赚。如果你做投资，这条链值得深挖。第四，如果你是年轻人，认真思考自己的职业路径。重复性体力劳动正在被机器人吃掉——搬运、分拣、清洁、简单装配。但机器人也催生了新岗位——机器人训练师、具身智能数据标注员、机器人运维工程师。被替代的从来不是人，而是拒绝升级的人。第五，关注"服务机器人"这条赛道。工业机器人已经成熟了，但服务机器人——养老、医疗、教育、家政——才是真正的大蓝海。中国老龄化加速，护工缺口巨大，一台能辅助老人起居的机器人比任何保健品都有市场。<span class="h-cyan">机器人来了，不是来抢饭碗的，是来帮你端饭碗的——前提是你愿意换个思路。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a20-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: 美国联邦债务突破40万亿美元 -->
@@ -1479,10 +1347,6 @@
               <p>美债破40万亿对普通人有什么影响？第一，理解"美元信用"正在被透支。美国靠发新债还旧债的模式能玩多久？当利息支出已经接近国防预算的时候，就是数学问题变成政治问题的时候。美元作为全球储备货币的地位短期内不会崩，但裂缝在扩大——各国央行都在增持黄金、减少美债持仓，这是"用脚投票"。第二，关注"利率传导"对你的影响。美债规模越大，美国政府付的利息越多，利息越多就要发更多债，发更多债就推高利率，利率高了你的房贷、车贷、消费贷都跟着涨。这不是美国的事，是全球的事——美元利率是全球资产定价的锚。第三，理解"避险资产"的逻辑。当主权货币信用松动时，黄金、核心地段的房产、稀缺资源类股票这类"硬资产"的价值就会被重估。不是让你梭哈，而是让你的资产组合里有一层"保险"。第四，人民币国际化加速是长期主线。美债越失控，各国越想找替代方案。人民币跨境支付系统CIPS、数字人民币、本币互换协议——这些基础设施正在悄悄搭建。如果你做外贸、跨境电商、跨境支付，关注这条线。第五，对普通人最实际的建议——别让现金躺着贬值。通胀+低利率的组合是最隐蔽的财富侵蚀。你不理财，财不理你——把钱分成三份：一份应急现金、一份稳健理财、一份配置到能跑赢通胀的资产里（指数基金、黄金ETF、优质房产）。不需要多激进，但不能再假装看不见。<span class="h-gold">40万亿是一道坎，跨过去之后世界不会立刻崩塌，但规则会慢慢变。聪明的人不预测灾难，而是提前系好安全带。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a20-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: 一封写给爱人的信刷屏 -->
@@ -1519,10 +1383,6 @@
               <p>从这封信的走红里，普通人能悟到什么？第一，理解"稀缺性"决定价值。表情包满屏飞、语音60秒随便发、短视频15秒一个——这些信息太容易产出了，所以不值钱。而一封认真写的信，需要时间、需要思考、需要勇气——正因为难，所以贵。你表达感情的方式越"廉价"，对方感受到的真诚就越少。想让人记住你说的话？用最"笨"的方式说。第二，"慢表达"是一种被遗忘的能力。我们习惯了即时通讯——消息秒回、表情秒发、情绪秒表达。但真正深的感情不是"秒回"出来的，是"酝酿"出来的。你有多久没认真给一个人写过一段话了？不是转发的那种，是你自己一个字一个字想出来的那种。第三，"被理解"比"被追求"更重要。评论区为什么那么多人哭？不是因为羡慕写信的人有对象，而是因为"被认真对待、被认真理解"这件事太稀缺了。大多数人感情里缺的不是浪漫，是"有人愿意花时间把你的感受写下来"。第四，商业上有"慢内容"的机会。短视频太快、太碎、太刺激。但有一批人开始怀念"慢"——长文章、手写信、深度播客、纸质书。如果你做内容、做品牌、做营销，思考一下：能不能用"慢"来对抗"快"？一封品牌的信、一篇走心的长文、一次不做任何促销的纯粹沟通——在嘈杂里安静反而最显眼。第五，对自己也好一点——给自己写一封信。不是给爱人，是给自己。写写你这一年经历了什么、扛住了什么、失去了什么、还在坚持什么。你会发现，写完那一刻，你比想象中更勇敢。<span class="h-purple">最动人的表达从来不需要花一分钱，只需要你愿意慢下来，把心里话一个字一个字地写出来。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a20-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 第18号台风沙德尔生成 -->
@@ -1559,10 +1419,6 @@
               <p>台风季普通人该做什么？第一，看路径预报但别只看路径。台风的"路径"只是预测，真正的关键信息是"风雨影响范围"——一个在广东登陆的台风，暴雨可能波及到河南、山东。你在不在登陆点不重要，你在不在影响范围里才重要。关注中央气象台的"风雨预报图"，那个比路径图实用得多。第二，准备一个"应急包"。手电筒+备用电池、矿泉水至少3天量、压缩饼干或方便食品、急救药品（特别是慢性病常用药）、充电宝满电、现金少量。这些东西平时占不了多少地方，但台风断电断水断网的时候，它们就是你的"生命线"。第三，别在台风天做这三件事——别开车涉水（30厘米深的水就能把轿车冲走）、别在广告牌和大树下停车避雨（砸车的概率比你想象的高）、别觉得"我以前经历过没事"（每一次台风的雨量风力都不一样，上次没事不代表这次也没事）。第四，如果你住在一楼或低洼地带，提前做防水准备——沙袋挡门口、贵重物品抬高、电子产品放高处。台风天最怕的不是风，是水——风最多吹掉屋顶，水能淹掉你家所有东西。第五，做小生意的人要注意。台风过境=客流骤减+货物受损+物流中断。提前给易损货物做好防护、跟供应商确认物流安排、如果卖了生鲜要做好变质预案。一场台风可能把你一周的利润吹没，但提前准备能把损失降到最低。第六，理解"气候韧性"这个概念。极端天气不是偶发事件，而是新常态——一年18个台风、暴雨、洪涝、干旱——这些会越来越频繁。选房子考虑地势和排水、买保险考虑自然灾害条款、选工作地点考虑通勤路线的气候脆弱性——这些都是"气候韧性"思维。<span class="h-red">第18个台风不会是最后一个。与其每次都侥幸"应该没事"，不如花半小时做一次真正的准备——准备用不上最好，用上了就是命。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a20-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: 秦皇岛底商火灾致8死 -->
@@ -1599,10 +1455,6 @@
               <p>从这起火灾里，普通人该怎么做？第一，如果你住在有底商的楼里，做一次"消防体检"。下楼走一圈，看看底商有没有以下情况——电气线路是不是乱拉乱接的、有没有在室内给电动车充电的、有没有大量存放纸箱和泡沫等可燃物的、消防通道是不是被货堵了的。发现了问题，不要忍——向物业反映、向消防部门12345举报。这不是多管闲事，这是保你自己的命。第二，理解"夜间火灾"的特殊危险性。白天着火你能跑、能喊、能发现。但凌晨3点你在睡觉——烟雾会先于火焰到达你的房间，一氧化碳无色无味，你可能还没醒就已经中毒了。装一个独立式烟感报警器，几十块钱，但它能在你睡梦中救你一命。第三，电动自行车室内充电是最大的定时炸弹。锂电池一旦热失控，从冒烟到爆燃只要几秒钟，灭火器根本压不住。今年已经发生了太多起因为电动车室内充电导致的火灾死亡事件了。如果你或你的邻居在楼道、室内充电——停。宁可拎电池下楼充也不要在室内充。这不是方便不方便的事，是命的事。第四，如果你自己开底商——请做好以下几件事：安装烟感报警器（带电话联动功能的那种，夜里着火能自动通知你）、电气线路找专业电工检查、可燃物远离热源和电气线路、消防通道永远保持畅通、液化气罐不能在室内过夜。这些事每件都不复杂，但合在一起就是你和顾客的命。第五，逃生知识请全家人一起学。火灾逃生三原则——低姿弯腰（烟雾往上走，越低空气越干净）、摸门把手（烫手就别开门，门外火已经很大了）、湿毛巾捂口鼻（能多争取几十秒逃生时间）。这些东西你以为都知道，但你家老人知道吗？小孩知道吗？花10分钟全家过一遍，比事后追悔莫及有用一万倍。第六，物业和社区该做消防演练了——至少每年一次，教居民灭火器怎么用、消防栓怎么开、疏散通道在哪。很多人住了几年连灭火器在哪层楼都不知道。<span class="h-red">8个人再也醒不过来了。希望他们的离开能换来更多人的醒——不是嘴上说说，是今晚就去做一次消防检查的那种醒。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a20-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
 
@@ -1657,10 +1509,6 @@
               <p>普通人能从这里看到什么？第一，关注"商业航天"这条产业链。火箭回收不只是技术突破，更是商业模式的革命。发射成本降下来之后，卫星组网、太空旅游、太空育种、微重力实验——这些以前只有国家队玩得起的领域，民营企业也能参与了。整条产业链上的零部件供应商、材料厂商、测控服务商，都会吃到红利。第二，理解"复用经济"的底层逻辑。火箭回收和共享经济、租赁经济是同一个道理——资产从"一次性消耗"变成"反复使用"，单位成本就会断崖式下降。这个逻辑不只适用于火箭，也适用于你身边的一切——你手里的设备、技能、资源，能不能从"用一次就扔"变成"反复变现"？第三，中国民营航天的竞争格局正在形成。蓝箭航天之外，星河动力、天兵科技、星际荣耀都在搞可回收火箭。 competition 会加速技术迭代、压低价格、扩大市场。这对消费者和投资者都是好事——有竞争才有进步，有进步才有机会。第四，如果你是年轻人，认真考虑"太空经济"这条赛道。不是让你去造火箭，而是思考：当太空变得便宜了，什么应用会爆发？太空数据、太空通信、太空材料、太空育种——每个方向都可能诞生下一个独角兽。十年前你看不懂移动互联网，现在别错过太空经济。<span class="h-cyan">火箭着陆不是终点，而是太空经济"平民化"的起点。每一次发射成本下降，都在为普通人打开一扇新的门。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a19-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: 宇树科技上市首日暴涨629% -->
@@ -1697,10 +1545,6 @@
               <p>从这场暴涨里，普通人能看到什么？第一，理解"人形机器人"为什么是下一个大风口。不是因为它酷，而是因为劳动力短缺是真实存在的。中国老龄化加速、年轻人不愿进工厂、服务业用工成本飙升——这些结构性问题靠人解决不了，只能靠机器。人形机器人的形态之所以像人，是因为人类的一切基础设施——楼梯、门把手、工具、操作台——都是为人的体型设计的。轮式机器人进不了厨房，但人形机器人可以。第二，关注"产业链"而非"单点"。宇树暴涨不只是宇树自己的事，它背后有一整条供应链——减速器、伺服电机、力矩传感器、线性执行器。这些零部件厂商才是"卖铲子的人"，不管哪家机器人公司赢了，它们都赚。第三，别被短期涨幅迷惑。629%的暴涨里有大量投机资金，回调是必然的。但如果你看的是五年十年的维度，人形机器人的渗透率才刚起步。今天的宇树就像2012年的特斯拉——产品刚量产、价格刚下来、市场刚打开。第四，思考"机器人替代"对你自己的影响。如果你的工作主要是重复性体力劳动——搬运、分拣、清洁、简单装配——你需要认真想一想：五年后一台10万的机器人能不能干你的活？如果能，你该提前学什么新技能？机器人替代不是末日，是倒逼你升级。<span class="h-gold">每一次技术革命都会消灭一批旧岗位，也会创造一批新岗位。被淘汰的从来不是人，而是拒绝升级的人。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a19-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: 今日七夕不止七夕更要朝夕 -->
@@ -1737,10 +1581,6 @@
               <p>从"七夕消费主义"里，我们能反思什么？第一，警惕"情感外包"。现代人的问题是什么都愿意花钱让别人替你做——买礼物替你表达爱、订餐厅替你制造浪漫、写贺卡替你说情话。但感情这件事没法外包，你买的礼物再贵，也不如你亲手写的一句话有温度。第二，理解"日常积累"比"集中爆发"更值钱。很多人平时不经营关系，到了节日才突击补偿——这就像平时不学习、考前才突击一样，效果差而且不可持续。感情是复利游戏，每天存一点，时间长了就是一笔大财富；平时不存，节日取款的时候只会透支。第三，对单身的人说一句——七夕不是只有情侣才过的节。七夕最早叫"乞巧节"，是女孩们祈求心灵手巧的节日。你可以把它过成"对自己的告白日"——今天对自己好一点，给自己买束花、做顿好饭、看场电影。爱别人之前先学会爱自己。第四，消费可以理性，但表达不要吝啬。不是说七夕不该花钱，而是花钱之前问问自己：这个礼物是给对方看的还是给朋友圈看的？如果是给对方看的，一封手写信可能比一条项链更打动人；如果是给朋友圈看的，那再贵的礼物也只是社交货币。<span class="h-red">最好的感情状态是：七夕那天和平时没什么区别，因为每一天都在好好爱。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a19-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 超强厄尔尼诺事件预警 -->
@@ -1777,10 +1617,6 @@
               <p>超强厄尔尼诺对普通人有什么影响？第一，粮食价格波动。厄尔尼诺会导致主要产粮区异常——东南亚干旱影响大米产量、南美洪水影响大豆产量、澳大利亚干旱影响小麦产量。这些大宗农产品一减产，全球粮价就会涨，你超市里的米面油价格就会跟着动。如果你有囤粮习惯或做餐饮，提前关注粮食期货价格走势。第二，能源需求变化。暖冬意味着取暖需求下降，天然气和煤炭价格可能承压；但夏天更热意味着空调用电暴增，电力板块可能受益。做投资的人要理解"气候交易"这个逻辑——天气本身就是一种资产配置因子。第三，健康风险上升。极端天气会加剧传染病传播——洪水后水源污染、高温中暑、蚊媒疾病扩散。老人、小孩、慢性病患者是高风险人群，提前做好防护。第四，理解"气候适应"这个长期命题。厄尔尼诺不是一次性事件，它会越来越频繁、越来越强——这是全球变暖背景下的新常态。与其每次都被动应对，不如主动适应——买房子考虑排水和隔热、买保险考虑洪水和高温条款、选职业考虑气候 resilient 的行业。第五，农业从业者要特别注意。如果你种地、做养殖、做农产品加工，现在是调整种植结构和保险安排的关键窗口期。选耐旱或耐涝品种、提前疏通排灌系统、买好农业保险——这些动作现在做，秋收时你会感谢自己。<span class="h-purple">气候从来不只是气象学家的事，它和每个人的饭碗、钱包、健康都有关。读懂气候的人，不是在预测天气，而是在管理风险。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a19-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: 四川升学宴墙体倒塌5死17伤 -->
@@ -1817,10 +1653,6 @@
               <p>从这场悲剧里，普通人应该学到什么？第一，参加大型聚集活动时，先看场地安全。去参加宴席、婚礼、庆典，进门先看一眼——墙是不是老墙？棚子是不是临时搭的？承重结构稳不稳？如果看着不靠谱，宁可找个借口不去或者站在空旷的地方。这不叫胆小，这叫有安全意识。第二，如果你是活动组织者，请把安全放在第一位。办升学宴、婚宴，别图省钱找不靠谱的搭建队。临时建筑的质量参差不齐，一场风、一次拥挤就可能出事。花钱请专业人员搭建、检查结构稳定性、留好消防通道——这些钱不能省。第三，理解"群体聚集风险"。人多的地方风险成倍增加——不是因为人会出事，而是因为一旦出事，踩踏、挤压、逃生困难会造成更大的伤亡。参加人数超过50人的活动，你要知道紧急出口在哪、安全通道在哪。这不是杞人忧天，是保命的本能。第四，老旧建筑的风险被严重低估了。很多农村和县城的自建房、老围墙、临时搭建物，年久失修但还在使用。墙体裂缝、地基下沉、结构老化——这些问题平时看不出来，一旦遇到暴雨、大风或人员聚集就会暴露。如果你家有老房子在办活动，提前检查一遍结构安全。第五，这件事也提醒我们反思"大操大办"的风气。升学宴、谢师宴、满月酒——名目越来越多、规模越来越大、排场越来越铺张。很多时候不是为了庆祝，而是为了面子。如果简化一下规模、把钱花在更安全更实用的地方，也许就不会搭那么大的临时棚子，也就不会有这么多人聚集在一个不够安全的场地里。<span class="h-red">5条人命换来的教训太沉重了。希望每个人都能记住：参加任何活动，先看一眼安全。这一眼，可能就是你和家人的命。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a19-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
 
@@ -1875,10 +1707,6 @@
               <p>普通人能从卫星互联网里看到什么机会？第一，关注"终端设备"这条产业链。卫星上网需要地面接收终端——天线、芯片、模块。这个市场会随着星座组网进度爆发式增长。提前布局卫星通信终端研发、生产、销售的企业和个人，会吃到第一波红利。第二，思考"偏远场景"的应用机会。卫星互联网最大的优势是覆盖地面网络到不了的地方——远洋渔船、沙漠油田、深山矿区。如果你能想到一个"以前因为没网而做不了、现在因为有网而能做"的商业模式，那就是你的机会。比如远洋渔船的实时鱼情数据回传、沙漠光伏电站的远程运维、山区农产品的直播带货——这些场景以前想都别想，现在正在打开。第三，理解"商业航天"的产业逻辑。海南商业航天发射场这次发射意味着什么？意味着中国航天正在从"国家工程"走向"商业化运营"。发射成本会越来越低、发射频次会越来越高、参与门槛会越来越低。商业航天不只是造火箭，还包括卫星运营、地面服务、数据应用——整条产业链上每个环节都有机会。<span class="h-cyan">卫星上天不是终点，而是新经济起飞的起点。每次基础设施革命都会催生一批新巨头，这次的主角可能不是互联网大厂，而是最先看懂太空经济的人。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a16-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: 52条河流超警防汛形势严峻 -->
@@ -1915,10 +1743,6 @@
               <p>面对持续的汛情，普通人该怎么做？第一，不要因为"新闻关注度下降"就放松警惕。昨天的新闻可能是"溃口封堵成功"，但今天的水位可能比昨天还高。汛期看信息要看数据——当地水文站的水位实时数据，比新闻更靠谱。第二，理解"退水期"反而最危险。很多人在洪水退去后急着回家、涉水行走、清理淤泥，结果踩到被掏空的地基、触到漏电的电线、被二次涨水困住。退水期的伤亡往往比涨水期还多。第三，做好"长周期"准备。52条河流超警意味着这场汛情不是一两天能结束的。如果你在受灾区域，至少准备一周以上的生活物资——饮用水、食物、药品、充电设备。不要想着"很快就过去了"，多准备一点不会亏。第四，关注次生灾害。暴雨过后最怕的不是水，而是山体滑坡和泥石流。土壤吸饱了水之后极其不稳定，一个余震甚至一阵大雨都可能触发。住在山脚、坡地的人，这段时间要格外留意地面裂缝和异常声响。<span class="h-red">记住：汛期看数据不看新闻，退水期比涨水期更危险，物资按一周准备，警惕山体滑坡。洪水总会退，但你得确保自己是安全等到它退的那个人。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a16-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: 旺旺经营危机与减糖呼声 -->
@@ -1955,10 +1779,6 @@
               <p>从旺旺的危机里，普通人能看到什么？第一，别把"过去的成功"当成"未来的保障"。旺仔牛奶曾经是国民饮料，但曾经的辉煌挡不住今天的下滑。你的技能、你的职业、你的生意也一样——今天赚钱不代表明天还赚钱。永远在问自己：如果市场变了，我还有什么？第二，读懂"健康消费"这个大趋势。低糖、无糖、零添加——这不是一阵风，而是不可逆的消费升级。如果你做食品、做餐饮、做消费品，现在不布局健康线，三年后就会被市场淘汰。看看元气森林怎么靠"0糖0脂0卡"杀出来的——消费者不是不爱喝，是不爱喝太甜的。第三，理解"危机公关"的正确姿势。旺旺这次做得好的地方在于——创始人主动承认问题，没有甩锅给市场、给环境，而是说"我们自己要反思"。消费者不怕你有问题，怕你有问题还不认。旺旺回应网友减糖呼声也很快，说会推出新品。这种"承认问题+快速响应"的做法，比那些捂着盖着的品牌强一百倍。第四，从投资角度看，传统食品企业正在分化——能转型的会焕发第二春，不能转型的会慢慢萎缩。你手里的消费类股票，看看它的研发投入和新品占比，就知道它有没有未来。<span class="h-gold">一个品牌的衰败往往不是被对手打败的，而是被自己过去的成功困住了。能主动打破舒适区的企业，才配拥有下一个时代。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a16-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 生态环境法典首案宣判 -->
@@ -1995,10 +1815,6 @@
               <p>这个首案对普通人有什么实际意义？第一，你身边的环境问题有了更强的维权武器。楼下商铺的排风扇、隔壁工地的打桩机、楼上空调的低频共振——以前你投诉，对方拿一个"分贝达标"的检测报告就把你打发了。现在你可以拿着生态环境法典去法院，告诉法官：分贝达标不代表没影响，法律保护的是我的生活安宁，不只是数字。第二，理解"低频噪声"这个隐形杀手。低频噪声和高频噪声不一样——高频你一听就觉得吵，低频是那种你说不清哪里吵但就是睡不着、莫名烦躁的声音。空调外机、电梯机房、变压器，都是低频噪声的常见来源。如果你长期莫名失眠、焦虑，不妨检查一下住处有没有低频噪声源。第三，这个案子释放了一个更大的信号——法律正在从"保护数据"转向"保护人"。以前环保执法看的是监测数据达不达标，现在开始看"人的实际感受"。这个转变不只适用于噪声——废气、光污染、辐射，未来都可能按这个逻辑来判。第四，如果你是做企业的，赶紧自查。以前"达标就行"的思路行不通了，你得考虑你的经营行为对周围居民的实际影响。提前做好隔音、减振、排放治理，比事后被告上法庭划算得多。<span class="h-purple">一部法典的第一案，往往奠定了这部法律未来几十年的适用方向。这次的方向很清楚——法律站在普通人这一边。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a16-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: AC米兰4:2逆转曼联 -->
@@ -2035,10 +1851,6 @@
               <p>从这场逆转里，普通人能学到什么？第一，"开局不利"不等于"结局已定"。生活中很多事都是这样——面试开头发挥不好、创业第一年亏钱、考试前几道题没做出来。大部分人这时候就放弃了，觉得"完了"。但米兰告诉你：开局落后不丢人，丢人的是落后了就不再挣扎。比赛有90分钟，你的人生更长——只要没结束，就还有翻盘的机会。第二，逆境中最值钱的是"冷静执行"而不是"拼命折腾"。很多人一遇到困难就开始疯狂做各种事——乱投简历、乱找项目、乱换方向。但越折腾越乱。正确的做法是：回到你的核心优势上，像米兰一样在既定战术里找节奏。不换赛道，调节奏。第三，新援拉莫斯的表现说明一个道理——融入新环境最好的方式不是"证明自己多厉害"，而是"先帮团队赢球"。拉莫斯没想着自己刷数据，而是先做好助攻、做好配合，进球自然就来了。你刚到一个新公司、新团队，别急着表现自己多强，先想想"我能帮团队做什么"——帮团队赢了，你的价值自然被看见。第四，友谊赛的逆转也值得认真对待。有人说"不就是友谊赛吗"。但球员在场上是真拼的，阿莫林是真在演练战术的。每一场不认真的比赛，都在养成"差不多就行"的习惯；每一场认真的比赛，都在积累"永远不放弃"的肌肉记忆。你对待小事的态度，就是你对待大事的预演。<span class="h-red">人生没有友谊赛。每一次逆境都是真的，每一次翻盘也都是真的。记住米兰昨晚的样子：落后不慌，冷静执行，逆转终会来。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a16-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
 
@@ -2093,10 +1905,6 @@
               <p>普通人面对洪水该怎么做？第一，关注预警但不依赖预警。民堤溃口和正式水库不同，它没有分级预警系统——可能你收到通知的时候水已经到门口了。所以住在河流、堤坝附近的人，汛期要养成一个习惯：每天看一眼水位，一旦发现异常上涨，不用等通知，直接走。第二，记住"往高处跑"这个唯一原则。洪水来了不要想着开车跑——道路可能已经被淹，车在水中会熄火失控。最快的逃生方式是往附近最高的建筑物跑，上到二楼以上。第三，提前准备一个"防汛包"。里面放身份证、现金、手机充电宝、手电筒、瓶装水。包放在门口，拿了就走。灾时找东西浪费的那五分钟，可能就是生与死的距离。第四，水退之后不要急着回家。溃口地区的道路地基可能被掏空，电线可能漏电，水面下的 debris 你看不见。等专业评估确认安全，再回去。<span class="h-red">记住：汛期看水位、往高处跑、备好防汛包、水退后等确认。这四步不需要任何专业装备，但关键时刻能保命。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a15-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: 阿里开源Qwen3.8大模型 -->
@@ -2133,10 +1941,6 @@
               <p>千问开源对普通人意味着什么？第一，AI能力从"大厂专属"变成"人人可用"。以前你想用顶级AI模型，得买API、按调用量付费。现在开源了，懂点技术的人可以本地部署，零成本使用。这意味着什么？意味着会用AI的人，产能可以翻几倍。一个会用AI做数据分析的运营，效率抵得上三个不会用的。第二，"具身智能进厂"说明AI就业市场在分化。一边是AI替代简单重复劳动——流水线工人、客服、基础翻译；另一边是AI创造新岗位——机器人维护、AI训练师、自动化方案设计。你站在哪一边，取决于你现在学什么。第三，开源模型让"垂直应用"成为普通人最大的机会。通用大模型大家都能用，但在特定行业里用好它的人很少。你懂医疗、懂法律、懂教育，再叠加AI能力，你就比纯技术人员更值钱——因为技术人人都能学，行业经验不是。<span class="h-cyan">AI开源不是终点，而是起跑线。枪响了，跑得快的人拿走大部分红利，站着不动的人连赛道都上不去。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a15-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: 日本战败投降81周年 -->
@@ -2173,10 +1977,6 @@
               <p>普通人该怎么对待历史？第一，了解真实的历史，而不是情绪化的历史。很多人对抗日战争的了解来自影视剧——手撕鬼子、裤裆藏雷。这些不是历史，是娱乐。真正的历史比你想象的残酷得多——3500万伤亡，大半个中国被占领，南京大屠杀30万同胞遇难。了解真实的数字和细节，你才会真正理解"勿忘"两个字的重量。第二，把历史记忆转化为前进动力。纪念不是每年发一条朋友圈就完了，而是要让自己变得更强——国家强需要每个个体强。你把工作做好、把技能练精、把孩子教育好，这些都是在为国家的未来添砖加瓦。第三，警惕历史虚无主义。网上总有人说"都过去那么久了，算了吧""别老提这些，影响中日友好"。这种论调看似理性，实则危险——德国至今在反思纳粹历史，没人说他们"影响德以友好"。正视历史和面向未来不矛盾，忘记历史才是对未来最大的不负责任。<span class="h-purple">81年过去了，和平的阳光来之不易。我们能做的，是记住来时的路，走好脚下的路，看好前方的路。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a15-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 国内油价下调 -->
@@ -2213,10 +2013,6 @@
               <p>普通人该从油价变化中读出什么？第一，别因为油价降了就放松对新能源趋势的关注。今天省的油钱，可能明天就被涨回去。但新能源的替代趋势是不可逆的——充电桩增长43.2%说明基建在狂奔，电动车的使用成本优势会越来越大。如果你在纠结要不要换电动车，答案是：通勤场景越多的越该换。第二，能源变化创造新的搞钱机会。充电桩在疯长，意味着运营、维护、选址这些环节都需要人。社区充电桩运营、物流车队电动化改造、储能设备安装——这些领域现在缺人缺服务，进去就是先发优势。第三，学会看"能源价格信号"做消费决策。油价低的时候，适合锁定长期合约（比如长途物流公司可以锁价）；油价高的时候，是新能源车性价比最突出的时候。价格信号就是市场给你的提示，大部分人看见就过了，聪明人会据此调整自己的支出结构。<span class="h-gold">油价降了别只顾着高兴，想想这背后的趋势往哪走。能在价格波动中看到方向的人，才不会在能源转型的大潮中被淘汰。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a15-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: 生态环境法典正式实施 -->
@@ -2253,10 +2049,6 @@
               <p>这部法典对普通人意味着什么机会？第一，环保产业会迎来一轮爆发。法典实施后，企业的环保合规需求猛增——环评、监测、治理、修复，每个环节都需要专业服务。做环保咨询、环境监测设备、污染治理工程的公司，订单会大幅增加。如果你在这些行业，未来几年是黄金窗口。第二，绿色消费从"概念"变成"刚需"。法典对生产端的约束会传导到消费端——不环保的产品会被淘汰，绿色认证的产品会更受欢迎。做消费品的人要提前布局：你的产品有没有环保认证？供应链是否合规？这些以前是加分项，以后是入场券。第三，个人环保维权有了"核武器"。以前你投诉楼下烧烤摊油烟扰民，对方不理你，你也拿他没办法。现在有了法典，法律条文清清楚楚，投诉有据可依。第四，关注"碳资产"这个新概念。法典为碳排放交易提供了更坚实的法律基础，未来碳配额、碳交易会越来越普及。提前了解碳资产管理的人，会在新一轮绿色经济中占据先机。<span class="h-green">一部法典改变的不只是环境，更是产业格局和财富分配。能读懂法律信号的人，总能在变化中找到属于自己的位置。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a15-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
 
@@ -2311,10 +2103,6 @@
               <p>那普通人从沈腾零票能学到什么？第一，分清"评价体系"和"自我价值"。你工作中被领导批评了、考评没拿A、晋升被刷了——这些是评价体系的结果，不是你价值的全部。沈腾零票不影响他是两百亿男主，你一次考评失利也不影响你的真实能力。第二，别把"得不得"看得比"做不做"重。沈腾的回应"得奖不重要"不是酸，是真话——他更在意的是作品能不能让观众笑，而不是评委给不给票。你该在意的也是"我做的事有没有价值"，而不是"别人认不认可"。第三，学会"体面地输"。沈腾的回应没有抱怨、没有攻击评委、没有甩锅，就是一句轻描淡写的话。这种体面比拿奖更圈粉。人生不可能每次都赢，但你可以选择怎么输——体面地输，比狼狈地赢更让人尊重。<span class="h-red">输不可怕，可怕的是输了之后丢了体面。沈腾零票不丢人，丢人的是那些拿了奖却没人买票的人。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a14-1')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T2: 胖东来关闭老店背后的商业逻辑 -->
@@ -2351,10 +2139,6 @@
               <p>胖东来的做法给普通人什么搞钱启发？第一，学会"主动止损"。你手里有个不赚钱的副业、一个亏钱的投资、一段消耗精力的关系——大部分人的选择是"再等等看，也许会好起来"。但聪明人的选择是：算清楚这笔账，如果未来三年都看不到回报，现在就砍掉。止损省下来的时间和钱，投入到回报率更高的地方。第二，理解"少即是多"的赚钱逻辑。胖东来不追求门店数量，追求单店质量。做副业也一样——与其同时搞五个不温不火的项目，不如把一个做到极致。一个做到极致的项目，收入能超过五个平庸项目加起来。第三，看懂"品牌溢价"的力量。胖东来关了一家店，整条街的商户都受影响——因为它不是一家超市，它是一个"流量入口"。你做个人IP、做账号、做生意，最终目标就是成为某个领域的"流量入口"——别人因为信任你而来，你的存在本身就能带流量。<span class="h-gold">商业的本质不是做更多，而是做更对。砍掉错的，集中资源做对的，钱自然就来了。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a14-2')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T3: DeepSeek发布调价公告 -->
@@ -2391,10 +2175,6 @@
               <p>DeepSeek涨价对普通人意味着什么？第一，AI工具的"免费午餐"时代正在结束。趁现在很多工具还有免费额度，赶紧学会用——等全面收费了，学习成本就高了。现在花零成本学会AI，等于给自己存了一笔技能存款。第二，AI行业洗牌加速。涨价意味着头部企业开始"收割"，中小企业如果产品不够好，用户会流失。对从业者来说，选公司要看它有没有"涨价底气"——能涨价的公司才值得去。第三，个人机会窗口在收窄。AI刚火的时候，会写prompt就能接活赚钱。现在工具在进步、门槛在降低，简单的AI操作很快会被工具本身替代。你得往深了学——不只是会用AI，还要会用AI解决具体行业问题。会用AI写文案的人很多，会用AI做医疗数据分析的人很少——越垂直越值钱。<span class="h-cyan">AI涨价的背后是行业成熟。成熟的行业里，机会不在于"会不会用"，而在于"用得好不好"。深者越深，浅者淘汰。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a14-3')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T4: 普京驳斥日本南千岛群岛领土主张 -->
@@ -2431,10 +2211,6 @@
               <p>那普通人看国际新闻该怎么练出独立判断力？第一，分清"事实"和"立场"。日本媒体说"北方四岛是日本固有领土"，这是立场不是事实；俄罗斯媒体说"南千岛群岛是二战战利品"，这也是立场不是事实。事实是：这些岛现在在俄罗斯手里，日本想要回来但拿不回去。你先把事实搞清楚，再去看各方的立场，就不会被带节奏。第二，理解"历史脉络"比"当下表态"重要。这片领土争议的根源是二战结束时的国际安排——雅尔塔协定把这些岛划给了苏联。日本后来想翻案，但国际协议一旦签了就很难改。看国际新闻别只看"今天谁说了什么"，要往回看几十年——历史脉络清楚了，当下的事就一目了然。第三，警惕"情绪化叙事"。国际新闻最容易煽动情绪——"某某国欺负某某国""某某国太无耻了"。但情绪化的叙事背后往往有目的——让你愤怒、让你站队、让你停止思考。你越愤怒，就越容易被操纵。保持冷静，问一句"这件事的前因后果是什么"，你就比90%的人清醒了。<span class="h-purple">看国际新闻最大的智慧不是站对队，而是不站队——把事实和立场分开，把历史和情绪分开，你就拥有了独立判断力。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a14-4')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         <!-- T5: 河南郏县一民堤发生溃口 -->
@@ -2471,10 +2247,6 @@
               <p>溃口发生时该怎么做？第一，立刻向高处转移，不要等通知。民堤溃口不像正式水库有预警系统——它破了就是破了，可能没人通知你。看到水异常上涨、听到异常水声，立刻往高处跑，不要回头拿东西。命比任何东西都值钱。第二，绝对不要涉水。溃口后的水流会挟带泥沙、树枝、甚至家畜，水下的能见度为零。你以为水只到膝盖，但水流可能把你直接冲倒。30厘米深的快速水流就足以让成年人站不稳。第三，提前知道你的"高处"在哪。等到溃口了再找高处来不及。你现在就该知道：如果你家附近有堤坝，最近的高地在哪、怎么走最快。这个信息花五分钟查一下、记一下，关键时刻能救命。第四，溃口后至少等24小时再回去。水退了不代表安全——道路可能被冲毁、地基可能被掏空、电线可能漏电。专业救援人员确认安全之前，不要急着回家"看看损失"。<span class="h-green">记住四个字：跑、不涉、知高处、等确认。这四步不需要任何装备，只需要你提前知道并记住。现在花两分钟记住，比灾时花两小时后悔强。</span></p>
             </div>
             <button class="copy-btn" onclick="copyScript(this,'a14-5')">📋 复制文案</button>
-            <div class="duration-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-              预计口播时长：约3分钟 · 语速正常
-            </div>
           </div>
         </li>
         </ul>
@@ -2530,11 +2302,7 @@
                           <p>普通人从这件事里能看到什么？第一，提前规划"第二人生"。你不可能一辈子做现在这份工作——行业会变、身体会老、精力会下降。你现在就该想：如果明天这份工作没了，我还有什么技能能变现？第二个启发：在巅峰时就开始为下坡做准备。聪明人不会等被打下来才慌，他们会在最好的时候就学新技能、拓展新领域。第三个启发：建立多元身份。工作中你是谁、家庭中你是谁、兴趣中你是谁——身份越多元，退出时越从容。你有没有想过，你的"退役"会在什么时候到来？<span class="h-red">巅峰是用来为下坡储备能量的。提前规划第二人生的人，永远不会被打个措手不及。</span></p>
                         </div>
                         <button class="copy-btn" onclick="copyScript(this,'a13-1')">📋 复制文案</button>
-                        <div class="duration-badge">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                          预计口播时长：约3分钟 · 语速正常
-                        </div>
-                      </div>
+          </div>
                     </li>
                     <!-- T2: 央行将开展隔夜逆回购操作 -->
                     <li class="topic-item topic-money collapsed" id="a13-2">
@@ -2570,11 +2338,7 @@
                           <p>从央行操作里读搞钱信号，记住三点。第一，学会看利率方向。利率降了，说明钱变便宜，该适当负债、配置资产、减少现金。利率升了，说明钱变贵，该减少负债、增加现金。第二，理解资金流向的规律。央行放出来的钱不会均匀流向所有人——先到银行，再到大企业，最后才到普通人手里。越早接触到钱的人赚得越多。所以宽松信号出现时，尽快把现金转化为资产，哪怕定投一只指数基金，也比让钱在活期里缩水强。第三，培养逆周期思维。大家狂欢时你要警惕，大家恐慌时你可能该出手。搞钱的本质就是逆向操作。下次看到央行操作的新闻，你会随手划走，还是想想自己的钱该怎么调？<span class="h-gold">央行放水时把现金换成资产，收紧时把资产换成现金，这个节奏感比任何理财技巧都值钱。</span></p>
                         </div>
                         <button class="copy-btn" onclick="copyScript(this,'a13-2')">📋 复制文案</button>
-                        <div class="duration-badge">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                          预计口播时长：约3分钟 · 语速正常
-                        </div>
-                      </div>
+          </div>
                     </li>
                     <!-- T3: 英伟达最新开源大模型上线 -->
                     <li class="topic-item topic-growth collapsed" id="a13-3">
@@ -2610,11 +2374,7 @@
                           <p>在AI时代保持竞争力，核心就三件事。第一，把AI当外挂而不是敌人。你不需要会写代码，只需要学会用AI——写文案、做PPT、整理数据。这些工具大多免费或很便宜，但能让你效率提升三五倍。拒绝用AI的人，就像当年拒绝用智能手机的人。第二，培养AI做不到的能力。AI擅长处理信息、生成内容，但不擅长建立信任、理解情感、做判断。沟通能力、领导力、同理心、审美判断——这些"非计算"能力在AI时代反而更值钱。第三，建立终身学习的节奏。AI每半年迭代一次，重要的不是学会某个工具，而是建立快速学习新工具的能力。每个月花几小时了解最新AI工具能做什么就够了。你跟上节奏，AI就是你的翅膀；你掉队了，AI就是你的掘墓人。<span class="h-cyan">在AI时代，学习的速度比知识的存量更重要。把AI当外挂的人，会把当敌人的人远远甩在身后。</span></p>
                         </div>
                         <button class="copy-btn" onclick="copyScript(this,'a13-3')">📋 复制文案</button>
-                        <div class="duration-badge">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                          预计口播时长：约3分钟 · 语速正常
-                        </div>
-                      </div>
+          </div>
                     </li>
                     <!-- T4: 上海安徽这些涉暴雨信息是谣言 -->
                     <li class="topic-item topic-wisdom collapsed" id="a13-4">
@@ -2650,11 +2410,7 @@
                           <p>建立信息免疫力，关键是三步。第一步，"三秒延迟"——看到让你恐惧或愤怒的消息，别立刻转发，给自己三秒问三个问题：来源是谁？有没有官方背书？配图视频清晰吗？答不上来就不转发。第二，理解谣言的制造逻辑。有人为流量造谣——越惊悚越有点击量；有人为商业目的造谣——造谣某地被淹然后推销防汛产品。你每次未经核实的转发，都在帮造谣者免费打工。第三，找到可信信息源。暴雨期间关注当地气象局、应急管理局的官方发布，而不是来路不明的群聊截图。把信息入口收窄到两三个可靠来源，焦虑感会立刻下降一大半。你刷一百条来路不明的消息，不如看一条官方预警管用。<span class="h-purple">等三秒再转发，就能让谣言失去一半的传播力。在恐慌中保持理性，是信息时代最稀缺的智慧。</span></p>
                         </div>
                         <button class="copy-btn" onclick="copyScript(this,'a13-4')">📋 复制文案</button>
-                        <div class="duration-badge">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                          预计口播时长：约3分钟 · 语速正常
-                        </div>
-                      </div>
+          </div>
                     </li>
                     <!-- T5: 河南启动防汛二级应急响应 -->
                     <li class="topic-item topic-action collapsed" id="a13-5">
@@ -2690,11 +2446,7 @@
                           <p>防汛二级响应下，立刻做三件事。第一，准备三日物资：三天饮用水和食物、手电筒、充电宝充满电、急救包。超市半小时就能买齐，关键时刻能保命。第二，确认安全位置。住一楼或低洼地区，把贵重物品搬到高处；住山区或河道附近，提前了解撤离路线；有地下车库的，把车开到地面。第三，记住致命禁忌。不要涉水行走——水下可能有坑洞、漏电电线；不要开车涉水——水深超30厘米就可能把车冲走；不要待在地下室——暴雨时最快被淹且逃生困难。这些禁忌每年都有人不知道，每年都有人因此吃亏。如果防汛二级响应此刻发到你所在的城市，你的第一反应是"看看别人家淹了没"，还是"检查物资、确认路线、通知家人"？<span class="h-green">三日物资、安全路线、致命禁忌——这三件事现在就该做。防灾准备做在预警时，比做在灾情中强一百倍。</span></p>
                         </div>
                         <button class="copy-btn" onclick="copyScript(this,'a13-5')">📋 复制文案</button>
-                        <div class="duration-badge">
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                          预计口播时长：约3分钟 · 语速正常
-                        </div>
-                      </div>
+          </div>
                     </li>
           </ul>
         </div>
@@ -2820,11 +2572,7 @@
                     <p>记住一句话：<span class="h-red">闪电劈下来，飞机照样飞。</span>不是因为飞机不怕雷，是因为它有应对雷的设计，有飞过雷区的飞行员。你的人生也会被劈，但只要你提前准备好程序、平时练过稳住手、劈下来的时候情绪归情绪动作归动作——你照样能飞。</p>
                   </div>
                   <button class="copy-btn" onclick="copyScript(this,'a24-1')">📋 复制文案</button>
-                  <div class="duration-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                    预计口播时长：约3.5分钟 · 语速正常
-                  </div>
-                </div>
+          </div>
               </li>
 
               <!-- 0724-T2: 离岸信托要缴税了 -->
@@ -2867,11 +2615,7 @@
                     <p>记住一句话：<span class="h-purple">规则在变，聪明人顺应规则而不是钻空子。真正的财商，不是会避税，是会创造价值。</span>靠漏洞发财的人，终将被规则清算；靠价值立足的人，才能穿越任何周期。</p>
                   </div>
                   <button class="copy-btn" onclick="copyScript(this,'a24-2')">📋 复制文案</button>
-                  <div class="duration-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                    预计口播时长：约4分钟 · 语速正常
-                  </div>
-                </div>
+          </div>
               </li>
 
               <!-- 0724-T3: 白话指挥AI写代码 -->
@@ -2914,11 +2658,7 @@
                     <p>记住一句话：<span class="h-gold">在Vibe Coding的时代，不会写代码也能做产品，你的想法就是最硬的通货。技术门槛已经被打穿了，剩下的就看你的想法够不够好、敢不敢动手。</span>别再说"我不会代码"了，你不需要会代码，你需要的是一个值得做的想法。</p>
                   </div>
                   <button class="copy-btn" onclick="copyScript(this,'a24-3')">📋 复制文案</button>
-                  <div class="duration-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-                    预计口播时长：约4分钟 · 语速正常
-                  </div>
-                </div>
+          </div>
               </li>
 
             </ul>
@@ -2928,151 +2668,7 @@
       </div>
     </section>
 
-    <!-- ========== 回收站（与历史存档并列） ========== -->
-    <section class="history-section collapsed" id="recycle-section">
-      <div class="history-toggle" onclick="toggleRecycleSection()">
-        <h3>🗑️ 回收站 ♻️</h3>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="archive-blocks">
-        <div class="recycle-block" id="recycleBlock">
-          <div class="recycle-header" onclick="toggleRecycleBin()">
-            <span class="rh-icon">🗑️</span>
-            <span class="rh-label">已删除的文案</span>
-            <span class="rh-count" id="recycleCount">0 篇</span>
-            <label class="rh-select-all" onclick="event.stopPropagation();" title="全选/取消全选">
-              <input type="checkbox" id="recycleSelectAll" onchange="toggleSelectAllRecycle()">
-              <span>全选</span>
-            </label>
-            <button class="rh-purge-selected" onclick="event.stopPropagation(); purgeSelectedTopics()" title="删除勾选的文案">🗑 删除选中</button>
-            <span class="chevron">▾</span>
-          </div>
-          <div class="recycle-topics" id="recycleTopics"></div>
-        </div>
-      </div>
-    </section>
-  </article>
-
-  <!-- App bar -->
-  <div class="app-bar">
-    <span class="toggle-all" onclick="toggleAllToday()">展开/收起今日</span>
-    <span class="bar-sep">·</span>
-    <span class="bar-contact" onclick="copyContact()" style="color:var(--gold);font-weight:600;cursor:pointer;" title="点击复制抖音号">联系方式 96551096529(抖音)</span>
-  </div>
-
-  <script>
-    var STORAGE_KEY = 'koubo-checks-all';
-
-    function loadCheckState() {
-      var states = {};
-      try { states = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
-      document.querySelectorAll('.topic-item').forEach(function(item) {
-        var cb = item.querySelector('.topic-checkbox');
-        if (states[item.id]) {
-          item.classList.add('done');
-          if (cb) cb.classList.add('checked');
-        }
-      });
-    }
-    function saveCheckState() {
-      var states = {};
-      document.querySelectorAll('.topic-item').forEach(function(item) {
-        states[item.id] = item.classList.contains('done');
-      });
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(states)); } catch(e) {}
-    }
-    function toggleCheck(el, itemId) {
-      el.classList.toggle('checked');
-      var item = document.getElementById(itemId);
-      if (item) { item.classList.toggle('done'); saveCheckState(); }
-    }
-    function toggleTopic(headerEl) {
-      var item = headerEl.closest('.topic-item');
-      if (item) item.classList.toggle('collapsed');
-    }
-    function toggleAllToday() {
-      var items = document.querySelectorAll('.toc .topic-item');
-      var allCollapsed = true;
-      items.forEach(function(i) { if (!i.classList.contains('collapsed')) allCollapsed = false; });
-      items.forEach(function(i) {
-        if (allCollapsed) i.classList.remove('collapsed');
-        else i.classList.add('collapsed');
-      });
-    }
-    function copyContact() {
-      var dy = '96551096529';
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(dy).then(function(){ showToast('抖音号已复制：' + dy, 'ok'); });
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = dy; document.body.appendChild(ta); ta.select();
-        try { document.execCommand('copy'); showToast('抖音号已复制：' + dy, 'ok'); }
-        catch(e) { showToast('请手动复制抖音号：' + dy, 'warn'); }
-        document.body.removeChild(ta);
-      }
-    }
-    function toggleHistory() {
-      var sec = document.getElementById('history-section');
-      if (sec) sec.classList.toggle('collapsed');
-    }
-    function toggleRecycleSection() {
-      var sec = document.getElementById('recycle-section');
-      if (sec) sec.classList.toggle('collapsed');
-    }
-    function toggleArchive(blockId) {
-      var block = document.getElementById(blockId);
-      if (block) block.classList.toggle('collapsed');
-    }
-
-    function copyScript(btn, topicId) {
-      if (typeof requireQuota === 'function' && !requireQuota(btn)) return;
-      var item = document.getElementById(topicId);
-      if (!item) return;
-      var body = item.querySelector('.script-body');
-      if (!body) return;
-      doCopy(btn, body.innerText.trim(), '📋 复制文案');
-    }
-    function copyTakeaway(btn) {
-      var box = btn.closest('.takeaway-box');
-      if (!box) return;
-      var textEl = box.querySelector('.takeaway-text');
-      if (!textEl) return;
-      doCopy(btn, textEl.innerText.trim(), '📋 复制');
-    }
-    function doCopy(btn, text, defaultLabel) {
-      var original = btn.innerHTML;
-      function done() {
-        btn.classList.add('copied');
-        btn.innerHTML = '✓ 已复制';
-        setTimeout(function() {
-          btn.classList.remove('copied');
-          btn.innerHTML = original;
-        }, 1800);
-      }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(function() {
-          fallbackCopy(text); done();
-        });
-      } else {
-        fallbackCopy(text); done();
-      }
-    }
-    function fallbackCopy(text) {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed'; ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); } catch(e) {}
-      document.body.removeChild(ta);
-    }
-
-    (function init() {
-      loadCheckState();
-    })();
-  </script>
-
-  <!-- ====== 安迪寄语弹窗 ====== -->
+    <!-- ====== 安迪寄语弹窗 ====== -->
 
   <!-- 安迪寄语弹窗 - 信封主题 -->
   <div class="welcome-overlay" id="welcomeModal">
@@ -3171,1463 +2767,6 @@
     // 访问统计（每日每设备计一次）
     var s = getStats();
     if (!s.visited) { s.visits++; s.visited = true; saveStats(s); }
-  })();
-
-  /* ====== 口播生成器 ====== */
-  var GEN_QUOTA_KEY = 'koubo-gen-quota';
-  var GEN_TOPICS_KEY = 'koubo-gen-topics';
-  var GEN_FREE_LIMIT = 999999; /* 无限生成 */
-  var genCounter = 0;
-
-  var GEN_TYPES = [
-    { cls: 'topic-mindset', tag: 'tag-mindset', tagText: '心态', num: 'c1', hl: 'h-red', dotColor: 'var(--accent)' },
-    { cls: 'topic-money',   tag: 'tag-money',   tagText: '搞钱', num: 'c2', hl: 'h-gold', dotColor: 'var(--gold)' },
-    { cls: 'topic-growth',  tag: 'tag-growth',  tagText: '成长', num: 'c3', hl: 'h-cyan', dotColor: 'var(--accent2)' },
-    { cls: 'topic-wisdom',  tag: 'tag-wisdom',  tagText: '智慧', num: 'c4', hl: 'h-purple', dotColor: 'var(--purple)' },
-    { cls: 'topic-action',  tag: 'tag-action',  tagText: '行动', num: 'c5', hl: 'h-green', dotColor: 'var(--green)' }
-  ];
-
-  /* --- 生成额度 --- */
-  function getGenQuota() {
-    var q = safeParse(localStorage.getItem(GEN_QUOTA_KEY), { date: todayStr(), used: 0 });
-    if (q.date !== todayStr()) { q = { date: todayStr(), used: 0 }; saveGenQuota(q); }
-    return q;
-  }
-  function saveGenQuota(q) { try { localStorage.setItem(GEN_QUOTA_KEY, JSON.stringify(q)); } catch(e){} }
-
-  /* --- 构建重新生成/精细处理按钮 --- */
-  function buildRefineBtns(c) {
-    var left = Math.max(0, 2 - (c.refineUsed || 0));
-    var disabled = left <= 0 ? 'disabled' : '';
-    return '<div class="refine-section">' +
-      '<div class="refine-label-row">' +
-        '<span class="rl-label">重新生成要求</span>' +
-        '<span class="rl-label">精细处理要求</span>' +
-      '</div>' +
-      '<div class="refine-input-row" style="display:flex;gap:0.5rem;">' +
-        '<textarea class="refine-req-input" id="regenReq-' + c.id + '" placeholder="如：语气更犀利、加数据、换角度…" rows="1" style="flex:1;"></textarea>' +
-        '<textarea class="refine-req-input" id="refineReq-' + c.id + '" placeholder="如：润色语句、优化表达、精炼…" rows="1" style="flex:1;"></textarea>' +
-      '</div>' +
-      '<div class="refine-btns">' +
-        '<button class="refine-btn" ' + disabled + ' onclick="refineTopic(\'' + c.id + '\',\'regen\')">🔄 重新生成</button>' +
-        '<button class="refine-btn" ' + disabled + ' onclick="refineTopic(\'' + c.id + '\',\'refine\')">✨ 精细处理</button>' +
-        '<span class="refine-count">剩余 ' + left + '/2 次</span>' +
-      '</div>' +
-    '</div>';
-  }
-
-  /* --- 重新生成 / 精细处理 --- */
-  function refineTopic(topicId, mode) {
-    // 找到原文
-    var all = getGenTopics();
-    var today = todayStr();
-    var list = all[today] || [];
-    var orig = null;
-    var origIdx = -1;
-    for (var i = 0; i < list.length; i++) {
-      if (list[i].id === topicId) { orig = list[i]; origIdx = i; break; }
-    }
-    if (!orig) { showToast('未找到原始文案', 'error'); return; }
-
-    // 额度检查（每篇独立2次）
-    var used = orig.refineUsed || 0;
-    if (used >= 2) {
-      showToast('此篇文章的重新生成/精细处理次数已用完（每篇2次），请生成新文案', 'warn');
-      return;
-    }
-
-    // 读取当前设置 + 该篇的 refine 要求输入
-    var wcEl = document.getElementById('genWordCount');
-    var durEl = document.getElementById('genDuration');
-    var themeEl = document.getElementById('genTheme');
-    var reqEl = document.getElementById('genReq');
-    var audEl = document.getElementById('genAudience');
-    // 根据模式读取对应的输入框
-    var inputId = mode === 'regen' ? 'regenReq-' + topicId : 'refineReq-' + topicId;
-    var refineReqEl = document.getElementById(inputId);
-    var wordCount = wcEl ? Math.max(1000, Math.min(5000, parseInt(wcEl.value) || 1000)) : (orig.wordCount || 1000);
-    var duration = durEl ? Math.max(1, Math.min(15, parseInt(durEl.value) || 3)) : (orig.duration || 3);
-    var customTheme = themeEl ? themeEl.value.trim() : '';
-    var audience = audEl ? audEl.value.trim() : (orig.audience || '');
-    // 优先使用该篇的 refine 输入框要求，没有则用全局文案要求
-    var refineReq = refineReqEl ? refineReqEl.value.trim() : '';
-    // 重新生成/精细处理的要求 + 原始文案要求合并
-    var combinedReq = refineReq || (orig.customReq || '');
-    if (refineReq && orig.customReq) {
-      combinedReq = orig.customReq + '；' + refineReq;
-    }
-
-    // 显示加载
-    var origEl = document.getElementById(topicId);
-    if (origEl) {
-      var body = origEl.querySelector('.topic-body');
-      if (body) {
-        body.style.opacity = '0.5';
-        var loadingDiv = document.createElement('div');
-        loadingDiv.className = 'gen-loading show';
-        loadingDiv.id = 'refine-loading-' + topicId;
-        loadingDiv.textContent = mode === 'regen' ? '正在重新生成' : '正在精细处理';
-        loadingDiv.innerHTML += '<span class="dots"></span>';
-        body.appendChild(loadingDiv);
-      }
-    }
-
-    setTimeout(function() {
-      // 生成新内容（保留原话题的受众和 refineUsed）
-      var newContent = generateContent(orig.rawTitle, {
-        wordCount: wordCount,
-        duration: duration,
-        customTheme: customTheme,
-        customReq: combinedReq,
-        audience: audience,
-        refineMode: mode
-      });
-
-      // 继承原话题的 refineUsed 并 +1
-      newContent.refineUsed = (orig.refineUsed || 0) + 1;
-
-      // 替换原文
-      for (var j = 0; j < list.length; j++) {
-        if (list[j].id === topicId) {
-          list[j] = newContent;
-          break;
-        }
-      }
-      all[today] = list;
-      saveGenTopics(all);
-
-      // 重新渲染
-      renderGenTopics();
-      loadCheckState();
-      updateGenUI();
-
-      // 统计
-      var st = getStats(); st.generations++; saveStats(st);
-
-      var leftR = Math.max(0, 2 - newContent.refineUsed);
-      showToast(mode === 'regen' ? '已重新生成 · 该篇剩余 ' + leftR + ' 次' : '已精细处理 · 该篇剩余 ' + leftR + ' 次', 'success');
-
-      // 滚动到新内容
-      var newEl = document.getElementById(newContent.id);
-      if (newEl) {
-        newEl.classList.remove('collapsed');
-        newEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 1200);
-  }
-
-  /* --- 已生成话题持久化 --- */
-  function getGenTopics() {
-    var all = safeParse(localStorage.getItem(GEN_TOPICS_KEY), {});
-    var today = todayStr();
-    if (!all[today]) all[today] = [];
-    return all;
-  }
-  function saveGenTopics(all) { try { localStorage.setItem(GEN_TOPICS_KEY, JSON.stringify(all)); } catch(e){} }
-
-  /* --- 更新生成器UI --- */
-  function updateGenUI() {
-    var badge = document.getElementById('genBadge');
-    var qText = document.getElementById('genQuotaText');
-    if (!badge || !qText) return;
-    var q = getGenQuota();
-    var left = Math.max(0, GEN_FREE_LIMIT - q.used);
-    badge.textContent = '免费 · 无限';
-    badge.className = 'gen-badge';
-    qText.innerHTML = '今日剩余 <span class="gq-num">无限</span> 次免费生成';
-  }
-
-  /* --- 内容生成模板引擎 --- */
-  function generateContent(rawTitle, opts) {
-    opts = opts || {};
-    var wordCount = opts.wordCount || 500;
-    var duration = opts.duration || 3;
-    var customTheme = opts.customTheme || '';
-    var customReq = opts.customReq || '';
-    var audience = opts.audience || '';
-    var refineMode = opts.refineMode || ''; // 'regen' | 'refine' | ''
-    var hotRank = opts.hotRank || '';
-    var hotHeat = opts.hotHeat || '';
-
-    var title = rawTitle.trim();
-
-    // === 创意标题生成（不直接用事件名） ===
-    var creativeTitlePool = [
-      '为什么{T}能引爆全网？',
-      '{T}背后的真相，90%的人没看懂',
-      '别光看{T}的热闹，搞懂这三点才值钱',
-      '{T}火了，但真正值钱的是这个',
-      '从{T}看懂这个时代的底层逻辑',
-      '{T}刷屏背后，藏着一个巨大的机会',
-      '看完{T}，我发现了三个被忽略的细节',
-      '{T}不是偶然，是必然',
-      '所有人都在讨论{T}，但没人说到点子上',
-      '{T}给我最大的启发，不是你以为的那个',
-      '拆解{T}：普通人能从中赚到什么？',
-      '{T}这件事，暴露了一个残酷的现实',
-      '别被{T}带偏了，先想清楚这一个问题',
-      '{T}告诉你：下一个风口已经来了',
-      '关于{T}，我有一些不一样的看法',
-      '从{T}中学到的，比你想的要多得多',
-      '当所有人追{T}的时候，聪明人在做什么？',
-      '{T}的深层逻辑，值得每个人认真想一遍',
-      '看完{T}别急着跟风，先问自己三个问题',
-      '{T}这件事的本质，其实是关于你的未来'
-    ];
-    var creativeTitle = creativeTitlePool[Math.floor(Math.random() * creativeTitlePool.length)].replace(/\{T\}/g, title);
-    var shortTitle = creativeTitle.length > 12 ? creativeTitle.slice(0, 10) + '…' : creativeTitle;
-    // rawTitle 保留原始话题名，title 用创意标题
-    var displayTitle = creativeTitle;
-
-    // 主题选择：自定义 or 随机
-    var typeIdx = Math.floor(Math.random() * GEN_TYPES.length);
-    var t = GEN_TYPES[typeIdx];
-    // 如果用户指定了主题，尝试匹配最接近的类型
-    if (customTheme) {
-      var themeLower = customTheme.toLowerCase();
-      if (themeLower.indexOf('心态') !== -1 || themeLower.indexOf('心理') !== -1 || themeLower.indexOf('情绪') !== -1) typeIdx = 0;
-      else if (themeLower.indexOf('搞钱') !== -1 || themeLower.indexOf('赚钱') !== -1 || themeLower.indexOf('财富') !== -1 || themeLower.indexOf('商业') !== -1) typeIdx = 1;
-      else if (themeLower.indexOf('成长') !== -1 || themeLower.indexOf('学习') !== -1 || themeLower.indexOf('提升') !== -1) typeIdx = 2;
-      else if (themeLower.indexOf('智慧') !== -1 || themeLower.indexOf('认知') !== -1 || themeLower.indexOf('思维') !== -1) typeIdx = 3;
-      else if (themeLower.indexOf('行动') !== -1 || themeLower.indexOf('执行') !== -1 || themeLower.indexOf('实践') !== -1) typeIdx = 4;
-      t = GEN_TYPES[typeIdx];
-    }
-    var tagText = customTheme ? customTheme : t.tagText;
-    var topicId = 'gen-' + Date.now() + '-' + (genCounter++);
-    var now = new Date();
-    var monthStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月';
-
-    // 维度模板池（按主题分组）
-    var dimPoolByType = {
-      0: ['竞技心态 · 压力管理 · 关键时刻表现', '心理韧性 · 情绪管理 · 自我突破', '认知重构 · 逆境思维 · 内在驱动'],
-      1: ['产业趋势 · 职业选择 · 宏观判断', '信息差 · 资源整合 · 机会捕获', '财富思维 · 杠杆效应 · 现金流'],
-      2: ['成长思维 · 沉没成本 · 向前看', '习惯养成 · 复利效应 · 长期主义', '自我迭代 · 反馈循环 · 持续输出'],
-      3: ['底层逻辑 · 认知升级 · 跨界思维', '风险意识 · 决策框架 · 反脆弱', '趋势判断 · 洞察力 · 系统思维'],
-      4: ['执行力 · 习惯养成 · 持续输出', '注意力管理 · 时间分配 · 深度工作', '目标拆解 · 最小行动 · 快速迭代']
-    };
-    var dimPool = dimPoolByType[typeIdx] || ['底层逻辑 · 认知升级 · 跨界思维', '信息差 · 资源整合 · 机会捕获', '趋势判断 · 长期主义 · 复利效应'];
-    // 来源池
-    var srcPool = [
-      '抖音 / 微博 / 知乎热议',
-      '新华社 / 人民日报 / 央视新闻',
-      '36氪 / 虎嗅 / 第一财经',
-      '抖音 / B站 / 新榜数据',
-      '头条 / 澎湃新闻 / 界面新闻'
-    ];
-    // 核心观点模板
-    var takeawayPool = [
-      { prefix: '所有看似突然的爆发，背后都是长期积累的必然。', hl: '你看到的是运气，没看到的是准备。' },
-      { prefix: '信息差决定认知差，认知差决定财富差。', hl: '谁先看懂趋势，谁就先拿到入场券。' },
-      { prefix: '真正的机会从来不藏在舒适区里。', hl: '敢不敢迈出第一步，比走多远更重要。' },
-      { prefix: '大部分人失败不是因为能力不够，是因为想太多做太少。', hl: '完成比完美重要，行动比焦虑有用。' },
-      { prefix: '你以为的极限，往往只是别人的起点。', hl: '打破天花板的第一步，是意识到天花板的存在。' },
-      { prefix: '在这个时代，注意力就是你最稀缺的资产。', hl: '你把时间花在哪，你就会成为什么样的人。' },
-      { prefix: '热点会过去，但热点背后的逻辑会反复出现。', hl: '抓住一次是运气，抓住规律是能力。' },
-      { prefix: '所有行业的红利期都在变短，唯一不变的是学习速度。', hl: '不是你知道多少，而是你学得多快。' },
-      { prefix: '焦虑的本质，是能力撑不起野心。', hl: '与其焦虑，不如把今天的事做到极致。' },
-      { prefix: '普通人看现象，高手看结构。', hl: '结构变了，玩法就变了，机会也就变了。' },
-      { prefix: '风口上飞起来的猪，落下来也是摔得最惨的。', hl: '没有翅膀的飞翔，都是在赌运气。' },
-      { prefix: '你缺的不是信息，是处理信息的能力。', hl: '同样的新闻，有人当八卦看，有人当信号读。' }
-    ];
-    // 文案段落模板 — 多种结构，避免套模板
-    var p1Pool = [
-      // 结构A：热点切入型
-      '今天给大家分享，{T}。这件事刷屏的时候，大多数人看的是热闹，但如果你往深了想，这背后藏着一个被严重低估的逻辑。{HL}真正值钱的信息，从来不在事件本身，而在事件背后的趋势和机会。{HL}',
-      // 结构B：反常识型
-      '今天给大家分享，{T}。这条消息出来之后，评论区炸了，有人说意外，有人说早该想到。但我关注的点跟大多数人不一样。{HL}所有引发广泛讨论的事件，本质上都触及了某个社会痛点或者时代红利。{HL}你能从中读出什么，决定了你能抓住什么。',
-      // 结构C：认知陷阱型
-      '今天给大家分享，{T}。很多人第一反应是"跟我有什么关系"，这就错了。{HL}这个时代最大的认知陷阱，就是觉得热点跟自己无关。每一个热点背后，都藏着一条你可以用的信息链。{HL}问题是你有没有那个敏感度去捕捉它。',
-      // 结构D：提问开场型
-      '你有没有想过，为什么{T}能火？表面上看它只是个新闻，但如果你把它拆开看，里面藏着一套完整的传播逻辑。{HL}一条内容能不能爆，不取决于内容本身好不好，取决于它有没有戳中某个群体没说出口的情绪。{HL}搞懂这个，你就搞懂了流量密码的一半。',
-      // 结构E：故事引入型
-      '昨天刷到{T}的时候，我第一反应不是去看热闹，而是去翻评论区。因为评论区才是真正的内容金矿。{HL}每条评论背后都藏着一个真实的需求，一个未被满足的痛点。{HL}你如果能把评论区研究透，你比90%的创作者都懂用户。',
-      // 结构F：数据视角型
-      '{T}这个事，我建议你别只看热闹，去看数据。传播曲线什么时候开始涨的，哪个节点爆发了，讨论的人群画像是怎样的。{HL}数据不会骗人，但大多数人不会读数据。{HL}你能从数据里看出门道，你就有信息差优势。',
-      // 结构G：类比开场型
-      '说个可能不太恰当的类比，{T}这件事，跟当年智能手机刚出来时一样。当时很多人也觉得跟自己没关系，后来呢？所有人都被卷进去了。{HL}每一次技术或者趋势的变革，都会淘汰一批人，也会成就一批人。{HL}区别在于，谁提前看到了信号。',
-      // 结构H：直接结论型
-      '先说结论：{T}不是一个孤立事件，它是一个信号。{HL}信号意味着什么？意味着如果你读懂了，你可以在更大的变化到来之前提前布局。{HL}大多数人只会事后诸葛亮，真正的高手都是事前布局。',
-      // 结构I：拆解分析型
-      '我把{T}这件事拆成三个层面来看。第一层是表面发生了什么，这个大家都知道。第二层是为什么会发生，这需要你懂行业逻辑。第三层是对你意味着什么，这才是关键。{HL}大多数人停在第一层就走了，所以永远只能当观众。{HL}',
-      // 结构J：悬念钩子型
-      '{T}火了之后，我注意到一个细节，很多人可能忽略了。但就是这个细节，暴露了一个巨大的机会。{HL}机会从来不会大声喊"我在这"，它总是藏在别人不注意的角落里。{HL}你愿不愿意多看一眼，决定了你能不能抓住它。'
-    ];
-    var p2Pool = [
-      // 结构A：三步行动法
-      '那具体怎么做？第一步，别只看表面，往深挖一层。{T}背后牵扯的是哪个行业、哪类人群、哪种需求。第二步，找到跟你自身能力的交集，你能在这个趋势里扮演什么角色。第三步，别等"准备好了"再动，先迈出最小的一步再说。{HL}这个世界奖励的不是想得最清楚的人，是行动最快的人。{HL}那你的第一步，准备什么时候迈出去？',
-      // 结构B：反思型
-      '说到底，{T}这件事给我们的启示其实很简单。{HL}在这个信息爆炸的时代，真正的竞争力不是你知道多少，而是你能把知道的东西转化成什么行动。{HL}信息本身不值钱，值钱的是你对信息的处理能力。同样一条新闻，有人看完就忘了，有人看完调整了人生方向。差距不在智商，在认知颗粒度。那你下次看到热点，是继续当观众，还是开始当玩家？',
-      // 结构C：对比分析型
-      '我来给你算笔账。同样面对{T}这件事，普通人的反应是刷完走人，聪明人的反应是问三个问题：这反映了什么趋势？这个趋势下谁在赚钱？我能怎么切入？你看，差距不是在能力上拉开的，是在思考方式上拉开的。{HL}前者永远在追赶，后者永远在布局。{HL}你想成为哪种人？',
-      // 结构D：场景模拟型
-      '想象一下，如果你三年前就意识到{T}这类事件的规律，你今天会是什么状态？大概率比现在好得多。但问题是，三年前的你看不到，今天的你看到了吗？{HL}每一个热点都是一次认知测试，测的不是你知不知道，而是你能不能从中看出下一步。{HL}别让三年后的自己后悔今天的错过。',
-      // 结构E：金句收尾型
-      '回到{T}本身，它给你的最大启发应该是什么？不是让你焦虑，也不是让你跟风。{HL}是让你建立一套自己的信息过滤系统，学会从海量信息里捞出真正有价值的那几条。{HL}这个过程会很痛苦，但一旦建立起来，你就是那个别人问你"怎么看"的人。',
-      // 结构F：提问引导型
-      '最后问你一个问题：{T}这件事，如果让你用一句话总结，你会怎么说？别小看这个练习。{HL}能一句话说清楚的人，说明真的想明白了。说不清楚的人，说明还在混沌中。{HL}今天就开始练，坚持一个月，你的思维清晰度会发生质变。评论区写下你的一句话总结。',
-      // 结构G：逆向思维型
-      '换个角度想，{T}这件事如果不火，说明什么？说明大众没感知到它的重要性。它火了，说明它触到了某个敏感神经。{HL}火不火不重要，重要的是它为什么火。搞懂了"为什么"，你就有了预判下一个热点的能力。{HL}这才是真正值钱的能力。',
-      // 结构H：分层建议型
-      '我给你三个层次的建议。最低层次，至少知道发生了什么，别跟时代脱节。中间层次，能分析出为什么发生，培养判断力。最高层次，能预判接下来会发生什么，提前卡位。{HL}你目前在哪个层次不重要，重要的是你愿不愿意往上走。{HL}每往上走一层，你的世界就大一圈。'
-    ];
-
-    var dim = dimPool[Math.floor(Math.random() * dimPool.length)];
-    var src = srcPool[Math.floor(Math.random() * srcPool.length)];
-    var tk = takeawayPool[Math.floor(Math.random() * takeawayPool.length)];
-
-    // === 检测文案要求：是否需要问句开头 ===
-    var reqLower0 = (customReq || '').toLowerCase();
-    var needQuestionStart = (reqLower0.indexOf('问句') !== -1 || reqLower0.indexOf('提问') !== -1 || reqLower0.indexOf('疑问') !== -1 || reqLower0.indexOf('设问') !== -1);
-
-    // 问句开头专用模板池（全部以问句开头）
-    var questionStartPool = [
-      '你有没有想过，为什么{T}能火？表面上看它只是个新闻，但如果你把它拆开看，里面藏着一套完整的传播逻辑。{HL}一条内容能不能爆，不取决于内容本身好不好，取决于它有没有戳中某个群体没说出口的情绪。{HL}搞懂这个，你就搞懂了流量密码的一半。',
-      '{T}这件事，到底跟你有什么关系？如果你觉得没关系，那你可能正在错过一个重要的信号。{HL}每一个刷屏的事件背后，都藏着一条你可以用的信息链，问题是大多数人选择了忽略。{HL}今天我们就来拆解一下，这个信号到底在说什么。',
-      '为什么同样是看{T}，有人看完就忘了，有人看完就赚到了？差距到底在哪？{HL}差距不在信息本身，在于你怎么处理信息。同样的新闻，有人当八卦看，有人当信号读，结果天差地别。{HL}今天我就把这套信息处理方法拆给你看。',
-      '普通人到底能从{T}中得到什么？不是跟风的快感，不是社交的谈资，而是真正能改变现状的东西。{HL}答案是：认知差。谁能比别人多看一层，谁就能比别人先动一步。{HL}今天我们就来聊聊这多出来的一层。',
-      '你刷到{T}的时候，第一反应是什么？是好奇？是震惊？还是"跟我有什么关系"？{HL}你的第一反应，暴露了你的信息处理层级。高手看到热点的第一反应永远是三个字：为什么。{HL}为什么是它火了？为什么是现在？为什么大家都在讨论？搞懂这三个为什么，你就比90%的人清醒。',
-      '如果{T}这件事发生在三年前，你会怎么做？如果发生在三年后呢？{HL}同样的事件，放在不同的时间节点，意义完全不同。但有一点是确定的：每一次热点都是一次认知测试，测的不是你知不知道，而是你能不能从中看出趋势。{HL}今天我们就来好好做一次这个测试。',
-      '知道{T}为什么能刷屏吗？不是因为事件本身有多炸裂，而是因为它戳中了某个大家都想说但没说出口的东西。{HL}这个"没说出口的东西"，就是机会所在。{HL}谁能第一个把它说出来，谁就能吃到这波流量红利。',
-      '你确定你看懂{T}了吗？大部分人以为自己看懂了，其实只是看了个热闹。{HL}真正的看懂，是能从一件事里看出三件事：它反映了什么趋势，这个趋势下谁在受益，你能不能也分一杯羹。{HL}今天我就带你把这三件事想清楚。'
-    ];
-
-    var p1Tpl, p2Tpl;
-    if (needQuestionStart) {
-      // 强制使用问句开头模板
-      p1Tpl = questionStartPool[Math.floor(Math.random() * questionStartPool.length)];
-    } else {
-      p1Tpl = p1Pool[Math.floor(Math.random() * p1Pool.length)];
-    }
-    p2Tpl = p2Pool[Math.floor(Math.random() * p2Pool.length)];
-    var hl = t.hl;
-
-    var p1 = p1Tpl.replace(/\{T\}/g, title);
-    p1 = p1.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-    var p2 = p2Tpl.replace(/\{T\}/g, title);
-    p2 = p2.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-    // 受众替换：如果用户指定了受众，替换模板中的默认受众描述
-    if (audience) {
-      p2 = p2.replace(/对大家来说|对所有人来说/g, '对' + audience + '来说');
-    }
-
-    var takeawayText = tk.prefix + '<span class="'+hl+'">' + tk.hl + '</span>';
-
-    // 根据字数设置调整：字数少则精简，字数多则补充扩展段落
-    var extraPara = '';
-
-    // === 扩展段落池（大量模板，避免重复） ===
-    var extraPoolLarge = [
-      '<p>再往深想一层，{T}这件事其实折射出一个更大的趋势。{HL}当所有人都在追热点的时候，真正聪明的人在研究热点背后的规律。{HL}规律是可复制的，热点是一次性的。你能从一次热点里提炼出方法论，下次热点来了你就能比别人快一步。这不是天赋，这是可以训练的思维方式。每次看到一个热点，强迫自己写三句话总结：这件事的本质是什么，对普通人意味着什么，我能做什么。坚持一个月，你的信息敏感度会发生质变。</p>',
-      '<p>还有一层你可能没想到。{T}之所以能成为热点，是因为它击中了某种集体情绪。{HL}情绪是流量的底层燃料，谁能读懂情绪，谁就能预判下一个爆点。{HL}所以下次看到热点，别只看内容，去感受它激发的是焦虑、好奇还是共鸣。搞懂了情绪密码，你的内容就自带传播力。</p>',
-      '<p>说个实操建议。围绕{T}，你可以做三件事。第一，用你自己的话重新讲一遍，这就是一条内容。第二，找一个相关但不同的角度，再讲一遍，这是第二条。第三，把它跟你之前的某个观点串联起来，形成体系，这是第三条。{HL}一个热点能产出三条内容，这才叫高效。{HL}大部分创作者一个热点只做一条就完了，效率太低。</p>',
-      '<p>最后提醒一句，{T}这类事件每隔一段时间就会出现一个类似的。你要做的不是追这一个，而是建立一套"热点响应机制"。{HL}看到热点，五分钟内输出观点，半小时内出文案，一小时内发布。{HL}速度就是壁垒。等你慢慢想好了再发，风头早过了。这个节奏感，需要刻意练习。</p>',
-      '<p>退一步看，{T}其实揭示了一个残酷的现实：信息鸿沟正在加速扩大。{HL}能看懂的人越来越强，看不懂的人越来越被动。{HL}这不是危言耸听，这是正在发生的事。你今天花时间研究这个热点，就是在给自己加一层护城河。别觉得累，等你习惯了这种思考方式，它会变成你的本能。</p>',
-      '<p>再来聊聊{T}这个话题的传播路径。一个事件从爆发到全民讨论，通常经历三个阶段。第一阶段是核心圈层引爆，少数人率先发现并传播。第二阶段是圈层突破，内容开始跨界扩散。第三阶段是大众狂欢，所有人都在聊。{HL}如果你能在第一阶段就介入，你的内容就能搭上流量快车。{HL}如果你等到第三阶段才入场，你只是在给已经饱和的讨论增加噪音。</p>',
-      '<p>关于{T}，我还想补充一个视角。很多时候我们看热点，容易陷入"对错思维"，急着站队。但真正有价值的思考方式是"机会思维"——不管这件事对不对，它反映什么趋势，我能从中发现什么机会。{HL}对错是道德判断，机会是商业判断。{HL}做内容创作，你需要的是后者。前者让你成为一个键盘侠，后者让你成为一个创作者。</p>',
-      '<p>有意思的是，{T}这件事还暴露了一个内容创作的核心矛盾：专业度和传播度的平衡。太专业没人看，太通俗没深度。{HL}真正厉害的创作者，能把专业的东西讲得通俗，把通俗的东西讲出深度。{HL}这需要你既懂行业的底层逻辑，又懂大众的情绪痛点。两者缺一不可。</p>',
-      '<p>说到底，{T}给我们的启示不仅仅停留在事件本身。它提醒我们，这个时代变化太快，昨天的经验可能就是今天的包袱。{HL}保持空杯心态，比积累经验更重要。{HL}不是说你过去的经验没用，而是说你需要不断更新你的认知框架。框架不变，你看什么都是旧风景。框架一变，同样的信息能看出完全不同的东西。</p>',
-      '<p>我再给你一个实用的框架，叫"三问法"。看到{T}这样的热点，问自己三个问题：第一，这件事的本质是什么？剥掉表面的喧嚣，核心发生了什么。第二，它和我的关系是什么？不是泛泛的"跟我有关"，而是具体的、可操作的关联。第三，我接下来做什么？不是宏大的计划，而是一个今天就能执行的小动作。{HL}能回答这三个问题的人，永远不会被热点裹挟。{HL}因为他们不是在追热点，而是在用热点修炼自己。</p>',
-      '<p>从{T}中，我还观察到一个现象：信息过载时代，"过滤能力"比"获取能力"重要一万倍。以前是信息少，谁能获取谁就赢。现在是信息太多，谁能过滤谁就赢。{HL}你每天刷几百条信息，真正有用的可能不超过三条。{HL}问题是你能不能把这三条捞出来。这个能力，比任何技能都值钱。</p>',
-      '<p>回到{T}本身，我们再聊一个被严重低估的概念——"信息差变现"。很多人以为信息差就是"我知道你不知道的"，太浅了。真正的信息差是"我理解了你还没理解的"。同样的信息摆在那里，你能不能比别人多看出一层含义，这才是核心。{HL}信息差不是你知道什么，而是你理解什么。{HL}理解深度决定变现能力。</p>',
-      '<p>顺着{T}这个话题往下挖，你会发现一个规律：所有能持续火的话题，背后都对应着一个普遍性的人性需求。不是具体的事件让人兴奋，是事件背后那个"跟我有关"的感觉让人兴奋。{HL}做内容，你不需要追每一个热点，你需要找到属于你的那个人性需求。{HL}一旦找到，每个热点都是你的弹药。</p>',
-      '<p>聊到这儿，不得不提一个常见的认知误区。很多人看{T}，第一反应是"这跟我有什么关系"，然后划走。这个反应本身，就暴露了一个问题：你的信息敏感度太低了。{HL}高手看任何热点，第一反应都是"这里面有没有我能用的东西"。{HL}不是每个热点都跟你有关，但如果你永远不往这个方向想，你就永远找不到跟你有关的那一个。</p>',
-      '<p>从另一个角度看{T}，你会发现它其实是一个"认知筛子"。同一个事件，有人看到情绪，有人看到机会，有人看到趋势。你看到什么，取决于你的认知层级。{HL}认知层级不是天生的，是后天训练出来的。{HL}每次看到热点，强迫自己多想一层，多问一个为什么，就是在升级你的认知系统。</p>',
-      '<p>我再说一个可能颠覆你认知的观点。{T}这种热点事件，最大的价值不是它本身的信息量，而是它作为一个"钩子"的价值。什么意思？你可以用它来吸引注意力，然后在注意力进来之后，传递你真正想传递的价值。{HL}热点是钩子，价值是鱼饵，两者缺一不可。{HL}只有钩子没有鱼饵，观众来了就走了。只有鱼饵没有钩子，观众根本不来。</p>',
-      '<p>从{T}这件事，我们还能学到一课：时机感。同样的话，在热点爆发时说和在平时说，效果天差地别。{HL}不是你的内容不够好，是你选错了时间点。{HL}做内容的人，必须对时机有极度敏锐的感知。什么时候该说什么话，比说什么话本身更重要。这个能力，需要大量的练习和复盘。</p>',
-      '<p>最后，关于{T}，我想说的是：别只做一个消费者，要做一个生产者。消费者看完热闹就走了，生产者看完热闹会想"我能产出什么"。{HL}消费者在给别人贡献流量，生产者在用别人的流量给自己引流。{HL}你选择做哪种人，决定了你在这个时代的位置。</p>',
-      '<p>补充一个关键细节。{T}能火，说明它触到了某个社会痛点。但痛点不是用来焦虑的，痛点是用来发现需求的。{HL}每一个社会痛点背后，都藏着一个未被满足的市场需求。{HL}你能把痛点翻译成需求，把需求翻译成方案，你就能从中找到属于你的机会。这就是商业思维的底层逻辑。</p>',
-      '<p>我们再往回退一步，从更宏观的视角看{T}。它不是孤立的事件，它是整个时代趋势的一个切片。你把它放回时代的拼图里，会发现它跟很多看似无关的事件，其实指向同一个方向。{HL}能看出这个方向的人，叫做有"趋势嗅觉"。{HL}这个嗅觉不是天赋，是你长期浸泡在信息里、反复训练判断力的结果。</p>'
-    ];
-
-    // 计算需要多少段额外内容（每段约140字，多生成确保达标）
-    var coreWordCount = 350; // p1+p2大约350字
-    var extraNeeded = Math.max(1, Math.ceil((wordCount - coreWordCount) / 140));
-    // 打乱并取出所需数量的段落
-    var shuffled = extraPoolLarge.slice().sort(function() { return Math.random() - 0.5; });
-    var extraParas = [];
-    for (var ei = 0; ei < extraNeeded && ei < shuffled.length; ei++) {
-      var ep = shuffled[ei].replace(/\{T\}/g, title);
-      ep = ep.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-      if (ep.indexOf('<p>') !== 0) ep = '<p>' + ep;
-      if (ep.lastIndexOf('</p>') !== ep.length - 4) ep = ep + '</p>';
-      extraParas.push(ep);
-    }
-    extraPara = extraParas.join('');
-
-    // === 根据用户自定义要求调整文案 ===
-    if (customReq) {
-      // 在文案中融入用户要求
-      var reqLower = customReq.toLowerCase();
-
-      // 开头金句要求（但不覆盖问句开头）
-      if (!needQuestionStart && (reqLower.indexOf('金句') !== -1 || reqLower.indexOf('开头') !== -1)) {
-        var hookPool = [
-          '记住一句话：', '先抛个观点：', '今天这句话你一定记住：', '直接上结论：'
-        ];
-        var hook = hookPool[Math.floor(Math.random() * hookPool.length)];
-        p1 = '<p>' + hook + '<span class="'+hl+'">' + tk.hl + '</span></p>' + '<p>' + p1;
-        if (p1.indexOf('<p>') === 0 && p1.lastIndexOf('<p>') > 0) p1 += '</p>';
-      }
-
-      // 结尾行动号召
-      if (reqLower.indexOf('行动') !== -1 || reqLower.indexOf('号召') !== -1 || reqLower.indexOf('结尾') !== -1) {
-        var ctaPool = [
-          '别光看，现在就去做。',
-          '看完这条视频，你的第一步是什么？评论区告诉我。',
-          '今晚睡前，花5分钟想想这件事跟你有什么关系。',
-          '如果觉得有启发，转发给身边需要的人。'
-        ];
-        var cta = ctaPool[Math.floor(Math.random() * ctaPool.length)];
-        p2 = p2.replace(/<\/p>$/, ' <span class="'+hl+'">' + cta + '</span></p>');
-      }
-
-      // 数据对比
-      if (reqLower.indexOf('数据') !== -1 || reqLower.indexOf('对比') !== -1) {
-        var dataPool = [
-          '有数据显示，90%的人看完热点就忘了，只有10%的人会行动。',
-          '根据调查，能坚持复盘的人，收入增速是普通人的3倍。',
-          '统计表明，信息处理能力强的人，决策准确率高出47%。'
-        ];
-        var data = dataPool[Math.floor(Math.random() * dataPool.length)];
-        p1 = p1.replace(/<\/p>$/, ' ' + data + '</p>');
-      }
-
-      // 口语化
-      if (reqLower.indexOf('口语') !== -1 || reqLower.indexOf('大白话') !== -1 || reqLower.indexOf('接地气') !== -1) {
-        p1 = p1.replace(/给大家分享/g, '跟你们说')
-                .replace(/意味着/g, '说白了就是')
-                .replace(/本质上/g, '说白了');
-        p2 = p2.replace(/给大家分享/g, '跟你们说')
-                .replace(/意味着/g, '说白了就是')
-                .replace(/本质上/g, '说白了');
-      }
-
-      // 把用户要求作为元信息记录
-      takeawayText += '<br><span style="font-size:0.72rem;color:var(--muted);">📋 文案要求：' + customReq + '</span>';
-    }
-
-    // 受众信息记录
-    if (audience) {
-      takeawayText += '<br><span style="font-size:0.72rem;color:var(--muted);">👥 面向受众：' + audience + '</span>';
-    }
-
-    // === 根据受众群体调整文案语气和内容 ===
-    if (audience) {
-      var audLower = audience.toLowerCase();
-      // 针对年轻群体
-      if (audLower.indexOf('大学生') !== -1 || audLower.indexOf('00后') !== -1 || audLower.indexOf('年轻人') !== -1 || audLower.indexOf('学生') !== -1) {
-        p1 = p1.replace(/给大家分享/g, '给各位同学分享');
-        p2 = p2.replace(/给大家分享/g, '给各位同学分享');
-        var youngExtra = '<p>尤其是对{aud}来说，你们现在最大的优势就是时间。{HL}年轻的时候试错成本最低，越早开始建立认知优势，未来的复利效应越明显。{HL}不要等到"准备好了"再行动，先上路，路会越走越宽的。</p>';
-        youngExtra = youngExtra.replace(/\{aud\}/g, audience);
-        youngExtra = youngExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-        extraPara = extraPara + youngExtra;
-      }
-      // 针对职场人群
-      else if (audLower.indexOf('职场') !== -1 || audLower.indexOf('上班') !== -1 || audLower.indexOf('白领') !== -1 || audLower.indexOf('打工人') !== -1) {
-        var workExtra = '<p>对{aud}来说，这不仅是信息差的问题，更是职业护城河的问题。{HL}在职场中，认知升级的速度决定了你的不可替代性。{HL}每天花10分钟深度思考一个热点，三个月后你会发现自己的判断力远超同龄人。这就是职场最隐秘的加速器。</p>';
-        workExtra = workExtra.replace(/\{aud\}/g, audience);
-        workExtra = workExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-        extraPara = extraPara + workExtra;
-      }
-      // 针对创业/搞钱群体
-      else if (audLower.indexOf('创业') !== -1 || audLower.indexOf('搞钱') !== -1 || audLower.indexOf('老板') !== -1 || audLower.indexOf('副业') !== -1) {
-        var bizExtra = '<p>对{aud}来说，热点是最好的市场调研。{HL}每一个热点背后都对应着一类未被满足的需求，谁能第一个把需求和解决方案对接上，谁就能吃到红利。{HL}别光看热闹，要学会看门道。下次看到热点，问自己一句：这里面有没有我可以做的生意？</p>';
-        bizExtra = bizExtra.replace(/\{aud\}/g, audience);
-        bizExtra = bizExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-        extraPara = extraPara + bizExtra;
-      }
-      // 针对宝妈/家庭群体
-      else if (audLower.indexOf('宝妈') !== -1 || audLower.indexOf('妈妈') !== -1 || audLower.indexOf('家庭') !== -1 || audLower.indexOf('家长') !== -1) {
-        var familyExtra = '<p>对{aud}来说，关注热点不只是为了聊天有话题，更是为了给孩子和家人创造更好的未来。{HL}信息差决定了你能给孩子提供什么样的视野，而视野决定了孩子未来的选择空间。{HL}每天花几分钟了解趋势，就是在为家庭做长期投资。</p>';
-        familyExtra = familyExtra.replace(/\{aud\}/g, audience);
-        familyExtra = familyExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-        extraPara = extraPara + familyExtra;
-      }
-      // 其他受众：通用适配
-      else {
-        var genExtra = '<p>对{aud}来说，这条信息能给你带来什么启发？{HL}不要把自己当成旁观者，每一个热点背后都藏着你可以利用的机会。{HL}关键在于你愿不愿意多花3分钟想深一层。看完之后，试着用自己的话总结一遍，这就是最好的学习方式。</p>';
-        genExtra = genExtra.replace(/\{aud\}/g, audience);
-        genExtra = genExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-        extraPara = extraPara + genExtra;
-      }
-    }
-
-    // === 精细处理模式：在原文基础上润色 ===
-    if (refineMode === 'refine') {
-      var refinePrefix = [
-        '换个角度再聊深一点。',
-        '再打磨一层，',
-        '精细优化后：',
-        '进阶版：'
-      ];
-      var rp = refinePrefix[Math.floor(Math.random() * refinePrefix.length)];
-      p1 = '<p>' + rp + '</p>' + p1;
-      // 补充一个精细段落
-      var refineExtra = '<p>补充一个关键细节，{T}这件事还说明了一个道理。{HL}真正的差距不在认知，在执行。{HL}很多人看懂了趋势，但没有在第一时间行动，等反应过来的时候，红利期已经过了。所以，看完这条内容，别只是点个赞，想想你今天能做什么。';
-      refineExtra = refineExtra.replace(/\{T\}/g, title);
-      refineExtra = refineExtra.replace(/\{HL\}(.+?)\{HL\}/g, '<span class="'+hl+'">$1</span>');
-      p2 = p2 + refineExtra + '</p>';
-    }
-
-    // 时长描述
-    var durationStr = duration <= 2 ? '约' + duration + '分钟 · 快节奏'
-      : duration <= 5 ? '约' + duration + '分钟 · 语速正常'
-      : '约' + duration + '分钟 · 深度详讲';
-
-    return {
-      id: topicId,
-      title: displayTitle,
-      rawTitle: title,
-      typeCls: t.cls,
-      tagCls: t.tag,
-      tagText: tagText,
-      numCls: t.num,
-      hl: hl,
-      dotColor: t.dotColor,
-      dimension: dim,
-      source: src,
-      monthStr: monthStr,
-      takeaway: takeawayText,
-      p1: p1,
-      p2: p2,
-      p3: extraPara,
-      wordCount: wordCount,
-      duration: duration,
-      durationStr: durationStr,
-      genDate: todayStr(),
-      genTime: Date.now(),
-      customReq: customReq,
-      audience: audience,
-      refineMode: refineMode,
-      refineUsed: 0,
-      hotRank: hotRank,
-      hotHeat: hotHeat
-    };
-  }
-
-  /* --- 生成话题HTML --- */
-  function buildTopicHTML(c, index) {
-    var num = String(index + 1).padStart(2, '0');
-    var extraParaHTML = c.p3 ? c.p3 : '';
-    var durationText = c.durationStr || ('约' + (c.duration || 3) + '分钟');
-    var wordLabel = c.wordCount ? ' · ' + c.wordCount + '字' : '';
-    return '' +
-      '<li class="topic-item ' + c.typeCls + ' collapsed" id="' + c.id + '">' +
-        '<div class="topic-header" onclick="toggleTopic(this)">' +
-          '<span class="topic-checkbox" onclick="event.stopPropagation(); toggleCheck(this,\'' + c.id + '\')">✓</span>' +
-          '<span class="toc-num ' + c.numCls + '">' + num + '</span>' +
-          '<div class="topic-header-text">' +
-            '<div class="topic-title-row">' +
-              '<span class="toc-item-title">' + c.title + '</span>' +
-              '<span class="toc-tag ' + c.tagCls + '">' + c.tagText + '</span>' +
-              '<span class="hot-rank-badge"><span class="rank-num">' + (c.hotRank || '口播生成') + '</span><span class="rank-heat">' + (c.hotHeat || c.genDate) + '</span></span>' +
-              '<span class="topic-delete-btn" onclick="event.stopPropagation(); deleteGenTopic(\'' + c.id + '\')" title="删除这篇文案">✕</span>' +
-            '</div>' +
-            '<div class="topic-meta">' +
-              '<span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">' + c.dimension + '</span></span>' +
-              '<span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">' + c.rawTitle + '</span></span>' +
-              '<span class="meta-box"><span class="meta-label">事件时间</span><span class="meta-val">' + c.monthStr + '</span></span>' +
-            '</div>' +
-          '</div>' +
-          '<span class="topic-chevron">▾</span>' +
-        '</div>' +
-        '<div class="topic-body">' +
-          '<div class="meta-row">' +
-            '<div class="meta-item"><span class="meta-dot" style="background:' + c.dotColor + '"></span>来源：' + c.source + '</div>' +
-            '<div class="meta-item"><span class="meta-dot"></span>' + c.monthStr + '</div>' +
-          '</div>' +
-          '<div class="short-title">' + c.title + '</div>' +
-          '<div class="takeaway-box">' +
-            '<div class="label">核心观点</div>' +
-            '<div class="takeaway-text">' + c.takeaway + '</div>' +
-            '<button class="takeaway-copy" onclick="copyTakeaway(this)">📋 复制</button>' +
-          '</div>' +
-          '<div class="script-body">' +
-            '<p>' + c.p1 + '</p>' +
-            '<p>' + c.p2 + '</p>' +
-            extraParaHTML +
-          '</div>' +
-          '<button class="copy-btn" onclick="copyScript(this,\'' + c.id + '\')">📋 复制文案</button>' +
-          buildRefineBtns(c) +
-          '<div class="duration-badge">' +
-            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>' +
-            '预计口播时长：' + durationText + wordLabel +
-          '</div>' +
-        '</div>' +
-      '</li>';
-  }
-
-  /* --- 渲染已生成话题 --- */
-  function renderGenTopics() {
-    var all = getGenTopics();
-    var today = todayStr();
-    var list = all[today] || [];
-    var container = document.getElementById('genTopicList');
-    if (!container) return;
-    var toggle = document.getElementById('genCollapseToggle');
-    if (list.length === 0) {
-      container.innerHTML = '';
-      if (toggle) toggle.style.display = 'none';
-      return;
-    }
-    container.innerHTML = list.map(function(c, i) { return buildTopicHTML(c, i); }).join('');
-    // 恢复勾选状态
-    loadCheckState();
-    // 显示底部展开/收起按钮
-    if (toggle) toggle.style.display = 'flex';
-  }
-  function toggleGenCollapse() {
-    var area = document.querySelector('.gen-result-area');
-    var text = document.getElementById('genCollapseText');
-    var chevron = document.getElementById('genCollapseChevron');
-    if (!area) return;
-    if (area.classList.contains('collapsed')) {
-      area.classList.remove('collapsed');
-      if (text) text.textContent = '收起全部文案';
-      if (chevron) chevron.textContent = '▴';
-    } else {
-      area.classList.add('collapsed');
-      if (text) text.textContent = '展开全部文案';
-      if (chevron) chevron.textContent = '▾';
-    }
-  }
-
-  /* --- 归档昨日生成话题到历史档案 --- */
-  function archiveOldGenTopics() {
-    var all = getGenTopics();
-    var today = todayStr();
-    var archiveBlock = document.querySelector('#archive-gen');
-    var htmlParts = [];
-    for (var date in all) {
-      if (date === today) continue;
-      var topics = all[date];
-      if (!topics || topics.length === 0) continue;
-      var dp = date.split('-');
-      var dateLabel = dp[0] + '年' + dp[1] + '月' + dp[2] + '日';
-      var blockId = 'archive-gen-' + date.replace(/-/g, '');
-      var items = topics.map(function(c, i) { return buildTopicHTML(c, i); }).join('');
-      htmlParts.push(
-        '<div class="archive-block collapsed" id="' + blockId + '">' +
-          '<div class="archive-date-header" onclick="toggleArchive(\'' + blockId + '\')">' +
-            '<span class="date-label">' + dateLabel + ' · 口播生成 <span class="archive-tag">生成</span></span>' +
-            '<span class="archive-summary">' + topics.length + '个话题</span>' +
-            '<span class="chevron">▾</span>' +
-          '</div>' +
-          '<div class="archive-topics"><ul class="archive-topic-list">' + items + '</ul></div>' +
-        '</div>'
-      );
-    }
-    if (archiveBlock) {
-      archiveBlock.innerHTML = htmlParts.join('');
-    }
-  }
-
-  /* --- 回收站 --- */
-  var RECYCLE_KEY = 'koubo-recycle-bin';
-  function getRecycleBin() {
-    return safeParse(localStorage.getItem(RECYCLE_KEY), []);
-  }
-  function saveRecycleBin(bin) {
-    try { localStorage.setItem(RECYCLE_KEY, JSON.stringify(bin)); } catch(e){}
-  }
-  function deleteGenTopic(topicId) {
-    var all = getGenTopics();
-    var found = null;
-    var foundDate = null;
-    for (var date in all) {
-      var list = all[date];
-      if (!list) continue;
-      for (var i = 0; i < list.length; i++) {
-        if (list[i].id === topicId) {
-          found = list[i];
-          foundDate = date;
-          list.splice(i, 1);
-          break;
-        }
-      }
-      if (found) break;
-    }
-    if (!found) { showToast('未找到该文案', 'warn'); return; }
-    saveGenTopics(all);
-    found.deletedDate = todayStr();
-    found.deletedTime = Date.now();
-    var bin = getRecycleBin();
-    bin.unshift(found);
-    saveRecycleBin(bin);
-    showToast('已移入回收站', 'ok');
-    renderGenTopics();
-    archiveOldGenTopics();
-    renderRecycleBin();
-  }
-  function renderRecycleBin() {
-    var bin = getRecycleBin();
-    var container = document.getElementById('recycleTopics');
-    var countEl = document.getElementById('recycleCount');
-    if (countEl) countEl.textContent = bin.length + ' 篇';
-    if (!container) return;
-    if (bin.length === 0) {
-      container.innerHTML = '<div class="recycle-empty">回收站是空的</div>';
-      return;
-    }
-    container.innerHTML = bin.map(function(c, i) {
-      var num = String(i + 1).padStart(2, '0');
-      var extraParaHTML = c.p3 ? c.p3 : '';
-      var durationText = c.durationStr || ('约' + (c.duration || 3) + '分钟');
-      var wordLabel = c.wordCount ? ' · ' + c.wordCount + '字' : '';
-      return '<li class="topic-item ' + c.typeCls + ' collapsed" id="recycle-' + c.id + '">' +
-        '<div class="topic-header" onclick="toggleTopic(this)">' +
-          '<input type="checkbox" class="recycle-item-cb" data-id="' + c.id + '" onclick="event.stopPropagation();" onchange="updateRecycleSelectAll()">' +
-          '<span class="toc-num ' + c.numCls + '">' + num + '</span>' +
-          '<div class="topic-header-text">' +
-            '<div class="topic-title-row">' +
-              '<span class="toc-item-title">' + c.title + '</span>' +
-              '<span class="toc-tag ' + c.tagCls + '">' + c.tagText + '</span>' +
-              '<span class="hot-rank-badge"><span class="rank-num">已删除</span><span class="rank-heat">' + (c.deletedDate || c.genDate) + '</span></span>' +
-            '</div>' +
-            '<div class="topic-meta">' +
-              '<span class="meta-box"><span class="meta-label">维度</span><span class="meta-val">' + c.dimension + '</span></span>' +
-              '<span class="meta-box"><span class="meta-label">关联事件</span><span class="meta-val">' + c.rawTitle + '</span></span>' +
-            '</div>' +
-          '</div>' +
-          '<span class="topic-chevron">▾</span>' +
-        '</div>' +
-        '<div class="topic-body">' +
-          '<div class="short-title">' + c.title + '</div>' +
-          '<div class="takeaway-box"><div class="label">核心观点</div><div class="takeaway-text">' + c.takeaway + '</div></div>' +
-          '<div class="script-body"><p>' + c.p1 + '</p><p>' + c.p2 + '</p>' + extraParaHTML + '</div>' +
-          '<button class="recycle-restore-btn" onclick="restoreTopic(\'' + c.id + '\')">↩ 恢复</button>' +
-          '<button class="recycle-purge-btn" onclick="purgeTopic(\'' + c.id + '\')">🗑 彻底删除</button>' +
-          '<div class="duration-badge">预计口播时长：' + durationText + wordLabel + '</div>' +
-        '</div>' +
-      '</li>';
-    }).join('');
-  }
-  function toggleRecycleBin() {
-    var block = document.getElementById('recycleBlock');
-    if (block) block.classList.toggle('collapsed');
-  }
-  function restoreTopic(topicId) {
-    var bin = getRecycleBin();
-    var idx = -1;
-    var topic = null;
-    for (var i = 0; i < bin.length; i++) {
-      if (bin[i].id === topicId) { idx = i; topic = bin[i]; break; }
-    }
-    if (idx < 0) return;
-    bin.splice(idx, 1);
-    saveRecycleBin(bin);
-    var restoreDate = topic.genDate || todayStr();
-    var all = getGenTopics();
-    if (!all[restoreDate]) all[restoreDate] = [];
-    all[restoreDate].push(topic);
-    saveGenTopics(all);
-    showToast('已恢复文案', 'ok');
-    renderGenTopics();
-    archiveOldGenTopics();
-    renderRecycleBin();
-  }
-  function purgeTopic(topicId) {
-    var bin = getRecycleBin();
-    var idx = -1;
-    for (var i = 0; i < bin.length; i++) {
-      if (bin[i].id === topicId) { idx = i; break; }
-    }
-    if (idx < 0) return;
-    bin.splice(idx, 1);
-    saveRecycleBin(bin);
-    showToast('已彻底删除', 'ok');
-    renderRecycleBin();
-  }
-  function clearRecycleBin() {
-    var bin = getRecycleBin();
-    if (bin.length === 0) { showToast('回收站已经是空的', 'warn'); return; }
-    var ok = confirm('确定要清空回收站吗？\n共 ' + bin.length + ' 篇已删除的文案将被永久清除，此操作不可撤销。');
-    if (!ok) return;
-    saveRecycleBin([]);
-    showToast('回收站已清空', 'ok');
-    renderRecycleBin();
-  }
-  function toggleSelectAllRecycle() {
-    var cb = document.getElementById('recycleSelectAll');
-    var boxes = document.querySelectorAll('.recycle-item-cb');
-    boxes.forEach(function(box) { box.checked = cb.checked; });
-  }
-  function updateRecycleSelectAll() {
-    var boxes = document.querySelectorAll('.recycle-item-cb');
-    var cb = document.getElementById('recycleSelectAll');
-    if (!cb) return;
-    var allChecked = true;
-    boxes.forEach(function(box) { if (!box.checked) allChecked = false; });
-    cb.checked = boxes.length > 0 && allChecked;
-  }
-  function purgeSelectedTopics() {
-    var boxes = document.querySelectorAll('.recycle-item-cb:checked');
-    if (boxes.length === 0) { showToast('请先勾选要删除的文案', 'warn'); return; }
-    var ids = [];
-    boxes.forEach(function(box) { ids.push(box.getAttribute('data-id')); });
-    var ok = confirm('确定要删除选中的 ' + ids.length + ' 篇文案吗？\n此操作不可撤销。');
-    if (!ok) return;
-    var bin = getRecycleBin();
-    bin = bin.filter(function(item) { return ids.indexOf(item.id) === -1; });
-    saveRecycleBin(bin);
-    showToast('已删除选中文案', 'ok');
-    renderRecycleBin();
-  }
-
-  /* --- 话题数据 & 选择器 --- */
-  var HOT_TOPICS = [
-    { title: '想和你一起去海边看晚霞', subtitle: '海边晚霞旅行话题走红，浪漫风景引共鸣', rank: '抖音第1', heat: '1156.0万' },
-    { title: '谢震业全国田径锦标赛百米夺冠', subtitle: '谢震业百米10秒10夺冠，中国速度引关注', rank: '抖音第2', heat: '1117.0万' },
-    { title: '中国制造再添全球之最', subtitle: '中国制造新突破，全球最大级别装备引关注', rank: '抖音第3', heat: '1110.0万' },
-    { title: 'DeepSeek发布调价公告', subtitle: 'DeepSeek AI模型调价引关注，行业商业化加速', rank: '抖音第4', heat: '1109.0万' },
-    { title: '普京驳斥日本南千岛群岛领土主张', subtitle: '普京登岛驳斥日本领土主张，俄日争端再起', rank: '抖音第5', heat: '1027.0万' },
-    { title: '胖东来关闭老店背后的商业逻辑', subtitle: '胖东来主动关店引关注，做减法的商业智慧', rank: '抖音第6', heat: '1024.0万' },
-    { title: '广东最低工资标准9月1日起上调', subtitle: '广东上调最低工资标准，劳动者收入提升', rank: '抖音第7', heat: '904.0万' },
-    { title: '河南郏县一民堤发生溃口', subtitle: '河南郏县民堤溃口，洪水直冲村庄引关注', rank: '抖音第8', heat: '859.0万' },
-    { title: '今日起进入末伏', subtitle: '末伏开始，三伏天最后十天引关注', rank: '抖音第9', heat: '834.0万' },
-    { title: '用AI给小时候的自己做头像', subtitle: 'AI童年头像走红，怀旧创意引模仿', rank: '抖音第10', heat: '829.0万' },
-    { title: 'TF四代青岛演唱会', subtitle: 'TF四代青岛演唱会引关注，粉丝热情高涨', rank: '抖音第11', heat: '825.0万' },
-    { title: '沈腾回应没有最佳男主角奖', subtitle: '沈腾百花奖零票回应，得奖不重要引热议', rank: '抖音第12', heat: '811.0万' },
-    { title: '鲁菜传人用灌汤黄鱼夺冠', subtitle: '鲁菜传人灌汤黄鱼夺烹饪大赛冠军', rank: '抖音第13', heat: '810.0万' },
-    { title: '河南近期这些涉汛传言都是假的', subtitle: '河南涉汛谣言被辟谣，官方提醒不信谣', rank: '抖音第14', heat: '794.0万' },
-    { title: '粉丝们给熊出没的回信', subtitle: '熊出没粉丝回信走红，童年回忆引泪目', rank: '抖音第15', heat: '781.0万' },
-    { title: '秋雨冲刷走落叶 残留我的思念', subtitle: '秋雨落叶文案走红，文艺氛围引共鸣', rank: '抖音第16', heat: '780.0万' },
-    { title: '女生总感觉没衣服穿的原因', subtitle: '女生衣服话题引共鸣，消费心理引讨论', rank: '抖音第17', heat: '776.0万' },
-    { title: '杰伦格林杰苏尔战胜白晶柳杨杰', subtitle: '篮球竞技比赛结果引关注，球迷热议', rank: '抖音第18', heat: '774.0万' },
-    { title: '用AI给朋友做个专属小游戏', subtitle: 'AI做小游戏创意走红，技术DIY引模仿', rank: '抖音第19', heat: '774.0万' },
-    { title: '带你玩懂原神至冬版本', subtitle: '原神至冬版本攻略走红，游戏玩家关注', rank: '抖音第20', heat: '773.0万' },
-    { title: '超盈实验中学球员致歉', subtitle: '超盈实验中学球员事件后续，致歉引讨论', rank: '抖音第21', heat: '773.0万' },
-    { title: '用豆包给各地特产拍大片', subtitle: '豆包AI拍特产大片走红，创意营销引关注', rank: '抖音第22', heat: '773.0万' },
-    { title: 'AI拍出中国版怪奇物语', subtitle: 'AI拍摄中国版怪奇物语引关注，AI影视创作热议', rank: '抖音第23', heat: '772.0万' },
-    { title: '郭涛也来乌鲁木齐买新疆小羊了', subtitle: '郭涛乌鲁木齐买小羊走红，明星接地气引关注', rank: '抖音第24', heat: '772.0万' },
-    { title: '七夕我主打一个有备而来', subtitle: '七夕创意准备话题走红，节日仪式感引讨论', rank: '抖音第25', heat: '772.0万' },
-    { title: '真正的蜘蛛侠驾到', subtitle: '蜘蛛侠创意视频走红，超级英雄引关注', rank: '抖音第26', heat: '772.0万' },
-    { title: '卫诗雅获奖后回港无助理无团队', subtitle: '卫诗雅获奖后独自回港引关注，低调作风获好评', rank: '抖音第27', heat: '771.0万' },
-    { title: '祈神怜手势舞', subtitle: '祈神怜手势舞走红，创意舞蹈引模仿', rank: '抖音第28', heat: '771.0万' },
-    { title: '全国田径锦标赛来了', subtitle: '全国田径锦标赛开赛，田径赛事引关注', rank: '抖音第29', heat: '770.0万' },
-    { title: '白海豚对河南的影响有多大', subtitle: '白海豚台风对河南影响引关注，防灾话题热议', rank: '抖音第30', heat: '770.0万' },
-    { title: '和李煜东青岛见一面', subtitle: '李煜东青岛见面话题走红，粉丝热情引关注', rank: '抖音第31', heat: '770.0万' },
-    { title: 'CORTIS抖音粉丝破500万', subtitle: 'CORTIS抖音粉丝破500万，创作者成长引关注', rank: '抖音第32', heat: '769.0万' },
-    { title: '重器秦志高病态婚姻', subtitle: '重器剧情讨论走红，角色婚姻引热议', rank: '抖音第33', heat: '768.0万' },
-    { title: '报名参加薛甄珠演绎大赛', subtitle: '薛甄珠演绎大赛走红，模仿创意引参与', rank: '抖音第34', heat: '768.0万' },
-    { title: '我镜头下的薛之谦演唱会', subtitle: '薛之谦演唱会视频走红，现场氛围引共鸣', rank: '抖音第35', heat: '768.0万' },
-    { title: '没有花一开始就是一朵花', subtitle: '成长励志话题再走红，花开哲理引共鸣', rank: '抖音第36', heat: '767.0万' },
-    { title: '这段眼神戏满是遗憾', subtitle: '影视眼神戏片段走红，情感表达引共鸣', rank: '抖音第37', heat: '767.0万' },
-    { title: '昊天保水友遭小叮当gank', subtitle: '游戏直播片段走红，搞笑操作引欢乐', rank: '抖音第38', heat: '767.0万' },
-    { title: '馨何CP提前告白亲了', subtitle: '影视CP告白剧情走红，甜宠桥段引讨论', rank: '抖音第39', heat: '767.0万' },
-    { title: '当我用攀峰打开旅行', subtitle: '攀峰旅行创意视频走红，户外探索引关注', rank: '抖音第40', heat: '767.0万' },
-    { title: '威少宣布退役', subtitle: 'NBA球星威少退役持续发酵，球迷送别', rank: '抖音第41', heat: '766.0万' },
-    { title: '重器律师李乡成为被告人', subtitle: '重器剧情反转走红，角色命运引热议', rank: '抖音第42', heat: '766.0万' },
-    { title: '总要玩一次桨板吧', subtitle: '桨板运动话题走红，水上运动引关注', rank: '抖音第43', heat: '766.0万' },
-    { title: '河南周口特色烤肉香迷糊了', subtitle: '河南周口烤肉美食走红，地方特色引打卡', rank: '抖音第44', heat: '766.0万' },
-    { title: '逆天邪神云澈倾月夫妻联手', subtitle: '逆天邪神剧情讨论走红，动漫CP引热议', rank: '抖音第45', heat: '765.0万' },
-    { title: '我需要一个江苏大闸蟹友', subtitle: '大闸蟹交友话题走红，季节美食引关注', rank: '抖音第46', heat: '765.0万' },
-    { title: '穿搭改变环境', subtitle: '穿搭创意视频走红，时尚搭配引模仿', rank: '抖音第47', heat: '765.0万' },
-    { title: '楚楚和子华牵手好甜', subtitle: '影视CP牵手片段走红，甜蜜剧情引讨论', rank: '抖音第48', heat: '765.0万' },
-    { title: '智性韩系毛衣开启初秋穿搭', subtitle: '韩系毛衣初秋穿搭走红，时尚趋势引模仿', rank: '抖音第49', heat: '764.0万' },
-    { title: 'RED抽象演技上线', subtitle: 'RED抽象演技话题走红，创意表演引关注', rank: '抖音第50', heat: '764.0万' }
-  ];
-  var SELECTED_HOT = null;
-  function getSelectedHotTitle() { return SELECTED_HOT ? SELECTED_HOT.title : ''; }
-  function toggleHotDropdown() {
-    var dd = document.getElementById('hotDropdown');
-    if (dd.style.display === 'block') { closeHotDropdown(); return; }
-    renderHotDropdown();
-    dd.style.display = 'block';
-    document.querySelector('.hss-arrow').classList.add('open');
-  }
-  function closeHotDropdown() {
-    document.getElementById('hotDropdown').style.display = 'none';
-    document.querySelector('.hss-arrow').classList.remove('open');
-  }
-  function renderHotDropdown() {
-    var dd = document.getElementById('hotDropdown');
-    dd.innerHTML = HOT_TOPICS.map(function(t, i) {
-      return '<div class="hot-dropdown-item" data-idx="' + i + '" onclick="selectHotTopic(' + i + ')">' +
-        '<span class="hdi-rank">' + t.rank + '</span>' +
-        '<div><div class="hdi-title">' + t.title + '</div><div class="hdi-sub">' + t.subtitle + '</div></div>' +
-        '<span class="hdi-heat">' + t.heat + '</span>' +
-        '</div>';
-    }).join('');
-  }
-  function selectHotTopic(idx) {
-    var t = HOT_TOPICS[idx];
-    if (!t) return;
-    SELECTED_HOT = t;
-    document.getElementById('hssPlaceholder').style.display = 'none';
-    var sel = document.getElementById('hssSelected');
-    sel.style.display = 'inline';
-    sel.innerHTML = '<span class="hss-rank">' + t.rank + '</span> ' + t.title + ' <span class="hss-heat">' + t.heat + '</span>';
-    closeHotDropdown();
-  }
-  function resetHotSelector() {
-    SELECTED_HOT = null;
-    document.getElementById('hssPlaceholder').style.display = 'inline';
-    document.getElementById('hssSelected').style.display = 'none';
-    document.getElementById('hssSelected').innerHTML = '';
-  }
-  // 点击外部关闭下拉
-  document.addEventListener('click', function(e) {
-    var sel = document.getElementById('hotSearchSelector');
-    var dd = document.getElementById('hotDropdown');
-    if (sel && dd && dd.style.display === 'block' && !sel.contains(e.target) && !dd.contains(e.target)) {
-      closeHotDropdown();
-    }
-  });
-
-  /* ====== 抖音实时热榜对接（免费API，支持CORS） ====== */
-  var DOUYIN_API_URL = 'https://v.api.aa1.cn/api/douyin-hot/index.php?aa1=hot';
-  var HOT_LIVE_OK = false;
-
-  function formatHotValue(val) {
-    if (!val || val <= 0) return '0';
-    if (val >= 10000000) return (val / 10000000).toFixed(1) + '千万';
-    if (val >= 10000) return (val / 10000).toFixed(1) + '万';
-    return String(val);
-  }
-
-  function fetchLiveHotList(manual) {
-    var btn = document.getElementById('hotRefreshBtn');
-    var badge = document.getElementById('liveBadge');
-    if (btn) btn.classList.add('loading');
-    if (manual && badge) { badge.classList.remove('updated'); badge.textContent = '● 更新中'; }
-
-    fetch(DOUYIN_API_URL, { method: 'GET' })
-      .then(function(r) { return r.text(); })
-      .then(function(raw) {
-        /* API响应末尾可能有多余字符，截取最后一个}之前的内容 */
-        var lastBrace = raw.lastIndexOf('}');
-        var jsonStr = lastBrace > 0 ? raw.substring(0, lastBrace + 1) : raw;
-        return JSON.parse(jsonStr);
-      })
-      .then(function(data) {
-        if (data && data.data && data.data.word_list && data.data.word_list.length > 0) {
-          var list = data.data.word_list;
-          HOT_TOPICS = list.map(function(item) {
-            var hv = formatHotValue(item.hot_value);
-            return {
-              title: item.word,
-              subtitle: '抖音实时热榜 · 讨论量 ' + hv,
-              rank: '抖音第' + item.position,
-              heat: hv
-            };
-          });
-          HOT_LIVE_OK = true;
-          if (badge) { badge.classList.add('updated'); badge.textContent = '✓ 已更新'; badge.title = '数据来源：抖音实时热榜 · ' + new Date().toLocaleTimeString('zh-CN'); }
-          setTimeout(function() {
-            if (badge && HOT_LIVE_OK) { badge.classList.remove('updated'); badge.textContent = '● LIVE'; }
-          }, 3000);
-          /* 如果下拉面板打开则重新渲染 */
-          var dd = document.getElementById('hotDropdown');
-          if (dd && dd.style.display === 'block') renderHotDropdown();
-          if (manual) console.log('[热榜] 实时更新成功，共 ' + HOT_TOPICS.length + ' 条');
-        } else {
-          throw new Error('数据格式异常');
-        }
-      })
-      .catch(function(err) {
-        console.error('[热榜] 获取失败，使用缓存数据:', err.message);
-        if (badge) { badge.textContent = '● 缓存'; badge.style.color = '#ffa502'; badge.style.borderColor = 'rgba(255,165,2,0.3)'; badge.style.background = 'rgba(255,165,2,0.12)'; }
-        setTimeout(function() {
-          if (badge) { badge.textContent = '● LIVE'; badge.style.color = ''; badge.style.borderColor = ''; badge.style.background = ''; }
-        }, 3000);
-      })
-      .finally(function() {
-        if (btn) btn.classList.remove('loading');
-      });
-  }
-
-  /* 页面加载后获取实时热榜 */
-  setTimeout(function() { fetchLiveHotList(false); }, 800);
-  /* 每5分钟自动刷新一次 */
-  setInterval(function() { fetchLiveHotList(false); }, 300000);
-
-  /* ====== 多平台 AI 增强 ====== */
-  var AI_KEY = 'koubo-ai-key';
-  var AI_PROVIDER_KEY = 'koubo-ai-provider';
-
-  /* AI 平台配置 */
-  var AI_PROVIDERS = {
-    glm: {
-      name: '智谱 GLM-4-Flash',
-      url: 'https://open.bigmodel.cn/api/paas/v4/chat/completions',
-      model: 'glm-4-flash',
-      hint: '★ 永久免费，无 Token 限制！\n注册：open.bigmodel.cn → 手机号注册 → API Keys → 创建 Key\n完全免费，推荐首选！',
-      label: '智谱AI'
-    },
-    siliconflow: {
-      name: '硅基流动 SiliconFlow',
-      url: 'https://api.siliconflow.cn/v1/chat/completions',
-      model: 'Qwen/Qwen2.5-7B-Instruct',
-      hint: '注册送 2000 万 Token（约 ¥14）\n注册：cloud.siliconflow.cn → 手机号注册\n一个 Key 可调 DeepSeek、Qwen、GLM 等几十个模型\n免费模型：Qwen2.5-7B、GLM-4-9B 等',
-      label: '硅基流动'
-    },
-    deepseek: {
-      name: 'DeepSeek',
-      url: 'https://api.deepseek.com/v1/chat/completions',
-      model: 'deepseek-chat',
-      hint: '需付费额度（新用户有少量赠送）\n注册：platform.deepseek.com → API Keys\n如果你的额度用完了，建议选上面的免费平台',
-      label: 'DeepSeek'
-    },
-    doubao: {
-      name: '豆包/火山引擎',
-      url: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
-      model: 'doubao-pro-32k',
-      hint: '每月有免费 Token 额度\n注册：console.volcengine.com → 火山方舟\n注意：模型 ID 需要填你创建的接入点 ID（如 ep-xxx）\n在下方输入框填入接入点 ID 作为 API Key',
-      label: '豆包'
-    }
-  };
-
-  function getAiProvider() {
-    try { return localStorage.getItem(AI_PROVIDER_KEY) || 'glm'; } catch(e) { return 'glm'; }
-  }
-  function getAiKey() {
-    try { return localStorage.getItem(AI_KEY) || ''; } catch(e) { return ''; }
-  }
-  function onProviderChange() {
-    var sel = document.getElementById('aiProvider');
-    var hint = document.getElementById('aiProviderHint');
-    if (!sel || !hint) return;
-    var p = AI_PROVIDERS[sel.value];
-    if (!p) return;
-    hint.textContent = p.hint;
-    try { localStorage.setItem(AI_PROVIDER_KEY, sel.value); } catch(e) {}
-    // 更新输入框 placeholder
-    var input = document.getElementById('aiApiKey');
-    if (input) {
-      input.placeholder = sel.value === 'doubao' ? '填入接入点 ID（如 ep-xxx）+ 空格 + API Key' : '粘贴你的 API Key…';
-    }
-    updateAiStatus();
-  }
-  function saveAiKey() {
-    var input = document.getElementById('aiApiKey');
-    var key = input ? input.value.trim() : '';
-    if (!key) { showToast('请输入 API Key', 'warn'); return; }
-    try { localStorage.setItem(AI_KEY, key); } catch(e) {}
-    updateAiStatus();
-    var p = AI_PROVIDERS[getAiProvider()];
-    showToast((p ? p.name : 'AI') + ' API Key 已保存', 'success');
-  }
-  function clearAiKey() {
-    try { localStorage.removeItem(AI_KEY); } catch(e) {}
-    var input = document.getElementById('aiApiKey');
-    if (input) input.value = '';
-    updateAiStatus();
-    showToast('已清除 API Key', 'ok');
-  }
-  function updateAiStatus() {
-    var el = document.getElementById('aiStatus');
-    if (!el) return;
-    var key = getAiKey();
-    var p = AI_PROVIDERS[getAiProvider()];
-    if (key && p) {
-      el.textContent = '✓ ' + p.name + ' · AI生成模式';
-      el.style.color = 'var(--green)';
-    } else {
-      el.textContent = '未配置 · 模板模式';
-      el.style.color = 'var(--muted)';
-    }
-  }
-  function testAiKey() {
-    var key = getAiKey();
-    var provider = getAiProvider();
-    var p = AI_PROVIDERS[provider];
-    var result = document.getElementById('aiTestResult');
-    if (!key) { if (result) { result.style.display = 'block'; result.textContent = '⚠ 请先保存 API Key'; result.style.color = 'var(--gold)'; } return; }
-    if (!p) return;
-    if (result) { result.style.display = 'block'; result.textContent = '正在测试 ' + p.name + ' 连接...'; result.style.color = 'var(--accent2)'; }
-
-    // 豆包特殊处理：key 格式为 "epId apiKey"
-    var apiUrl = p.url;
-    var apiModel = p.model;
-    var apiKey = key;
-    if (provider === 'doubao') {
-      var parts = key.split(/\s+/);
-      if (parts.length >= 2) { apiModel = parts[0]; apiKey = parts[1]; }
-      else { apiKey = key; }
-    }
-
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({ model: apiModel, messages: [{ role: 'user', content: '你好，回复"连接成功"四个字' }], max_tokens: 20, stream: false })
-    }).then(function(res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
-    }).then(function(data) {
-      var reply = data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : '';
-      if (result) { result.textContent = '✓ ' + p.name + ' 连接成功！AI回复：' + reply; result.style.color = 'var(--green)'; }
-      showToast(p.name + ' 连接成功', 'success');
-    }).catch(function(err) {
-      if (result) { result.textContent = '✗ 连接失败：' + err.message + '\n请检查 API Key 和网络是否正确'; result.style.color = 'var(--accent)'; }
-      showToast(p.name + ' 连接失败', 'error');
-    });
-  }
-
-  /* --- 使用 AI 生成文案（多平台通用） --- */
-  function generateWithAI(rawTitle, opts, callback) {
-    var key = getAiKey();
-    var provider = getAiProvider();
-    var p = AI_PROVIDERS[provider];
-    if (!key || !p) { callback(null, 'no_key'); return; }
-
-    var wordCount = opts.wordCount || 1000;
-    var duration = opts.duration || 3;
-    var customTheme = opts.customTheme || '';
-    var customReq = opts.customReq || '';
-    var audience = opts.audience || '';
-    var hotRank = opts.hotRank || '';
-    var hotHeat = opts.hotHeat || '';
-
-    var prompt = '你是一个专业的抖音口播文案写手。请根据以下信息生成一篇高质量的口播文案。\n\n';
-    prompt += '【热门事件】' + rawTitle + '\n';
-    if (hotRank) prompt += '【榜单排名】' + hotRank + '\n';
-    if (hotHeat) prompt += '【讨论量】' + hotHeat + '\n';
-    prompt += '【字数要求】' + wordCount + '字左右（必须接近这个字数，不要太少）\n';
-    prompt += '【口播时长】约' + duration + '分钟\n';
-    if (customTheme) prompt += '【主题方向】' + customTheme + '\n';
-    if (customReq) prompt += '【文案要求】' + customReq + '（必须严格遵循）\n';
-    if (audience) prompt += '【面向受众】' + audience + '\n';
-
-    prompt += '\n请生成以下内容，严格按照格式输出：\n';
-    prompt += '标题：xxx（一个吸引人的创意标题，不要直接用事件名）\n';
-    prompt += '核心观点：xxx（一句话金句，20字以内）\n';
-    prompt += '正文：\n';
-    prompt += '（' + wordCount + '字左右的完整口播文案，分成多个自然段，每段之间用换行分隔）\n';
-    if (customReq && customReq.indexOf('问句') !== -1) {
-      prompt += '重要：文案正文的第一句话必须是一个问句（以问号结尾）！\n';
-    }
-
-    // 豆包特殊处理
-    var apiUrl = p.url;
-    var apiModel = p.model;
-    var apiKey = key;
-    if (provider === 'doubao') {
-      var parts = key.split(/\s+/);
-      if (parts.length >= 2) { apiModel = parts[0]; apiKey = parts[1]; }
-    }
-
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiKey },
-      body: JSON.stringify({
-        model: apiModel,
-        messages: [
-          { role: 'system', content: '你是专业口播文案写手，擅长把热点事件转化为有深度、有观点、有行动指导的口播文案。文案要口语化、有节奏感、适合短视频口播。' },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: Math.min(8192, wordCount * 3),
-        temperature: 0.8,
-        stream: false
-      })
-    }).then(function(res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
-    }).then(function(data) {
-      var reply = data.choices && data.choices[0] && data.choices[0].message ? data.choices[0].message.content : '';
-      callback(reply, null, p);
-    }).catch(function(err) {
-      callback(null, err.message, p);
-    });
-  }
-
-  /* --- 解析 AI 返回的内容 --- */
-  function parseAiResult(reply, rawTitle, opts, providerLabel) {
-    if (!reply) return null;
-    var lines = reply.split('\n');
-    var aiTitle = '';
-    var coreView = '';
-    var bodyLines = [];
-    var inBody = false;
-
-    for (var i = 0; i < lines.length; i++) {
-      var line = lines[i].trim();
-      if (!line) continue;
-      if (line.indexOf('标题：') === 0 || line.indexOf('标题:') === 0) {
-        aiTitle = line.replace(/^标题[：:]\s*/, '');
-      } else if (line.indexOf('核心观点：') === 0 || line.indexOf('核心观点:') === 0) {
-        coreView = line.replace(/^核心观点[：:]\s*/, '');
-      } else if (line.indexOf('正文：') === 0 || line.indexOf('正文:') === 0) {
-        inBody = true;
-      } else if (inBody) {
-        bodyLines.push(line);
-      } else if (!aiTitle && !coreView) {
-        if (!aiTitle) aiTitle = line;
-      }
-    }
-
-    if (!aiTitle) aiTitle = rawTitle;
-    if (bodyLines.length === 0) {
-      bodyLines = [reply];
-    }
-
-    var typeIdx = Math.floor(Math.random() * 5);
-    var t = GEN_TYPES[typeIdx];
-    if (opts.customTheme) {
-      var tl = opts.customTheme.toLowerCase();
-      if (tl.indexOf('心态') !== -1 || tl.indexOf('心理') !== -1) typeIdx = 0;
-      else if (tl.indexOf('搞钱') !== -1 || tl.indexOf('赚钱') !== -1 || tl.indexOf('财富') !== -1) typeIdx = 1;
-      else if (tl.indexOf('成长') !== -1 || tl.indexOf('学习') !== -1) typeIdx = 2;
-      else if (tl.indexOf('智慧') !== -1 || tl.indexOf('认知') !== -1 || tl.indexOf('思维') !== -1) typeIdx = 3;
-      else if (tl.indexOf('行动') !== -1 || tl.indexOf('执行') !== -1) typeIdx = 4;
-      t = GEN_TYPES[typeIdx];
-    }
-
-    var dimPool = {
-      0: ['竞技心态 · 压力管理 · 关键时刻表现', '心理韧性 · 情绪管理 · 自我突破'],
-      1: ['产业趋势 · 职业选择 · 宏观判断', '信息差 · 资源整合 · 机会捕获'],
-      2: ['成长思维 · 沉没成本 · 向前看', '习惯养成 · 复利效应 · 长期主义'],
-      3: ['底层逻辑 · 认知升级 · 跨界思维', '风险意识 · 决策框架 · 反脆弱'],
-      4: ['执行力 · 习惯养成 · 持续输出', '注意力管理 · 时间分配 · 深度工作']
-    };
-    var dims = dimPool[typeIdx] || ['底层逻辑 · 认知升级 · 跨界思维'];
-    var dim = dims[Math.floor(Math.random() * dims.length)];
-
-    var srcPool = ['抖音 / 微博 / 知乎热议', '新华社 / 人民日报 / 央视新闻', '36氪 / 虎嗅 / 第一财经', '抖音 / B站 / 新榜数据', '头条 / 澎湃新闻 / 界面新闻'];
-    var src = srcPool[Math.floor(Math.random() * srcPool.length)];
-
-    var now = new Date();
-    var monthStr = now.getFullYear() + '年' + (now.getMonth()+1) + '月';
-    var durationStr = opts.duration <= 2 ? '约' + opts.duration + '分钟 · 快节奏'
-      : opts.duration <= 5 ? '约' + opts.duration + '分钟 · 语速正常'
-      : '约' + opts.duration + '分钟 · 深度详讲';
-
-    var p1 = bodyLines[0] || '';
-    var p2 = bodyLines[1] || '';
-    var extraPara = '';
-    for (var j = 2; j < bodyLines.length; j++) {
-      extraPara += '<p>' + bodyLines[j] + '</p>';
-    }
-
-    var takeawayText = coreView || '（AI生成）';
-    if (opts.customReq) {
-      takeawayText += '<br><span style="font-size:0.72rem;color:var(--muted);">📋 文案要求：' + opts.customReq + '</span>';
-    }
-    if (opts.audience) {
-      takeawayText += '<br><span style="font-size:0.72rem;color:var(--muted);">👥 面向受众：' + opts.audience + '</span>';
-    }
-    takeawayText += '<br><span style="font-size:0.72rem;color:var(--green);">🤖 由 ' + (providerLabel || 'AI') + ' 生成</span>';
-
-    return {
-      id: 'gen-' + Date.now() + '-' + (genCounter++),
-      title: aiTitle,
-      rawTitle: rawTitle,
-      typeCls: t.cls,
-      tagCls: t.tag,
-      tagText: opts.customTheme || t.tagText,
-      numCls: t.num,
-      hl: t.hl,
-      dotColor: t.dotColor,
-      dimension: dim,
-      source: src,
-      monthStr: monthStr,
-      takeaway: takeawayText,
-      p1: p1,
-      p2: p2,
-      p3: extraPara,
-      wordCount: opts.wordCount || 1000,
-      duration: opts.duration || 3,
-      durationStr: durationStr,
-      genDate: todayStr(),
-      genTime: Date.now(),
-      customReq: opts.customReq || '',
-      audience: opts.audience || '',
-      refineMode: '',
-      refineUsed: 0,
-      hotRank: opts.hotRank || '',
-      hotHeat: opts.hotHeat || ''
-    };
-  }
-
-  /* --- 主生成函数 --- */
-  function generateTopic() {
-    // 优先使用粘贴的话题
-    var pasteEl = document.getElementById('genPasteHot');
-    var pastedTitle = pasteEl ? pasteEl.value.trim() : '';
-    var title = pastedTitle || getSelectedHotTitle();
-    if (!title) { showToast('请先选择一条话题，或粘贴话题标题', 'warn'); return; }
-
-    // 额度校验（无限生成，跳过检查）
-    // var qCheck = getGenQuota();
-    // if (qCheck.used >= GEN_FREE_LIMIT) {
-    //   showToast('今日免费次数已用完，明天再来', 'warn');
-    //   return;
-    // }
-
-    // 显示加载动画
-    var loading = document.getElementById('genLoading');
-    var btn = document.querySelector('.gen-btn');
-    btn.disabled = true;
-    loading.classList.add('show');
-
-    // 读取用户设置
-    var wcEl = document.getElementById('genWordCount');
-    var durEl = document.getElementById('genDuration');
-    var themeEl = document.getElementById('genTheme');
-    var reqEl = document.getElementById('genReq');
-    var audEl = document.getElementById('genAudience');
-    var wordCount = wcEl ? Math.max(1000, Math.min(5000, parseInt(wcEl.value) || 1000)) : 1000;
-    var duration = durEl ? Math.max(1, Math.min(15, parseInt(durEl.value) || 3)) : 3;
-    var customTheme = themeEl ? themeEl.value.trim() : '';
-    var customReq = reqEl ? reqEl.value.trim() : '';
-    var audience = audEl ? audEl.value.trim() : '';
-
-    // 读取榜单排名/讨论量信息
-    var hotRank = (SELECTED_HOT && SELECTED_HOT.rank) ? SELECTED_HOT.rank : '';
-    var hotHeat = (SELECTED_HOT && SELECTED_HOT.heat) ? SELECTED_HOT.heat : '';
-
-    var genOpts = { wordCount: wordCount, duration: duration, customTheme: customTheme, customReq: customReq, audience: audience, hotRank: hotRank, hotHeat: hotHeat };
-
-    // === 检查是否配置了 AI API Key ===
-    var aiKey = getAiKey();
-    if (aiKey) {
-      var aiP = AI_PROVIDERS[getAiProvider()];
-      var aiLabel = aiP ? aiP.name : 'AI';
-      loading.textContent = '正在用 ' + aiLabel + ' 生成文案';
-      loading.innerHTML = '正在用 ' + aiLabel + ' 生成文案<span class="dots"></span>';
-
-      generateWithAI(title, genOpts, function(reply, err, provider) {
-        if (err || !reply) {
-          // AI 生成失败，回退到模板生成
-          loading.textContent = 'AI 连接失败，使用模板生成';
-          loading.innerHTML = '正在生成口播文案<span class="dots"></span>';
-          setTimeout(function() { doTemplateGenerate(title, genOpts, loading, btn); }, 500);
-          return;
-        }
-
-        // 解析 AI 返回内容
-        var content = parseAiResult(reply, title, genOpts, provider ? provider.label : aiLabel);
-        if (!content) {
-          setTimeout(function() { doTemplateGenerate(title, genOpts, loading, btn); }, 500);
-          return;
-        }
-
-        // 扣额度
-        var q2 = getGenQuota();
-        q2.used++; saveGenQuota(q2);
-
-        // 存入localStorage
-        var all = getGenTopics();
-        var today = todayStr();
-        if (!all[today]) all[today] = [];
-        all[today].push(content);
-        saveGenTopics(all);
-
-        // 渲染
-        renderGenTopics();
-        loadCheckState();
-
-        // 恢复UI
-        loading.classList.remove('show');
-        btn.disabled = false;
-        resetHotSelector();
-        var reqInput = document.getElementById('genReq');
-        if (reqInput) reqInput.value = '';
-        var audInput = document.getElementById('genAudience');
-        if (audInput) audInput.value = '';
-        var pasteInput = document.getElementById('genPasteHot');
-        if (pasteInput) pasteInput.value = '';
-        updateGenUI();
-
-        var st = getStats(); st.generations++; saveStats(st);
-        var q3 = getGenQuota();
-        showToast(aiLabel + ' 文案已生成 · 无限生成中', 'success');
-
-        var newItem = document.getElementById(content.id);
-        if (newItem) {
-          newItem.classList.remove('collapsed');
-          newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-      return;
-    }
-
-    // 模板生成模式
-    doTemplateGenerate(title, genOpts, loading, btn);
-  }
-
-  /* --- 模板生成（原逻辑） --- */
-  function doTemplateGenerate(title, genOpts, loading, btn) {
-    setTimeout(function() {
-      // 扣额度
-      var q2 = getGenQuota();
-      q2.used++; saveGenQuota(q2);
-
-      // 生成内容
-      var content = generateContent(title, genOpts);
-
-      // 存入localStorage
-      var all = getGenTopics();
-      var today = todayStr();
-      if (!all[today]) all[today] = [];
-      all[today].push(content);
-      saveGenTopics(all);
-
-      // 渲染
-      renderGenTopics();
-      loadCheckState();
-
-      // 恢复UI
-      loading.classList.remove('show');
-      btn.disabled = false;
-      resetHotSelector();
-      var reqInput = document.getElementById('genReq');
-      if (reqInput) reqInput.value = '';
-      var audInput = document.getElementById('genAudience');
-      if (audInput) audInput.value = '';
-      var pasteInput = document.getElementById('genPasteHot');
-      if (pasteInput) pasteInput.value = '';
-      updateGenUI();
-
-      // 统计
-      var st = getStats(); st.generations++; saveStats(st);
-
-      var q3 = getGenQuota();
-      showToast('文案已生成 · 无限生成中', 'success');
-
-      // 滚动到生成结果
-      var newItem = document.getElementById(content.id);
-      if (newItem) {
-        newItem.classList.remove('collapsed');
-        newItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }, 1200);
-  }
-
-  /* --- 初始化 --- */
-  updateGenUI();
-  renderGenTopics();
-  archiveOldGenTopics();
-  renderRecycleBin();
-  // AI 状态初始化
-  (function initAi() {
-    var sel = document.getElementById('aiProvider');
-    var savedProvider = getAiProvider();
-    if (sel) sel.value = savedProvider;
-    onProviderChange();
-    var key = getAiKey();
-    if (key) {
-      var input = document.getElementById('aiApiKey');
-      if (input) input.value = key;
-    }
-    updateAiStatus();
-  })();
-
-  /* --- 安迪寄语弹窗 --- */
-  function closeWelcomeModal() {
-    var wm = document.getElementById('welcomeModal');
-    if (wm) { wm.classList.add('hidden'); }
-  }
-  // 页面加载时自动弹出寄语（每次刷新都弹）
-  (function autoShowWelcome() {
-    var wm = document.getElementById('welcomeModal');
-    if (!wm) return;
-    // 清除旧缓存
-    localStorage.removeItem('welcome-seen');
-    sessionStorage.removeItem('welcome-shown');
-    // 每次刷新页面都弹出寄语
-    wm.classList.remove('hidden');
   })();
 
   /* ====== 每日自动更新（早8点） ====== */
