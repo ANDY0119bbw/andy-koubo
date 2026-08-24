@@ -626,93 +626,6 @@
     .modal-foot { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 0.9rem; }
     .modal-foot a { color: var(--accent2); cursor: pointer; text-decoration: none; }
 
-    /* 安迪寄语弹窗 - 信封主题 */
-    .welcome-overlay {
-      position: fixed; inset: 0;
-      background: rgba(30,10,18,0.82);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 2000; padding: 1rem;
-    }
-    .welcome-overlay.hidden { display: none; }
-    .envelope-wrap {
-      width: 100%; max-width: 370px; position: relative;
-      animation: envDrop 0.55s cubic-bezier(0.34,1.4,0.5,1);
-    }
-    @keyframes envDrop {
-      from { opacity: 0; transform: translateY(-26px) scale(0.93); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    /* 信封翻盖（三角向上） */
-    .envelope-flap {
-      height: 62px;
-      background: linear-gradient(170deg, #fcd5e0 0%, #f5a8bc 100%);
-      clip-path: polygon(50% 0, 0 100%, 100% 100%);
-      position: relative; z-index: 3;
-      filter: drop-shadow(0 -2px 6px rgba(230,160,180,0.2));
-    }
-    .envelope-flap .flap-line {
-      position: absolute; left: 10%; right: 10%; bottom: 16%;
-      height: 1px; background: rgba(255,255,255,0.5);
-    }
-    /* 蜡封印章 */
-    .envelope-seal {
-      position: absolute; top: 36px; left: 50%; transform: translateX(-50%);
-      width: 66px; height: 66px; border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #ffc4d4, #e89bb0 60%, #d07a96);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 3px 9px rgba(200,120,145,0.45), inset 0 -2px 4px rgba(0,0,0,0.12), inset 0 2px 3px rgba(255,255,255,0.35);
-      z-index: 5; border: 2.5px solid rgba(255,255,255,0.6);
-    }
-    .envelope-seal img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-    }
-    /* 信纸主体 */
-    .envelope-body {
-      background: linear-gradient(175deg, #fffafc 0%, #fff7fa 45%, #fef0f4 100%);
-      border: 1px solid #f3cedb; border-top: none;
-      border-radius: 0 0 18px 18px;
-      padding: 1.9rem 1.5rem 1.2rem; margin-top: -2px;
-      position: relative; z-index: 2;
-      box-shadow: 0 14px 38px rgba(210,150,170,0.18);
-    }
-    .envelope-body::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(to bottom, transparent 0, transparent 26px, rgba(240,180,200,0.1) 26px, rgba(240,180,200,0.1) 27px);
-      border-radius: 0 0 18px 18px; pointer-events: none;
-    }
-    .envelope-body > * { position: relative; z-index: 1; }
-    .env-title {
-      text-align: left; font-size: 1.18rem; font-weight: 700;
-      color: #e08aa3; margin-bottom: 0.7rem; letter-spacing: 0.08em;
-    }
-    .env-greeting {
-      text-align: center; font-size: 0.82rem; color: #c06e8a;
-      font-weight: 600; margin-bottom: 0.8rem; line-height: 1.7;
-    }
-    .env-text {
-      font-size: 0.78rem; color: #7a5868; line-height: 1.85;
-      margin-bottom: 0.6rem;
-    }
-    .env-emph { color: #e08aa3; font-weight: 700; }
-    .env-sign {
-      text-align: right; font-size: 0.74rem; color: #c98ca0;
-      font-style: italic; margin-bottom: 0.9rem;
-    }
-    .env-footer { display: flex; justify-content: flex-end; }
-    .env-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: #ffeaf0; color: #e08aa3;
-      border: 2px solid #f0a8be; border-radius: 12px;
-      padding: 0.55rem 1.4rem; font-size: 0.84rem; font-weight: 600;
-      cursor: pointer; transition: all 0.25s; font-family: var(--font);
-      box-shadow: 0 2px 8px rgba(232,140,170,0.12); letter-spacing: 0.04em;
-    }
-    .env-btn:hover {
-      background: #fcdce7; color: #d06e93; border-color: #e08aa3;
-      box-shadow: 0 4px 14px rgba(232,140,170,0.25); transform: translateY(-1px);
-    }
     .dev-entry { margin-top: 0.7rem; }
     .dev-row { display: flex; gap: 0.55rem; }
 
@@ -3034,32 +2947,7 @@
 
       </div>
     </section>
-
-    <!-- ====== 安迪寄语弹窗 ====== -->
-
-  <!-- 安迪寄语弹窗 - 信封主题 -->
-  <div class="welcome-overlay hidden" id="welcomeModal">
-    <div class="envelope-wrap">
-      <div class="envelope-flap"><div class="flap-line"></div></div>
-      <div class="envelope-seal"><img src="data:image/jpeg;base64,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" alt="安迪"></div>
-      <div class="envelope-body">
-        <div class="env-title">安迪寄语：</div>
-        <div class="env-greeting">嗨，亲爱的你好<br>这里是安迪的口播台 · 真诚感谢您的使用</div>
-        <div class="env-text">
-          做短视频的人都知道——追热点不难，难的是每天都追，还能追出不一样的角度。<br><br>
-          这个口播台，是我帮你省时间的工具。每天的热点我已经替你盯好了，你只需要打开它，挑一个你想聊的，剩下的交给我。<br><br>
-          别怕写得不好，先写出来再说。<br>
-          <span class="env-emph">完成，比完美重要。</span>
-        </div>
-        <div class="env-sign">—— 欢迎你，开始今天的创作<br>这不仅仅是个知识口播台，也带你了解AI眼里的抖音</div>
-        <div class="env-footer">
-          <button class="env-btn" onclick="closeWelcomeModal()">开始今天的分享</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Toast -->
+    <!-- Toast -->
   <div class="toast" id="toast"></div>
 
   <script>
@@ -3290,8 +3178,8 @@
     })();
 
     /* --- 水印检测函数 --- */
-    var SKIP_IDS = ['app-bar','anti-watermark','welcomeModal','toast-container'];
-    var SKIP_CLASSES = ['app-bar','toast','welcome-overlay','modal-overlay','qr-modal','env-modal','settings-modal'];
+    var SKIP_IDS = ['app-bar','anti-watermark','toast-container'];
+    var SKIP_CLASSES = ['app-bar','toast','modal-overlay','qr-modal','env-modal','settings-modal'];
 
     function shouldSkip(el) {
       if (!el || el.nodeType !== 1) return true;
