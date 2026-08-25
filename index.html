@@ -626,6 +626,7 @@
     .modal-foot { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 0.9rem; }
     .modal-foot a { color: var(--accent2); cursor: pointer; text-decoration: none; }
 
+    .dev-entry { margin-top: 0.7rem; }
     .dev-row { display: flex; gap: 0.55rem; }
 
     /* 用户状态栏 */
@@ -2946,6 +2947,7 @@
 
       </div>
     </section>
+
     <!-- Toast -->
   <div class="toast" id="toast"></div>
 
@@ -3015,6 +3017,24 @@
   /* --- 弹窗控制 --- */
   function openModal(id) { var m = document.getElementById(id); if (m) m.classList.add('show'); }
   function closeModal(id) { var m = document.getElementById(id); if (m) m.classList.remove('show'); }
+
+  /* --- 话题/存档折叠控制 --- */
+    function toggleCheck(el, itemId) {
+      el.classList.toggle('checked');
+      var item = document.getElementById(itemId);
+      if (item) { item.classList.toggle('done'); saveCheckState(); }
+    }
+
+    function toggleTopic(headerEl) {
+      var item = headerEl.closest('.topic-item');
+      if (item) item.classList.toggle('collapsed');
+    }
+
+    function toggleArchive(blockId) {
+      var block = document.getElementById(blockId);
+      if (block) block.classList.toggle('collapsed');
+    }
+
 
   /* --- 初始化 --- */
   (function authInit() {
