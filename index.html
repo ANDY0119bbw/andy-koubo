@@ -3441,7 +3441,7 @@
         </div>
       </div>
       <!-- ===== 8月12日存档 ===== -->
-      <div class="archive-section" <div class="archive-section" id="archive-0812" style="margin-top:1rem;">
+      <div class="archive-section" id="archive-0812" style="margin-top:1rem;">
         <div class="archive-header" onclick="toggleArchive('archive-0812')" style="cursor:pointer;background:var(--card);border-radius:12px;padding:0.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;">
           <span style="font-weight:600;font-size:0.95rem;">📦 8月12日 存档</span>
           <span style="font-size:0.8rem;color:var(--accent);">5篇 · 点击查看</span>
@@ -3513,13 +3513,12 @@
         <div class="archive-body" style="display:none;padding:0.8rem 1.2rem;">
           <p style="font-size:0.85rem;color:var(--text2);line-height:1.8;">值得降薪的事 | 方向是试出来 | 用AI做杠杆</p>
         </div>
-      </div>id="archive-0724">
-          <div class="archive-date-header" onclick="toggleArchive('archive-0724')">
-            <span class="date-label">2026年7月24日 · 周四 <span class="archive-tag">ARCHIVE</span></span>
-            <span class="archive-summary">3个话题</span>
-            <span class="chevron">▾</span>
+      </div><div class="archive-section" id="archive-0724" style="margin-top:1rem;">
+          <div class="archive-header" onclick="toggleArchive('archive-0724')" style="cursor:pointer;background:var(--card);border-radius:12px;padding:0.8rem 1.2rem;display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-weight:600;font-size:0.95rem;">📦 7月24日 存档</span>
+          <span style="font-size:0.8rem;color:var(--accent);">3篇 · 点击查看</span>
           </div>
-          <div class="archive-topics">
+          <div class="archive-topics" style="display:none;padding:0.8rem 1.2rem;">
             <ul class="archive-topic-list">
 
               <!-- 0724-T1: 闪电劈中照样飞 -->
@@ -3741,7 +3740,11 @@
 
     function toggleArchive(blockId) {
       var block = document.getElementById(blockId);
-      if (block) block.classList.toggle('collapsed');
+      if (!block) return;
+      var body = block.querySelector('.archive-body') || block.querySelector('.archive-topics');
+      if (body) {
+        body.style.display = (body.style.display === 'none') ? '' : 'none';
+      }
     }
 
 
