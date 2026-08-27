@@ -3747,12 +3747,105 @@
       }
     }
 
+    /* --- 复制文案 --- */
+    function copyScript(btn, itemId) {
+      var item = document.getElementById(itemId);
+      if (!item) { showToast('未找到内容', 'warn'); return; }
+      var body = item.querySelector('.script-body');
+      if (!body) { showToast('未找到文案', 'warn'); return; }
+      var text = body.innerText.trim();
+      if (!text) { showToast('文案为空', 'warn'); return; }
+      copyToClipboard(text, btn);
+    }
+
+    /* --- 复制核心观点 --- */
+    function copyTakeaway(btn) {
+      var box = btn.closest('.takeaway-box');
+      if (!box) { showToast('未找到内容', 'warn'); return; }
+      var textEl = box.querySelector('.takeaway-text');
+      if (!textEl) { showToast('未找到内容', 'warn'); return; }
+      var text = textEl.innerText.trim();
+      if (!text) { showToast('内容为空', 'warn'); return; }
+      copyToClipboard(text, btn);
+    }
+
+    /* --- 复制到剪贴板（兼容方案） --- */
+    function copyToClipboard(text, btn) {
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showToast('已复制', 'success');
+          if (btn) { var orig = btn.innerHTML; btn.innerHTML = '✅ 已复制'; setTimeout(function(){ btn.innerHTML = orig; }, 2000); }
+        }).catch(function() {
+          fallback();
+          showToast('已复制', 'success');
+          if (btn) { var orig = btn.innerHTML; btn.innerHTML = '✅ 已复制'; setTimeout(function(){ btn.innerHTML = orig; }, 2000); }
+        });
+      } else {
+        fallback();
+        showToast('已复制', 'success');
+        if (btn) { var orig = btn.innerHTML; btn.innerHTML = '✅ 已复制'; setTimeout(function(){ btn.innerHTML = orig; }, 2000); }
+      }
+    }
+
+    /* --- 勾选状态保存/恢复 --- */
+    var CHECK_KEY = 'koubo-check-state';
+    function saveCheckState() {
+      try {
+        var checked = [];
+        var items = document.querySelectorAll('.topic-checkbox.checked');
+        for (var i = 0; i < items.length; i++) {
+          var id = items[i].getAttribute('onclick');
+          if (id) {
+            var match = id.match(/'([^']+)'/);
+            if (match) checked.push(match[1]);
+          }
+        }
+        localStorage.setItem(CHECK_KEY, JSON.stringify({ date: todayStr(), items: checked }));
+      } catch(e) {}
+    }
+    function restoreCheckState() {
+      try {
+        var data = JSON.parse(localStorage.getItem(CHECK_KEY) || '{}');
+        if (data.date !== todayStr()) return;
+        if (!data.items) return;
+        for (var i = 0; i < data.items.length; i++) {
+          var id = data.items[i];
+          var cb = document.querySelector('.topic-checkbox[onclick*="' + id + '"]');
+          if (cb) {
+            cb.classList.add('checked');
+            var item = document.getElementById(id);
+            if (item) item.classList.add('done');
+          }
+        }
+      } catch(e) {}
+    }
+
+    /* --- 页面加载时滚动到顶部 --- */
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+    });
+    if (document.readyState === 'complete') {
+      window.scrollTo(0, 0);
+    }
+
 
   /* --- 初始化 --- */
   (function authInit() {
     // 访问统计（每日每设备计一次）
     var s = getStats();
     if (!s.visited) { s.visits++; s.visited = true; saveStats(s); }
+    // 恢复勾选状态
+    restoreCheckState();
   })();
 
   /* ====== 每日自动更新（早8点） ====== */
