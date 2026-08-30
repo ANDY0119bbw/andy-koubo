@@ -483,6 +483,7 @@
  }
  .history-section.collapsed .chevron { transform: rotate(-90deg); }
  .history-section.collapsed .archive-blocks { display: none; }
+ .archive-chevron { display: inline-block; transition: transform 0.3s; }
 
  .archive-blocks { margin-top: 0.5rem; }
  .archive-block {
@@ -4432,12 +4433,20 @@
  if (item) item.classList.toggle('collapsed');
  }
 
+ function toggleHistory() {
+ var section = document.getElementById('history-section');
+ if (section) section.classList.toggle('collapsed');
+ }
+
  function toggleArchive(blockId) {
  var block = document.getElementById(blockId);
  if (!block) return;
  var body = block.querySelector('.archive-body') || block.querySelector('.archive-topics');
  if (body) {
- body.style.display = (body.style.display === 'none') ? '' : 'none';
+ var isOpen = body.style.display === 'none';
+ body.style.display = isOpen ? '' : 'none';
+ var chevron = block.querySelector('.archive-chevron');
+ if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(-90deg)';
  }
  }
 
